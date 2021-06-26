@@ -1,0 +1,352 @@
+# -*- coding: utf-8 -*-
+#-----(1) data analysis of agriculture sector -----
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import random
+
+df = pd.read_csv ('C:/Users/Jeet Das/Desktop/Major Project - Indian Economy/Project ( Section 1-Indian Economy)/Section-1_Data_sheet/(02)_agriculture.csv',encoding="cp1252")
+
+print("\n------- output data :-----------\n")
+print("Agriculture data analysis:")
+print("\n-----------------------------------\n")
+
+# Question – A : get row and column numbers 
+
+print('---------------------------------------------')
+print("Dimension of the data frame = ",df.shape)
+print('---------------------------------------------')
+
+# Question – B : print column names :
+
+
+print('------------------------\n Column names as follows :')
+print('------------------------\n')
+count = 0
+for col in df.columns: 
+        print(count,"-->",col)
+        count = count+1
+print("\n-----------------------------\n")
+
+#Question – C : State_Name (using GROUP BY method) and no. of states :
+
+state_names = df.groupby(['State_Name'])[['District_Name']].count()
+print("---------------------------------")
+print("\t states names : ")
+print("-------------------------------")
+print(state_names)
+print("-------------------------------")
+count = 0
+for row in range(len(state_names)): 
+        count = count+1
+print("total no. of states = ",count)        
+print("-----------------------------\n")
+
+#Question – 1 : Andaman and Nicobar Islands(Detailed analysis) :
+
+print("\n--- State-1: Andaman and Nicobar Islands(Detailed analysis) :-------")
+df_andaman = df[df.State_Name == 'Andaman and Nicobar Islands']
+df_andaman_dist = df_andaman.groupby(['District_Name'])[['Crop_Year']].count()
+print(df_andaman_dist)
+
+print("-----------------------------")
+count = 0
+for row in range(len(df_andaman_dist)): 
+        count = count+1
+print("total no. of district in [State-1] Andaman and Nicobar Islands = ",count)        
+print("-----------------------------\n")
+
+# crop year in Andaman and Nicobar Islands
+
+print("------ Crop year in Andaman and Nicobar Islands --------")
+df_andaman_year = df_andaman.groupby(['Crop_Year'])[['Crop_Year']].count()
+print(df_andaman_year)
+
+# crop types in Andaman and Nicobar Islands
+
+print("----- Crop types in Andaman and Nicobar Islands --------")
+df_andaman_crop = df_andaman.groupby(['Crop'])[['Crop']].count()
+print(df_andaman_crop)
+
+# details of Andaman( [1] Nicobars)
+
+print("------ Details of Andaman( [1] Nicobars) -----------------")
+df_andaman_1 = df_andaman[df_andaman.District_Name == 'NICOBARS']
+
+# finding sum of year =( 2000,2001,2002,2003,2004,2005,2006,2010 )
+
+print("---------------------------------")
+print("Sum for Crop_Year = 2000")
+print("---------------------------------")
+df_andaman_1_2000 = df_andaman_1.loc[df_andaman_1['Crop_Year'] == 2000,'Area':'Production']
+df_andaman_1_2000_sum = df_andaman_1_2000.sum(axis = 0, skipna = True)
+print(df_andaman_1_2000_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2001")
+print("---------------------------------")
+df_andaman_1_2001 = df_andaman_1.loc[df_andaman_1['Crop_Year'] == 2001,'Area':'Production']
+df_andaman_1_2001_sum = df_andaman_1_2001.sum(axis = 0, skipna = True)
+print(df_andaman_1_2001_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2002")
+print("---------------------------------")
+df_andaman_1_2002 = df_andaman_1.loc[df_andaman_1['Crop_Year'] == 2002,'Area':'Production'] 
+df_andaman_1_2002_sum = df_andaman_1_2002.sum(axis = 0, skipna = True)
+print(df_andaman_1_2002_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2003")
+print("---------------------------------")
+df_andaman_1_2003 = df_andaman_1.loc[df_andaman_1['Crop_Year'] == 2003,'Area':'Production'] 
+df_andaman_1_2003_sum = df_andaman_1_2003.sum(axis = 0, skipna = True)
+print(df_andaman_1_2003_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2004")
+print("---------------------------------")
+df_andaman_1_2004 = df_andaman_1.loc[df_andaman_1['Crop_Year'] == 2004,'Area':'Production'] 
+df_andaman_1_2004_sum = df_andaman_1_2004.sum(axis = 0, skipna = True)
+print(df_andaman_1_2004_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2005")
+print("---------------------------------")
+df_andaman_1_2005 = df_andaman_1.loc[df_andaman_1['Crop_Year'] == 2005,'Area':'Production']
+df_andaman_1_2005_sum = df_andaman_1_2005.sum(axis = 0, skipna = True)
+print(df_andaman_1_2005_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2006")
+print("---------------------------------")
+df_andaman_1_2006 = df_andaman_1.loc[df_andaman_1['Crop_Year'] == 2006,'Area':'Production'] 
+df_andaman_1_2006_sum = df_andaman_1_2006.sum(axis = 0, skipna = True)
+print(df_andaman_1_2006_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2010")
+print("---------------------------------")
+df_andaman_1_2010 = df_andaman_1.loc[df_andaman_1['Crop_Year'] == 2010,'Area':'Production'] 
+df_andaman_1_2010_sum = df_andaman_1_2010.sum(axis = 0, skipna = True)
+print(df_andaman_1_2010_sum)
+print("---------------------------------")
+
+
+# details of Andaman( [2] NORTH AND MIDDLE ANDAMAN )
+
+print("------ Details of Andaman( [2] NORTH AND MIDDLE ANDAMAN )-----------")
+df_andaman_2 = df_andaman[df_andaman.District_Name == 'NORTH AND MIDDLE ANDAMAN']
+
+# finding sum of year =( 2000,2001,2002,2003,2004,2005,2006,2010 )
+
+print("---------------------------------")
+print("Sum for Crop_Year = 2000")
+print("---------------------------------")
+df_andaman_2_2000 = df_andaman_2.loc[df_andaman_2['Crop_Year'] == 2000,'Area':'Production'] 
+df_andaman_2_2000_sum = df_andaman_2_2000.sum(axis = 0, skipna = True)
+print(df_andaman_2_2000_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2001")
+print("---------------------------------")
+df_andaman_2_2001 = df_andaman_2.loc[df_andaman_2['Crop_Year'] == 2001,'Area':'Production'] 
+df_andaman_2_2001_sum = df_andaman_2_2001.sum(axis = 0, skipna = True)
+print(df_andaman_2_2001_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2002")
+print("---------------------------------")
+df_andaman_2_2002 = df_andaman_2.loc[df_andaman_2['Crop_Year'] == 2002,'Area':'Production'] 
+df_andaman_2_2002_sum = df_andaman_2_2002.sum(axis = 0, skipna = True)
+print(df_andaman_2_2002_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2003")
+print("---------------------------------")
+df_andaman_2_2003 = df_andaman_2.loc[df_andaman_2['Crop_Year'] == 2003,'Area':'Production'] 
+df_andaman_2_2003_sum = df_andaman_2_2003.sum(axis = 0, skipna = True)
+print(df_andaman_2_2003_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2004")
+print("---------------------------------")
+df_andaman_2_2004 = df_andaman_2.loc[df_andaman_2['Crop_Year'] == 2004,'Area':'Production'] 
+df_andaman_2_2004_sum = df_andaman_2_2004.sum(axis = 0, skipna = True)
+print(df_andaman_2_2004_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2005")
+print("---------------------------------")
+df_andaman_2_2005 = df_andaman_2.loc[df_andaman_2['Crop_Year'] == 2005,'Area':'Production'] 
+df_andaman_2_2005_sum = df_andaman_2_2005.sum(axis = 0, skipna = True)
+print(df_andaman_2_2005_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2006")
+print("---------------------------------")
+df_andaman_2_2006 = df_andaman_2.loc[df_andaman_2['Crop_Year'] == 2006,'Area':'Production'] 
+df_andaman_2_2006_sum = df_andaman_2_2006.sum(axis = 0, skipna = True)
+print(df_andaman_2_2006_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2010")
+print("---------------------------------")
+df_andaman_2_2010 = df_andaman_2.loc[df_andaman_2['Crop_Year'] == 2010,'Area':'Production'] 
+df_andaman_2_2010_sum = df_andaman_2_2010.sum(axis = 0, skipna = True)
+print(df_andaman_2_2010_sum)
+print("---------------------------------")
+
+# details of Andaman( [3] SOUTH ANDAMANS )
+
+print("----- Details of Andaman( [3] SOUTH ANDAMANS )-------")
+df_andaman_3 = df_andaman[df_andaman.District_Name == 'SOUTH ANDAMANS']
+
+# finding sum of year =( 2000,2001,2002,2003,2004,2005,2006,2010 )
+
+print("---------------------------------")
+print("Sum for Crop_Year = 2000")
+print("---------------------------------")
+df_andaman_3_2000 = df_andaman_3.loc[df_andaman_3['Crop_Year'] == 2000,'Area':'Production']
+df_andaman_3_2000_sum = df_andaman_3_2000.sum(axis = 0, skipna = True)
+print(df_andaman_3_2000_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2001")
+print("---------------------------------")
+df_andaman_3_2001 = df_andaman_3.loc[df_andaman_3['Crop_Year'] == 2001,'Area':'Production']
+df_andaman_3_2001_sum = df_andaman_3_2001.sum(axis = 0, skipna = True)
+print(df_andaman_3_2001_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2002")
+print("---------------------------------")
+df_andaman_3_2002 = df_andaman_3.loc[df_andaman_3['Crop_Year'] == 2002,'Area':'Production']
+df_andaman_3_2002_sum = df_andaman_3_2002.sum(axis = 0, skipna = True)
+print(df_andaman_3_2002_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2003")
+print("---------------------------------")
+df_andaman_3_2003 = df_andaman_3.loc[df_andaman_3['Crop_Year'] == 2003,'Area':'Production']
+df_andaman_3_2003_sum = df_andaman_3_2003.sum(axis = 0, skipna = True)
+print(df_andaman_3_2003_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2004")
+print("---------------------------------")
+df_andaman_3_2004 = df_andaman_3.loc[df_andaman_3['Crop_Year'] == 2004,'Area':'Production']
+df_andaman_3_2004_sum = df_andaman_3_2004.sum(axis = 0, skipna = True)
+print(df_andaman_3_2004_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2005")
+print("---------------------------------")
+df_andaman_3_2005 = df_andaman_3.loc[df_andaman_3['Crop_Year'] == 2005,'Area':'Production']
+df_andaman_3_2005_sum = df_andaman_3_2005.sum(axis = 0, skipna = True)
+print(df_andaman_3_2005_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2006")
+print("---------------------------------")
+df_andaman_3_2006 = df_andaman_3.loc[df_andaman_3['Crop_Year'] == 2006,'Area':'Production']
+df_andaman_3_2006_sum = df_andaman_3_2006.sum(axis = 0, skipna = True)
+print(df_andaman_3_2006_sum)
+print("---------------------------------")
+print("Sum for Crop_Year = 2010")
+print("---------------------------------")
+df_andaman_3_2010 = df_andaman_3.loc[df_andaman_3['Crop_Year'] == 2010,'Area':'Production']
+df_andaman_3_2010_sum = df_andaman_3_2010.sum(axis = 0, skipna = True)
+print(df_andaman_3_2010_sum)
+print("---------------------------------")
+
+# plotting of Andaman( [1] Nicobars) 'Area' and 'Production' 
+
+x = ('2000','2001','2002','2003','2004','2005','2006','2010')
+
+y1 = (df_andaman_1_2000_sum['Area'],
+      df_andaman_1_2001_sum['Area'], 
+      df_andaman_1_2002_sum['Area'],
+      df_andaman_1_2003_sum['Area'],
+      df_andaman_1_2004_sum['Area'],
+      df_andaman_1_2005_sum['Area'],
+      df_andaman_1_2006_sum['Area'],
+      df_andaman_1_2010_sum['Area'])
+
+y2 = (df_andaman_1_2000_sum['Production'],
+      df_andaman_1_2001_sum['Production'], 
+      df_andaman_1_2002_sum['Production'],
+      df_andaman_1_2003_sum['Production'],
+      df_andaman_1_2004_sum['Production'],
+      df_andaman_1_2005_sum['Production'],
+      df_andaman_1_2006_sum['Production'],
+      df_andaman_1_2010_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-1 : Andaman( [1] Nicobars) (Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x,y1)
+plt.show
+
+plt.subplot(122)
+plt.title('State-1 : Andaman( [1] Nicobars) (production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x,y2)
+plt.show()
+
+# plotting of Andaman( [2] NORTH AND MIDDLE ANDAMAN ) 'Area' and 'Production' 
+
+x = ('2000','2001','2002','2003','2004','2005','2006','2010')
+
+y1 = (df_andaman_2_2000_sum['Area'],
+      df_andaman_2_2001_sum['Area'], 
+      df_andaman_2_2002_sum['Area'],
+      df_andaman_2_2003_sum['Area'],
+      df_andaman_2_2004_sum['Area'],
+      df_andaman_2_2005_sum['Area'],
+      df_andaman_2_2006_sum['Area'],
+      df_andaman_2_2010_sum['Area'])
+
+y2 = (df_andaman_2_2000_sum['Production'],
+      df_andaman_2_2001_sum['Production'], 
+      df_andaman_2_2002_sum['Production'],
+      df_andaman_2_2003_sum['Production'],
+      df_andaman_2_2004_sum['Production'],
+      df_andaman_2_2005_sum['Production'],
+      df_andaman_2_2006_sum['Production'],
+      df_andaman_2_2010_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-1 : Andaman( [2] NORTH AND MIDDLE ANDAMAN)(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x,y1)
+plt.show
+
+plt.subplot(122)
+plt.title('State-1 : Andaman( [2] NORTH AND MIDDLE ANDAMAN ) (production)')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x,y2)
+plt.show()
+
+# plotting of  Andaman( [3] SOUTH ANDAMANS ) 'Area' and 'Production' 
+
+x = ('2000','2001','2002','2003','2004','2005','2006','2010')
+
+y1 = (df_andaman_3_2000_sum['Area'],
+      df_andaman_3_2001_sum['Area'], 
+      df_andaman_3_2002_sum['Area'],
+      df_andaman_3_2003_sum['Area'],
+      df_andaman_3_2004_sum['Area'],
+      df_andaman_3_2005_sum['Area'],
+      df_andaman_3_2006_sum['Area'],
+      df_andaman_3_2010_sum['Area'])
+
+y2 = (df_andaman_3_2000_sum['Production'],
+      df_andaman_3_2001_sum['Production'], 
+      df_andaman_3_2002_sum['Production'],
+      df_andaman_3_2003_sum['Production'],
+      df_andaman_3_2004_sum['Production'],
+      df_andaman_3_2005_sum['Production'],
+      df_andaman_3_2006_sum['Production'],
+      df_andaman_3_2010_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-1 :  Andaman( [3] SOUTH ANDAMANS ) (Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x,y1)
+plt.show
+
+plt.subplot(122)
+plt.title('State-1 :  Andaman( [3] SOUTH ANDAMANS )(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x,y2)
+plt.show()
+
+

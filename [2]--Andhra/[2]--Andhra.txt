@@ -1,0 +1,2331 @@
+# -*- coding: utf-8 -*-
+#-----(1) data analysis of agriculture sector -----
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import random
+
+df = pd.read_csv ('C:/Users/Jeet Das/Desktop/Major Project - Indian Economy/Project ( Section 1-Indian Economy)/Section-1_Data_sheet/(02)_agriculture.csv',encoding="cp1252")
+
+print("\n------- output data :-----------\n")
+print("Agriculture data analysis:")
+print("\n-----------------------------------\n")
+
+# Question – A : get row and column numbers 
+
+print('---------------------------------------------')
+print("Dimension of the data frame = ",df.shape)
+print('---------------------------------------------')
+
+# Question – B : print column names :
+
+
+print('------------------------\n Column names as follows :')
+print('------------------------\n')
+count = 0
+for col in df.columns: 
+        print(count,"-->",col)
+        count = count+1
+print("\n-----------------------------\n")
+
+#Question – C : State_Name (using GROUP BY method) and no. of states :
+
+state_names = df.groupby(['State_Name'])[['District_Name']].count()
+print("---------------------------------")
+print("\t states names : ")
+print("-------------------------------")
+print(state_names)
+print("-------------------------------")
+count = 0
+for row in range(len(state_names)): 
+        count = count+1
+print("total no. of states = ",count)        
+print("-----------------------------\n")
+
+#Question-(2) : Andhra Pradesh
+
+print("\n----- State-2 : Andhra Pradesh ---------")
+df_andhra = df[df.State_Name == 'Andhra Pradesh']
+df_andhra_dist = df_andhra.groupby(['District_Name'])[['Crop_Year']].count()
+print(df_andhra_dist)
+
+# crop year in Andhra Pradesh
+
+df_andhra_year = df_andhra.groupby(['Crop_Year'])[['Crop_Year']].count()
+print(df_andhra_year)
+
+# crop types in Andhra Pradesh
+
+df_andhra_crop = df_andhra.groupby(['Crop'])[['Crop']].count()
+print(df_andhra_crop)
+
+
+#details of Andhra( [1] ANANTAPUR )
+
+print("---- Details of Andhra( [1] ANANTAPUR )------")
+df_andhra_1 = df_andhra[df_andhra.District_Name == 'ANANTAPUR']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_andhra_1_1997 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 1997,'Area':'Production']
+df_andhra_1_1997_sum = df_andhra_1_1997.sum(axis = 0, skipna = True)
+print(df_andhra_1_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_andhra_1_1998 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 1998,'Area':'Production']
+df_andhra_1_1998_sum = df_andhra_1_1998.sum(axis = 0, skipna = True) 
+print(df_andhra_1_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_andhra_1_1999 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 1999,'Area':'Production']
+df_andhra_1_1999_sum = df_andhra_1_1999.sum(axis = 0, skipna = True) 
+print(df_andhra_1_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_andhra_1_2000 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2000,'Area':'Production']
+df_andhra_1_2000_sum = df_andhra_1_2000.sum(axis = 0, skipna = True) 
+print(df_andhra_1_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_andhra_1_2001 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2001,'Area':'Production'] 
+df_andhra_1_2001_sum = df_andhra_1_2001.sum(axis = 0, skipna = True)
+print(df_andhra_1_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_andhra_1_2002 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2002,'Area':'Production']
+df_andhra_1_2002_sum = df_andhra_1_2002.sum(axis = 0, skipna = True) 
+print(df_andhra_1_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_andhra_1_2003 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2003,'Area':'Production']
+df_andhra_1_2003_sum = df_andhra_1_2003.sum(axis = 0, skipna = True) 
+print(df_andhra_1_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_andhra_1_2004 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2004,'Area':'Production']
+df_andhra_1_2004_sum = df_andhra_1_2004.sum(axis = 0, skipna = True) 
+print(df_andhra_1_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_andhra_1_2005 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2005,'Area':'Production']
+df_andhra_1_2005_sum = df_andhra_1_2005.sum(axis = 0, skipna = True) 
+print(df_andhra_1_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_andhra_1_2006 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2006,'Area':'Production'] 
+df_andhra_1_2006_sum = df_andhra_1_2006.sum(axis = 0, skipna = True)
+print(df_andhra_1_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_andhra_1_2007 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2007,'Area':'Production']
+df_andhra_1_2007_sum = df_andhra_1_2007.sum(axis = 0, skipna = True) 
+print(df_andhra_1_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_andhra_1_2008 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2008,'Area':'Production']
+df_andhra_1_2008_sum = df_andhra_1_2008.sum(axis = 0, skipna = True) 
+print(df_andhra_1_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_andhra_1_2009 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2009,'Area':'Production']
+df_andhra_1_2009_sum = df_andhra_1_2009.sum(axis = 0, skipna = True) 
+print(df_andhra_1_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_andhra_1_2010 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2010,'Area':'Production'] 
+df_andhra_1_2010_sum = df_andhra_1_2010.sum(axis = 0, skipna = True)
+print(df_andhra_1_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_andhra_1_2011 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2011,'Area':'Production'] 
+df_andhra_1_2011_sum = df_andhra_1_2011.sum(axis = 0, skipna = True)
+print(df_andhra_1_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_andhra_1_2012 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2012,'Area':'Production']
+df_andhra_1_2012_sum = df_andhra_1_2012.sum(axis = 0, skipna = True) 
+print(df_andhra_1_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_andhra_1_2013 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2013,'Area':'Production'] 
+df_andhra_1_2013_sum = df_andhra_1_2013.sum(axis = 0, skipna = True)
+print(df_andhra_1_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_andhra_1_2014 = df_andhra_1.loc[df_andhra_1['Crop_Year'] == 2014,'Area':'Production']
+df_andhra_1_2014_sum = df_andhra_1_2014.sum(axis = 0, skipna = True) 
+print(df_andhra_1_2014_sum)
+print("---------------------------------")
+
+
+
+
+#details of Andhra( [2] CHITTOOR )
+
+print("---- Details of Andhra( [2] CHITTOOR )--------")
+df_andhra_2 = df_andhra[df_andhra.District_Name == 'CHITTOOR']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_andhra_2_1997 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 1997,'Area':'Production']
+df_andhra_2_1997_sum = df_andhra_2_1997.sum(axis = 0, skipna = True)
+print(df_andhra_2_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_andhra_2_1998 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 1998,'Area':'Production']
+df_andhra_2_1998_sum = df_andhra_2_1998.sum(axis = 0, skipna = True) 
+print(df_andhra_2_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_andhra_2_1999 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 1999,'Area':'Production']
+df_andhra_2_1999_sum = df_andhra_2_1999.sum(axis = 0, skipna = True) 
+print(df_andhra_2_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_andhra_2_2000 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2000,'Area':'Production']
+df_andhra_2_2000_sum = df_andhra_2_2000.sum(axis = 0, skipna = True) 
+print(df_andhra_2_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_andhra_2_2001 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2001,'Area':'Production'] 
+df_andhra_2_2001_sum = df_andhra_2_2001.sum(axis = 0, skipna = True)
+print(df_andhra_2_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_andhra_2_2002 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2002,'Area':'Production']
+df_andhra_2_2002_sum = df_andhra_2_2002.sum(axis = 0, skipna = True) 
+print(df_andhra_2_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_andhra_2_2003 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2003,'Area':'Production']
+df_andhra_2_2003_sum = df_andhra_2_2003.sum(axis = 0, skipna = True) 
+print(df_andhra_2_2003)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_andhra_2_2004 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2004,'Area':'Production']
+df_andhra_2_2004_sum = df_andhra_2_2004.sum(axis = 0, skipna = True) 
+print(df_andhra_2_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_andhra_2_2005 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2005,'Area':'Production']
+df_andhra_2_2005_sum = df_andhra_2_2005.sum(axis = 0, skipna = True) 
+print(df_andhra_2_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_andhra_2_2006 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2006,'Area':'Production'] 
+df_andhra_2_2006_sum = df_andhra_2_2006.sum(axis = 0, skipna = True)
+print(df_andhra_2_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_andhra_2_2007 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2007,'Area':'Production']
+df_andhra_2_2007_sum = df_andhra_2_2007.sum(axis = 0, skipna = True) 
+print(df_andhra_2_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_andhra_2_2008 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2008,'Area':'Production']
+df_andhra_2_2008_sum = df_andhra_2_2008.sum(axis = 0, skipna = True) 
+print(df_andhra_2_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_andhra_2_2009 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2009,'Area':'Production']
+df_andhra_2_2009_sum = df_andhra_2_2009.sum(axis = 0, skipna = True) 
+print(df_andhra_2_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_andhra_2_2010 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2010,'Area':'Production'] 
+df_andhra_2_2010_sum = df_andhra_2_2010.sum(axis = 0, skipna = True)
+print(df_andhra_2_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_andhra_2_2011 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2011,'Area':'Production'] 
+df_andhra_2_2011_sum = df_andhra_2_2011.sum(axis = 0, skipna = True)
+print(df_andhra_2_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_andhra_2_2012 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2012,'Area':'Production']
+df_andhra_2_2012_sum = df_andhra_2_2012.sum(axis = 0, skipna = True) 
+print(df_andhra_2_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_andhra_2_2013 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2013,'Area':'Production'] 
+df_andhra_2_2013_sum = df_andhra_2_2013.sum(axis = 0, skipna = True)
+print(df_andhra_2_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_andhra_2_2014 = df_andhra_2.loc[df_andhra_2['Crop_Year'] == 2014,'Area':'Production']
+df_andhra_2_2014_sum = df_andhra_2_2014.sum(axis = 0, skipna = True) 
+print(df_andhra_2_2014_sum)
+print("---------------------------------")
+
+#details of Andhra( [3] EAST GODAVARI )
+
+print("------ Details of Andhra( [3] EAST GODAVARI )--------")
+df_andhra_3 = df_andhra[df_andhra.District_Name == 'EAST GODAVARI']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_andhra_3_1997 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 1997,'Area':'Production']
+df_andhra_3_1997_sum = df_andhra_3_1997.sum(axis = 0, skipna = True)
+print(df_andhra_3_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_andhra_3_1998 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 1998,'Area':'Production']
+df_andhra_3_1998_sum = df_andhra_3_1998.sum(axis = 0, skipna = True) 
+print(df_andhra_3_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_andhra_3_1999 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 1999,'Area':'Production']
+df_andhra_3_1999_sum = df_andhra_3_1999.sum(axis = 0, skipna = True) 
+print(df_andhra_3_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_andhra_3_2000 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2000,'Area':'Production']
+df_andhra_3_2000_sum = df_andhra_3_2000.sum(axis = 0, skipna = True) 
+print(df_andhra_3_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_andhra_3_2001 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2001,'Area':'Production'] 
+df_andhra_3_2001_sum = df_andhra_3_2001.sum(axis = 0, skipna = True)
+print(df_andhra_3_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_andhra_3_2002 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2002,'Area':'Production']
+df_andhra_3_2002_sum = df_andhra_3_2002.sum(axis = 0, skipna = True) 
+print(df_andhra_3_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_andhra_3_2003 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2003,'Area':'Production']
+df_andhra_3_2003_sum = df_andhra_3_2003.sum(axis = 0, skipna = True) 
+print(df_andhra_3_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_andhra_3_2004 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2004,'Area':'Production']
+df_andhra_3_2004_sum = df_andhra_3_2004.sum(axis = 0, skipna = True) 
+print(df_andhra_3_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_andhra_3_2005 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2005,'Area':'Production']
+df_andhra_3_2005_sum = df_andhra_3_2005.sum(axis = 0, skipna = True) 
+print(df_andhra_3_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_andhra_3_2006 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2006,'Area':'Production'] 
+df_andhra_3_2006_sum = df_andhra_3_2006.sum(axis = 0, skipna = True)
+print(df_andhra_3_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_andhra_3_2007 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2007,'Area':'Production']
+df_andhra_3_2007_sum = df_andhra_3_2007.sum(axis = 0, skipna = True) 
+print(df_andhra_3_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_andhra_3_2008 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2008,'Area':'Production']
+df_andhra_3_2008_sum = df_andhra_3_2008.sum(axis = 0, skipna = True) 
+print(df_andhra_3_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_andhra_3_2009 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2009,'Area':'Production']
+df_andhra_3_2009_sum = df_andhra_3_2009.sum(axis = 0, skipna = True) 
+print(df_andhra_3_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_andhra_3_2010 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2010,'Area':'Production'] 
+df_andhra_3_2010_sum = df_andhra_3_2010.sum(axis = 0, skipna = True)
+print(df_andhra_3_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_andhra_3_2011 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2011,'Area':'Production'] 
+df_andhra_3_2011_sum = df_andhra_3_2011.sum(axis = 0, skipna = True)
+print(df_andhra_3_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_andhra_3_2012 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2012,'Area':'Production']
+df_andhra_3_2012_sum = df_andhra_3_2012.sum(axis = 0, skipna = True) 
+print(df_andhra_3_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_andhra_3_2013 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2013,'Area':'Production'] 
+df_andhra_3_2013_sum = df_andhra_3_2013.sum(axis = 0, skipna = True)
+print(df_andhra_3_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_andhra_3_2014 = df_andhra_3.loc[df_andhra_3['Crop_Year'] == 2014,'Area':'Production']
+df_andhra_3_2014_sum = df_andhra_3_2014.sum(axis = 0, skipna = True) 
+print(df_andhra_3_2014_sum)
+print("---------------------------------")
+
+#details of Andhra( [4] GUNTUR )
+
+print("---- Details of Andhra( [4] GUNTUR )-------")
+df_andhra_4 = df_andhra[df_andhra.District_Name == 'GUNTUR']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_andhra_4_1997 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 1997,'Area':'Production']
+df_andhra_4_1997_sum = df_andhra_4_1997.sum(axis = 0, skipna = True)
+print(df_andhra_4_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_andhra_4_1998 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 1998,'Area':'Production']
+df_andhra_4_1998_sum = df_andhra_4_1998.sum(axis = 0, skipna = True) 
+print(df_andhra_4_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_andhra_4_1999 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 1999,'Area':'Production']
+df_andhra_4_1999_sum = df_andhra_4_1999.sum(axis = 0, skipna = True) 
+print(df_andhra_4_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_andhra_4_2000 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2000,'Area':'Production']
+df_andhra_4_2000_sum = df_andhra_4_2000.sum(axis = 0, skipna = True) 
+print(df_andhra_4_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_andhra_4_2001 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2001,'Area':'Production'] 
+df_andhra_4_2001_sum = df_andhra_4_2001.sum(axis = 0, skipna = True)
+print(df_andhra_4_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_andhra_4_2002 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2002,'Area':'Production']
+df_andhra_4_2002_sum = df_andhra_4_2002.sum(axis = 0, skipna = True) 
+print(df_andhra_4_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_andhra_4_2003 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2003,'Area':'Production']
+df_andhra_4_2003_sum = df_andhra_4_2003.sum(axis = 0, skipna = True) 
+print(df_andhra_4_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_andhra_4_2004 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2004,'Area':'Production']
+df_andhra_4_2004_sum = df_andhra_4_2004.sum(axis = 0, skipna = True) 
+print(df_andhra_4_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_andhra_4_2005 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2005,'Area':'Production']
+df_andhra_4_2005_sum = df_andhra_4_2005.sum(axis = 0, skipna = True) 
+print(df_andhra_4_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_andhra_4_2006 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2006,'Area':'Production'] 
+df_andhra_4_2006_sum = df_andhra_4_2006.sum(axis = 0, skipna = True)
+print(df_andhra_4_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_andhra_4_2007 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2007,'Area':'Production']
+df_andhra_4_2007_sum = df_andhra_4_2007.sum(axis = 0, skipna = True) 
+print(df_andhra_4_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_andhra_4_2008 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2008,'Area':'Production']
+df_andhra_4_2008_sum = df_andhra_4_2008.sum(axis = 0, skipna = True) 
+print(df_andhra_4_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_andhra_4_2009 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2009,'Area':'Production']
+df_andhra_4_2009_sum = df_andhra_4_2009.sum(axis = 0, skipna = True) 
+print(df_andhra_4_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_andhra_4_2010 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2010,'Area':'Production'] 
+df_andhra_4_2010_sum = df_andhra_4_2010.sum(axis = 0, skipna = True)
+print(df_andhra_4_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_andhra_4_2011 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2011,'Area':'Production'] 
+df_andhra_4_2011_sum = df_andhra_4_2011.sum(axis = 0, skipna = True)
+print(df_andhra_4_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_andhra_4_2012 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2012,'Area':'Production']
+df_andhra_4_2012_sum = df_andhra_4_2012.sum(axis = 0, skipna = True) 
+print(df_andhra_4_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_andhra_4_2013 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2013,'Area':'Production'] 
+df_andhra_4_2013_sum = df_andhra_4_2013.sum(axis = 0, skipna = True)
+print(df_andhra_4_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_andhra_4_2014 = df_andhra_4.loc[df_andhra_4['Crop_Year'] == 2014,'Area':'Production']
+df_andhra_4_2014_sum = df_andhra_4_2014.sum(axis = 0, skipna = True) 
+print(df_andhra_4_2014_sum)
+print("---------------------------------")
+
+#details of Andhra( [5] KADAPA )
+
+print("----- Details of Andhra( [5] KADAPA )-------")
+df_andhra_5 = df_andhra[df_andhra.District_Name == 'KADAPA']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_andhra_5_1997 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 1997,'Area':'Production']
+df_andhra_5_1997_sum = df_andhra_5_1997.sum(axis = 0, skipna = True)
+print(df_andhra_5_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_andhra_5_1998 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 1998,'Area':'Production']
+df_andhra_5_1998_sum = df_andhra_5_1998.sum(axis = 0, skipna = True) 
+print(df_andhra_5_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_andhra_5_1999 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 1999,'Area':'Production']
+df_andhra_5_1999_sum = df_andhra_5_1999.sum(axis = 0, skipna = True) 
+print(df_andhra_5_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_andhra_5_2000 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2000,'Area':'Production']
+df_andhra_5_2000_sum = df_andhra_5_2000.sum(axis = 0, skipna = True) 
+print(df_andhra_5_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_andhra_5_2001 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2001,'Area':'Production'] 
+df_andhra_5_2001_sum = df_andhra_5_2001.sum(axis = 0, skipna = True)
+print(df_andhra_5_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_andhra_5_2002 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2002,'Area':'Production']
+df_andhra_5_2002_sum = df_andhra_5_2002.sum(axis = 0, skipna = True) 
+print(df_andhra_5_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_andhra_5_2003 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2003,'Area':'Production']
+df_andhra_5_2003_sum = df_andhra_5_2003.sum(axis = 0, skipna = True) 
+print(df_andhra_5_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_andhra_5_2004 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2004,'Area':'Production']
+df_andhra_5_2004_sum = df_andhra_5_2004.sum(axis = 0, skipna = True) 
+print(df_andhra_5_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_andhra_5_2005 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2005,'Area':'Production']
+df_andhra_5_2005_sum = df_andhra_5_2005.sum(axis = 0, skipna = True) 
+print(df_andhra_5_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_andhra_5_2006 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2006,'Area':'Production'] 
+df_andhra_5_2006_sum = df_andhra_5_2006.sum(axis = 0, skipna = True)
+print(df_andhra_5_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_andhra_5_2007 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2007,'Area':'Production']
+df_andhra_5_2007_sum = df_andhra_5_2007.sum(axis = 0, skipna = True) 
+print(df_andhra_5_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_andhra_5_2008 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2008,'Area':'Production']
+df_andhra_5_2008_sum = df_andhra_5_2008.sum(axis = 0, skipna = True) 
+print(df_andhra_5_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_andhra_5_2009 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2009,'Area':'Production']
+df_andhra_5_2009_sum = df_andhra_5_2009.sum(axis = 0, skipna = True) 
+print(df_andhra_5_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_andhra_5_2010 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2010,'Area':'Production'] 
+df_andhra_5_2010_sum = df_andhra_5_2010.sum(axis = 0, skipna = True)
+print(df_andhra_5_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_andhra_5_2011 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2011,'Area':'Production'] 
+df_andhra_5_2011_sum = df_andhra_5_2011.sum(axis = 0, skipna = True)
+print(df_andhra_5_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_andhra_5_2012 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2012,'Area':'Production']
+df_andhra_5_2012_sum = df_andhra_5_2012.sum(axis = 0, skipna = True) 
+print(df_andhra_5_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_andhra_5_2013 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2013,'Area':'Production'] 
+df_andhra_5_2013_sum = df_andhra_5_2013.sum(axis = 0, skipna = True)
+print(df_andhra_5_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_andhra_5_2014 = df_andhra_5.loc[df_andhra_5['Crop_Year'] == 2014,'Area':'Production']
+df_andhra_5_2014_sum = df_andhra_5_2014.sum(axis = 0, skipna = True) 
+print(df_andhra_5_2014_sum)
+print("---------------------------------")
+
+#details of Andhra( [6] KRISHNA )
+
+print("------ Details of Andhra( [6] KRISHNA )-------")
+df_andhra_6 = df_andhra[df_andhra.District_Name == 'KRISHNA']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_andhra_6_1997 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 1997,'Area':'Production']
+df_andhra_6_1997_sum = df_andhra_6_1997.sum(axis = 0, skipna = True)
+print(df_andhra_6_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_andhra_6_1998 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 1998,'Area':'Production']
+df_andhra_6_1998_sum = df_andhra_6_1998.sum(axis = 0, skipna = True) 
+print(df_andhra_6_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_andhra_6_1999 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 1999,'Area':'Production']
+df_andhra_6_1999_sum = df_andhra_6_1999.sum(axis = 0, skipna = True) 
+print(df_andhra_6_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_andhra_6_2000 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2000,'Area':'Production']
+df_andhra_6_2000_sum = df_andhra_6_2000.sum(axis = 0, skipna = True) 
+print(df_andhra_6_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_andhra_6_2001 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2001,'Area':'Production'] 
+df_andhra_6_2001_sum = df_andhra_6_2001.sum(axis = 0, skipna = True)
+print(df_andhra_6_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_andhra_6_2002 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2002,'Area':'Production']
+df_andhra_6_2002_sum = df_andhra_6_2002.sum(axis = 0, skipna = True) 
+print(df_andhra_6_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_andhra_6_2003 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2003,'Area':'Production']
+df_andhra_6_2003_sum = df_andhra_6_2003.sum(axis = 0, skipna = True) 
+print(df_andhra_6_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_andhra_6_2004 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2004,'Area':'Production']
+df_andhra_6_2004_sum = df_andhra_6_2004.sum(axis = 0, skipna = True) 
+print(df_andhra_6_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_andhra_6_2005 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2005,'Area':'Production']
+df_andhra_6_2005_sum = df_andhra_6_2005.sum(axis = 0, skipna = True) 
+print(df_andhra_6_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_andhra_6_2006 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2006,'Area':'Production'] 
+df_andhra_6_2006_sum = df_andhra_6_2006.sum(axis = 0, skipna = True)
+print(df_andhra_6_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_andhra_6_2007 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2007,'Area':'Production']
+df_andhra_6_2007_sum = df_andhra_6_2007.sum(axis = 0, skipna = True) 
+print(df_andhra_6_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_andhra_6_2008 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2008,'Area':'Production']
+df_andhra_6_2008_sum = df_andhra_6_2008.sum(axis = 0, skipna = True) 
+print(df_andhra_6_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_andhra_6_2009 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2009,'Area':'Production']
+df_andhra_6_2009_sum = df_andhra_6_2009.sum(axis = 0, skipna = True) 
+print(df_andhra_6_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_andhra_6_2010 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2010,'Area':'Production'] 
+df_andhra_6_2010_sum = df_andhra_6_2010.sum(axis = 0, skipna = True)
+print(df_andhra_6_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_andhra_6_2011 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2011,'Area':'Production'] 
+df_andhra_6_2011_sum = df_andhra_6_2011.sum(axis = 0, skipna = True)
+print(df_andhra_6_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_andhra_6_2012 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2012,'Area':'Production']
+df_andhra_6_2012_sum = df_andhra_6_2012.sum(axis = 0, skipna = True) 
+print(df_andhra_6_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_andhra_6_2013 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2013,'Area':'Production'] 
+df_andhra_6_2013_sum = df_andhra_6_2013.sum(axis = 0, skipna = True)
+print(df_andhra_6_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_andhra_6_2014 = df_andhra_6.loc[df_andhra_6['Crop_Year'] == 2014,'Area':'Production']
+df_andhra_6_2014_sum = df_andhra_6_2014.sum(axis = 0, skipna = True) 
+print(df_andhra_6_2014_sum)
+print("---------------------------------")
+
+#details of Andhra( [7] KURNOOL)
+
+print("----- Details of Andhra( [7] KURNOOL)------")
+df_andhra_7 = df_andhra[df_andhra.District_Name == 'KURNOOL']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_andhra_7_1997 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 1997,'Area':'Production']
+df_andhra_7_1997_sum = df_andhra_7_1997.sum(axis = 0, skipna = True)
+print(df_andhra_7_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_andhra_7_1998 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 1998,'Area':'Production']
+df_andhra_7_1998_sum = df_andhra_7_1998.sum(axis = 0, skipna = True) 
+print(df_andhra_7_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_andhra_7_1999 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 1999,'Area':'Production']
+df_andhra_7_1999_sum = df_andhra_7_1999.sum(axis = 0, skipna = True) 
+print(df_andhra_7_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_andhra_7_2000 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2000,'Area':'Production']
+df_andhra_7_2000_sum = df_andhra_7_2000.sum(axis = 0, skipna = True) 
+print(df_andhra_7_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_andhra_7_2001 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2001,'Area':'Production'] 
+df_andhra_7_2001_sum = df_andhra_7_2001.sum(axis = 0, skipna = True)
+print(df_andhra_7_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_andhra_7_2002 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2002,'Area':'Production']
+df_andhra_7_2002_sum = df_andhra_7_2002.sum(axis = 0, skipna = True) 
+print(df_andhra_7_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_andhra_7_2003 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2003,'Area':'Production']
+df_andhra_7_2003_sum = df_andhra_7_2003.sum(axis = 0, skipna = True) 
+print(df_andhra_7_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_andhra_7_2004 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2004,'Area':'Production']
+df_andhra_7_2004_sum = df_andhra_7_2004.sum(axis = 0, skipna = True) 
+print(df_andhra_7_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_andhra_7_2005 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2005,'Area':'Production']
+df_andhra_7_2005_sum = df_andhra_7_2005.sum(axis = 0, skipna = True) 
+print(df_andhra_7_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_andhra_7_2006 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2006,'Area':'Production'] 
+df_andhra_7_2006_sum = df_andhra_7_2006.sum(axis = 0, skipna = True)
+print(df_andhra_7_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_andhra_7_2007 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2007,'Area':'Production']
+df_andhra_7_2007_sum = df_andhra_7_2007.sum(axis = 0, skipna = True) 
+print(df_andhra_7_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_andhra_7_2008 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2008,'Area':'Production']
+df_andhra_7_2008_sum = df_andhra_7_2008.sum(axis = 0, skipna = True) 
+print(df_andhra_7_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_andhra_7_2009 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2009,'Area':'Production']
+df_andhra_7_2009_sum = df_andhra_7_2009.sum(axis = 0, skipna = True) 
+print(df_andhra_7_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_andhra_7_2010 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2010,'Area':'Production'] 
+df_andhra_7_2010_sum = df_andhra_7_2010.sum(axis = 0, skipna = True)
+print(df_andhra_7_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_andhra_7_2011 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2011,'Area':'Production'] 
+df_andhra_7_2011_sum = df_andhra_7_2011.sum(axis = 0, skipna = True)
+print(df_andhra_7_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_andhra_7_2012 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2012,'Area':'Production']
+df_andhra_7_2012_sum = df_andhra_7_2012.sum(axis = 0, skipna = True) 
+print(df_andhra_7_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_andhra_7_2013 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2013,'Area':'Production'] 
+df_andhra_7_2013_sum = df_andhra_7_2013.sum(axis = 0, skipna = True)
+print(df_andhra_7_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_andhra_7_2014 = df_andhra_7.loc[df_andhra_7['Crop_Year'] == 2014,'Area':'Production']
+df_andhra_7_2014_sum = df_andhra_7_2014.sum(axis = 0, skipna = True) 
+print(df_andhra_7_2014_sum)
+print("---------------------------------")
+
+#details of Andhra( [8] PRAKASAM )
+
+print("---- Details of Andhra( [8] PRAKASAM )--------")
+df_andhra_8 = df_andhra[df_andhra.District_Name == 'PRAKASAM']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_andhra_8_1997 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 1997,'Area':'Production']
+df_andhra_8_1997_sum = df_andhra_8_1997.sum(axis = 0, skipna = True)
+print(df_andhra_8_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_andhra_8_1998 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 1998,'Area':'Production']
+df_andhra_8_1998_sum = df_andhra_8_1998.sum(axis = 0, skipna = True) 
+print(df_andhra_8_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_andhra_8_1999 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 1999,'Area':'Production']
+df_andhra_8_1999_sum = df_andhra_8_1999.sum(axis = 0, skipna = True) 
+print(df_andhra_8_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_andhra_8_2000 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2000,'Area':'Production']
+df_andhra_8_2000_sum = df_andhra_8_2000.sum(axis = 0, skipna = True) 
+print(df_andhra_8_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_andhra_8_2001 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2001,'Area':'Production'] 
+df_andhra_8_2001_sum = df_andhra_8_2001.sum(axis = 0, skipna = True)
+print(df_andhra_8_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_andhra_8_2002 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2002,'Area':'Production']
+df_andhra_8_2002_sum = df_andhra_8_2002.sum(axis = 0, skipna = True) 
+print(df_andhra_8_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_andhra_8_2003 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2003,'Area':'Production']
+df_andhra_8_2003_sum = df_andhra_8_2003.sum(axis = 0, skipna = True) 
+print(df_andhra_8_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_andhra_8_2004 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2004,'Area':'Production']
+df_andhra_8_2004_sum = df_andhra_8_2004.sum(axis = 0, skipna = True) 
+print(df_andhra_8_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_andhra_8_2005 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2005,'Area':'Production']
+df_andhra_8_2005_sum = df_andhra_8_2005.sum(axis = 0, skipna = True) 
+print(df_andhra_8_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_andhra_8_2006 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2006,'Area':'Production'] 
+df_andhra_8_2006_sum = df_andhra_8_2006.sum(axis = 0, skipna = True)
+print(df_andhra_8_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_andhra_8_2007 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2007,'Area':'Production']
+df_andhra_8_2007_sum = df_andhra_8_2007.sum(axis = 0, skipna = True) 
+print(df_andhra_8_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_andhra_8_2008 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2008,'Area':'Production']
+df_andhra_8_2008_sum = df_andhra_8_2008.sum(axis = 0, skipna = True) 
+print(df_andhra_8_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_andhra_8_2009 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2009,'Area':'Production']
+df_andhra_8_2009_sum = df_andhra_8_2009.sum(axis = 0, skipna = True) 
+print(df_andhra_8_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_andhra_8_2010 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2010,'Area':'Production'] 
+df_andhra_8_2010_sum = df_andhra_8_2010.sum(axis = 0, skipna = True)
+print(df_andhra_8_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_andhra_8_2011 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2011,'Area':'Production'] 
+df_andhra_8_2011_sum = df_andhra_8_2011.sum(axis = 0, skipna = True)
+print(df_andhra_8_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_andhra_8_2012 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2012,'Area':'Production']
+df_andhra_8_2012_sum = df_andhra_8_2012.sum(axis = 0, skipna = True) 
+print(df_andhra_8_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_andhra_8_2013 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2013,'Area':'Production'] 
+df_andhra_8_2013_sum = df_andhra_8_2013.sum(axis = 0, skipna = True)
+print(df_andhra_8_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_andhra_8_2014 = df_andhra_8.loc[df_andhra_8['Crop_Year'] == 2014,'Area':'Production']
+df_andhra_8_2014_sum = df_andhra_8_2014.sum(axis = 0, skipna = True) 
+print(df_andhra_8_2014_sum)
+print("---------------------------------")
+
+#details of Andhra( [9] SPSR NELLORE)
+
+print("----- Details of Andhra( [9] SPSR NELLORE)--------")
+df_andhra_9 = df_andhra[df_andhra.District_Name == 'SPSR NELLORE']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_andhra_9_1997 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 1997,'Area':'Production']
+df_andhra_9_1997_sum = df_andhra_9_1997.sum(axis = 0, skipna = True)
+print(df_andhra_9_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_andhra_9_1998 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 1998,'Area':'Production']
+df_andhra_9_1998_sum = df_andhra_9_1998.sum(axis = 0, skipna = True) 
+print(df_andhra_9_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_andhra_9_1999 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 1999,'Area':'Production']
+df_andhra_9_1999_sum = df_andhra_9_1999.sum(axis = 0, skipna = True) 
+print(df_andhra_9_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_andhra_9_2000 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2000,'Area':'Production']
+df_andhra_9_2000_sum = df_andhra_9_2000.sum(axis = 0, skipna = True) 
+print(df_andhra_9_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_andhra_9_2001 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2001,'Area':'Production'] 
+df_andhra_9_2001_sum = df_andhra_9_2001.sum(axis = 0, skipna = True)
+print(df_andhra_9_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_andhra_9_2002 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2002,'Area':'Production']
+df_andhra_9_2002_sum = df_andhra_9_2002.sum(axis = 0, skipna = True) 
+print(df_andhra_9_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_andhra_9_2003 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2003,'Area':'Production']
+df_andhra_9_2003_sum = df_andhra_9_2003.sum(axis = 0, skipna = True) 
+print(df_andhra_9_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_andhra_9_2004 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2004,'Area':'Production']
+df_andhra_9_2004_sum = df_andhra_9_2004.sum(axis = 0, skipna = True) 
+print(df_andhra_9_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_andhra_9_2005 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2005,'Area':'Production']
+df_andhra_9_2005_sum = df_andhra_9_2005.sum(axis = 0, skipna = True) 
+print(df_andhra_9_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_andhra_9_2006 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2006,'Area':'Production'] 
+df_andhra_9_2006_sum = df_andhra_9_2006.sum(axis = 0, skipna = True)
+print(df_andhra_9_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_andhra_9_2007 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2007,'Area':'Production']
+df_andhra_9_2007_sum = df_andhra_9_2007.sum(axis = 0, skipna = True) 
+print(df_andhra_9_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_andhra_9_2008 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2008,'Area':'Production']
+df_andhra_9_2008_sum = df_andhra_9_2008.sum(axis = 0, skipna = True) 
+print(df_andhra_9_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_andhra_9_2009 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2009,'Area':'Production']
+df_andhra_9_2009_sum = df_andhra_9_2009.sum(axis = 0, skipna = True) 
+print(df_andhra_9_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_andhra_9_2010 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2010,'Area':'Production'] 
+df_andhra_9_2010_sum = df_andhra_9_2010.sum(axis = 0, skipna = True)
+print(df_andhra_9_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_andhra_9_2011 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2011,'Area':'Production'] 
+df_andhra_9_2011_sum = df_andhra_9_2011.sum(axis = 0, skipna = True)
+print(df_andhra_9_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_andhra_9_2012 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2012,'Area':'Production']
+df_andhra_9_2012_sum = df_andhra_9_2012.sum(axis = 0, skipna = True) 
+print(df_andhra_9_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_andhra_9_2013 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2013,'Area':'Production'] 
+df_andhra_9_2013_sum = df_andhra_9_2013.sum(axis = 0, skipna = True)
+print(df_andhra_9_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_andhra_9_2014 = df_andhra_9.loc[df_andhra_9['Crop_Year'] == 2014,'Area':'Production']
+df_andhra_9_2014_sum = df_andhra_9_2014.sum(axis = 0, skipna = True) 
+print(df_andhra_9_2014_sum)
+print("---------------------------------")
+
+#details of Andhra( [10] SRIKAKULAM )
+
+print("---- Details of Andhra( [10] SRIKAKULAM )---------")
+df_andhra_10 = df_andhra[df_andhra.District_Name == 'SRIKAKULAM']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_andhra_10_1997 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 1997,'Area':'Production']
+df_andhra_10_1997_sum = df_andhra_10_1997.sum(axis = 0, skipna = True)
+print(df_andhra_10_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_andhra_10_1998 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 1998,'Area':'Production']
+df_andhra_10_1998_sum = df_andhra_10_1998.sum(axis = 0, skipna = True) 
+print(df_andhra_10_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_andhra_10_1999 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 1999,'Area':'Production']
+df_andhra_10_1999_sum = df_andhra_10_1999.sum(axis = 0, skipna = True) 
+print(df_andhra_10_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_andhra_10_2000 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2000,'Area':'Production']
+df_andhra_10_2000_sum = df_andhra_10_2000.sum(axis = 0, skipna = True) 
+print(df_andhra_10_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_andhra_10_2001 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2001,'Area':'Production'] 
+df_andhra_10_2001_sum = df_andhra_10_2001.sum(axis = 0, skipna = True)
+print(df_andhra_10_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_andhra_10_2002 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2002,'Area':'Production']
+df_andhra_10_2002_sum = df_andhra_10_2002.sum(axis = 0, skipna = True) 
+print(df_andhra_10_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_andhra_10_2003 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2003,'Area':'Production']
+df_andhra_10_2003_sum = df_andhra_10_2003.sum(axis = 0, skipna = True) 
+print(df_andhra_10_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_andhra_10_2004 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2004,'Area':'Production']
+df_andhra_10_2004_sum = df_andhra_10_2004.sum(axis = 0, skipna = True) 
+print(df_andhra_10_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_andhra_10_2005 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2005,'Area':'Production']
+df_andhra_10_2005_sum = df_andhra_10_2005.sum(axis = 0, skipna = True) 
+print(df_andhra_10_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_andhra_10_2006 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2006,'Area':'Production'] 
+df_andhra_10_2006_sum = df_andhra_10_2006.sum(axis = 0, skipna = True)
+print(df_andhra_10_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_andhra_10_2007 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2007,'Area':'Production']
+df_andhra_10_2007_sum = df_andhra_10_2007.sum(axis = 0, skipna = True) 
+print(df_andhra_10_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_andhra_10_2008 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2008,'Area':'Production']
+df_andhra_10_2008_sum = df_andhra_10_2008.sum(axis = 0, skipna = True) 
+print(df_andhra_10_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_andhra_10_2009 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2009,'Area':'Production']
+df_andhra_10_2009_sum = df_andhra_10_2009.sum(axis = 0, skipna = True) 
+print(df_andhra_10_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_andhra_10_2010 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2010,'Area':'Production'] 
+df_andhra_10_2010_sum = df_andhra_10_2010.sum(axis = 0, skipna = True)
+print(df_andhra_10_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_andhra_10_2011 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2011,'Area':'Production'] 
+df_andhra_10_2011_sum = df_andhra_10_2011.sum(axis = 0, skipna = True)
+print(df_andhra_10_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_andhra_10_2012 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2012,'Area':'Production']
+df_andhra_10_2012_sum = df_andhra_10_2012.sum(axis = 0, skipna = True) 
+print(df_andhra_10_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_andhra_10_2013 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2013,'Area':'Production'] 
+df_andhra_10_2013_sum = df_andhra_10_2013.sum(axis = 0, skipna = True)
+print(df_andhra_10_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_andhra_10_2014 = df_andhra_10.loc[df_andhra_10['Crop_Year'] == 2014,'Area':'Production']
+df_andhra_10_2014_sum = df_andhra_10_2014.sum(axis = 0, skipna = True) 
+print(df_andhra_10_2014_sum)
+print("---------------------------------")
+
+#details of Andhra( [11] VISAKHAPATANAM )
+
+print("----Details of Andhra( [11] VISAKHAPATANAM )----")
+df_andhra_11 = df_andhra[df_andhra.District_Name == 'VISAKHAPATANAM']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_andhra_11_1997 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 1997,'Area':'Production']
+df_andhra_11_1997_sum = df_andhra_11_1997.sum(axis = 0, skipna = True)
+print(df_andhra_11_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_andhra_11_1998 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 1998,'Area':'Production']
+df_andhra_11_1998_sum = df_andhra_11_1998.sum(axis = 0, skipna = True) 
+print(df_andhra_11_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_andhra_11_1999 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 1999,'Area':'Production']
+df_andhra_11_1999_sum = df_andhra_11_1999.sum(axis = 0, skipna = True) 
+print(df_andhra_11_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_andhra_11_2000 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2000,'Area':'Production']
+df_andhra_11_2000_sum = df_andhra_11_2000.sum(axis = 0, skipna = True) 
+print(df_andhra_11_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_andhra_11_2001 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2001,'Area':'Production'] 
+df_andhra_11_2001_sum = df_andhra_11_2001.sum(axis = 0, skipna = True)
+print(df_andhra_11_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_andhra_11_2002 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2002,'Area':'Production']
+df_andhra_11_2002_sum = df_andhra_11_2002.sum(axis = 0, skipna = True) 
+print(df_andhra_11_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_andhra_11_2003 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2003,'Area':'Production']
+df_andhra_11_2003_sum = df_andhra_11_2003.sum(axis = 0, skipna = True) 
+print(df_andhra_11_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_andhra_11_2004 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2004,'Area':'Production']
+df_andhra_11_2004_sum = df_andhra_11_2004.sum(axis = 0, skipna = True) 
+print(df_andhra_11_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_andhra_11_2005 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2005,'Area':'Production']
+df_andhra_11_2005_sum = df_andhra_11_2005.sum(axis = 0, skipna = True) 
+print(df_andhra_11_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_andhra_11_2006 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2006,'Area':'Production'] 
+df_andhra_11_2006_sum = df_andhra_11_2006.sum(axis = 0, skipna = True)
+print(df_andhra_11_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_andhra_11_2007 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2007,'Area':'Production']
+df_andhra_11_2007_sum = df_andhra_11_2007.sum(axis = 0, skipna = True) 
+print(df_andhra_11_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_andhra_11_2008 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2008,'Area':'Production']
+df_andhra_11_2008_sum = df_andhra_11_2008.sum(axis = 0, skipna = True) 
+print(df_andhra_11_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_andhra_11_2009 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2009,'Area':'Production']
+df_andhra_11_2009_sum = df_andhra_11_2009.sum(axis = 0, skipna = True) 
+print(df_andhra_11_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_andhra_11_2010 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2010,'Area':'Production'] 
+df_andhra_11_2010_sum = df_andhra_11_2010.sum(axis = 0, skipna = True)
+print(df_andhra_11_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_andhra_11_2011 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2011,'Area':'Production'] 
+df_andhra_11_2011_sum = df_andhra_11_2011.sum(axis = 0, skipna = True)
+print(df_andhra_11_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_andhra_11_2012 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2012,'Area':'Production']
+df_andhra_11_2012_sum = df_andhra_11_2012.sum(axis = 0, skipna = True) 
+print(df_andhra_11_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_andhra_11_2013 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2013,'Area':'Production'] 
+df_andhra_11_2013_sum = df_andhra_11_2013.sum(axis = 0, skipna = True)
+print(df_andhra_11_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_andhra_11_2014 = df_andhra_11.loc[df_andhra_11['Crop_Year'] == 2014,'Area':'Production']
+df_andhra_11_2014_sum = df_andhra_11_2014.sum(axis = 0, skipna = True) 
+print(df_andhra_11_2014_sum)
+print("---------------------------------")
+
+#details of Andhra( [12] VIZIANAGARAM )
+
+print("---- Details of Andhra( [12] VIZIANAGARAM )------")
+df_andhra_12 = df_andhra[df_andhra.District_Name == 'VIZIANAGARAM']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_andhra_12_1997 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 1997,'Area':'Production']
+df_andhra_12_1997_sum = df_andhra_12_1997.sum(axis = 0, skipna = True)
+print(df_andhra_12_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_andhra_12_1998 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 1998,'Area':'Production']
+df_andhra_12_1998_sum = df_andhra_12_1998.sum(axis = 0, skipna = True) 
+print(df_andhra_12_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_andhra_12_1999 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 1999,'Area':'Production']
+df_andhra_12_1999_sum = df_andhra_12_1999.sum(axis = 0, skipna = True) 
+print(df_andhra_12_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_andhra_12_2000 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2000,'Area':'Production']
+df_andhra_12_2000_sum = df_andhra_12_2000.sum(axis = 0, skipna = True) 
+print(df_andhra_12_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_andhra_12_2001 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2001,'Area':'Production'] 
+df_andhra_12_2001_sum = df_andhra_12_2001.sum(axis = 0, skipna = True)
+print(df_andhra_12_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_andhra_12_2002 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2002,'Area':'Production']
+df_andhra_12_2002_sum = df_andhra_12_2002.sum(axis = 0, skipna = True) 
+print(df_andhra_12_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_andhra_12_2003 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2003,'Area':'Production']
+df_andhra_12_2003_sum = df_andhra_12_2003.sum(axis = 0, skipna = True) 
+print(df_andhra_12_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_andhra_12_2004 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2004,'Area':'Production']
+df_andhra_12_2004_sum = df_andhra_12_2004.sum(axis = 0, skipna = True) 
+print(df_andhra_12_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_andhra_12_2005 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2005,'Area':'Production']
+df_andhra_12_2005_sum = df_andhra_12_2005.sum(axis = 0, skipna = True) 
+print(df_andhra_12_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_andhra_12_2006 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2006,'Area':'Production'] 
+df_andhra_12_2006_sum = df_andhra_12_2006.sum(axis = 0, skipna = True)
+print(df_andhra_12_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_andhra_12_2007 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2007,'Area':'Production']
+df_andhra_12_2007_sum = df_andhra_12_2007.sum(axis = 0, skipna = True) 
+print(df_andhra_12_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_andhra_12_2008 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2008,'Area':'Production']
+df_andhra_12_2008_sum = df_andhra_12_2008.sum(axis = 0, skipna = True) 
+print(df_andhra_12_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_andhra_12_2009 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2009,'Area':'Production']
+df_andhra_12_2009_sum = df_andhra_12_2009.sum(axis = 0, skipna = True) 
+print(df_andhra_12_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_andhra_12_2010 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2010,'Area':'Production'] 
+df_andhra_12_2010_sum = df_andhra_12_2010.sum(axis = 0, skipna = True)
+print(df_andhra_12_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_andhra_12_2011 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2011,'Area':'Production'] 
+df_andhra_12_2011_sum = df_andhra_12_2011.sum(axis = 0, skipna = True)
+print(df_andhra_12_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_andhra_12_2012 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2012,'Area':'Production']
+df_andhra_12_2012_sum = df_andhra_12_2012.sum(axis = 0, skipna = True) 
+print(df_andhra_12_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_andhra_12_2013 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2013,'Area':'Production'] 
+df_andhra_12_2013_sum = df_andhra_12_2013.sum(axis = 0, skipna = True)
+print(df_andhra_12_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_andhra_12_2014 = df_andhra_12.loc[df_andhra_12['Crop_Year'] == 2014,'Area':'Production']
+df_andhra_12_2014_sum = df_andhra_12_2014.sum(axis = 0, skipna = True) 
+print(df_andhra_12_2014_sum)
+print("---------------------------------")
+
+#details of Andhra( [13] WEST GODAVARI )
+
+print("----- Details of Andhra( [13] WEST GODAVARI )------")
+df_andhra_13 = df_andhra[df_andhra.District_Name == 'WEST GODAVARI']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_andhra_13_1997 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 1997,'Area':'Production']
+df_andhra_13_1997_sum = df_andhra_13_1997.sum(axis = 0, skipna = True)
+print(df_andhra_13_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_andhra_13_1998 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 1998,'Area':'Production']
+df_andhra_13_1998_sum = df_andhra_13_1998.sum(axis = 0, skipna = True) 
+print(df_andhra_13_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_andhra_13_1999 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 1999,'Area':'Production']
+df_andhra_13_1999_sum = df_andhra_13_1999.sum(axis = 0, skipna = True) 
+print(df_andhra_13_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_andhra_13_2000 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2000,'Area':'Production']
+df_andhra_13_2000_sum = df_andhra_13_2000.sum(axis = 0, skipna = True) 
+print(df_andhra_13_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_andhra_13_2001 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2001,'Area':'Production'] 
+df_andhra_13_2001_sum = df_andhra_13_2001.sum(axis = 0, skipna = True)
+print(df_andhra_13_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_andhra_13_2002 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2002,'Area':'Production']
+df_andhra_13_2002_sum = df_andhra_13_2002.sum(axis = 0, skipna = True) 
+print(df_andhra_13_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_andhra_13_2003 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2003,'Area':'Production']
+df_andhra_13_2003_sum = df_andhra_13_2003.sum(axis = 0, skipna = True) 
+print(df_andhra_13_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_andhra_13_2004 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2004,'Area':'Production']
+df_andhra_13_2004_sum = df_andhra_13_2004.sum(axis = 0, skipna = True) 
+print(df_andhra_13_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_andhra_13_2005 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2005,'Area':'Production']
+df_andhra_13_2005_sum = df_andhra_13_2005.sum(axis = 0, skipna = True) 
+print(df_andhra_13_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_andhra_13_2006 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2006,'Area':'Production'] 
+df_andhra_13_2006_sum = df_andhra_13_2006.sum(axis = 0, skipna = True)
+print(df_andhra_13_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_andhra_13_2007 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2007,'Area':'Production']
+df_andhra_13_2007_sum = df_andhra_13_2007.sum(axis = 0, skipna = True) 
+print(df_andhra_13_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_andhra_13_2008 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2008,'Area':'Production']
+df_andhra_13_2008_sum = df_andhra_13_2008.sum(axis = 0, skipna = True) 
+print(df_andhra_13_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_andhra_13_2009 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2009,'Area':'Production']
+df_andhra_13_2009_sum = df_andhra_13_2009.sum(axis = 0, skipna = True) 
+print(df_andhra_13_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_andhra_13_2010 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2010,'Area':'Production'] 
+df_andhra_13_2010_sum = df_andhra_13_2010.sum(axis = 0, skipna = True)
+print(df_andhra_13_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_andhra_13_2011 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2011,'Area':'Production'] 
+df_andhra_13_2011_sum = df_andhra_13_2011.sum(axis = 0, skipna = True)
+print(df_andhra_13_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_andhra_13_2012 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2012,'Area':'Production']
+df_andhra_13_2012_sum = df_andhra_13_2012.sum(axis = 0, skipna = True) 
+print(df_andhra_13_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_andhra_13_2013 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2013,'Area':'Production'] 
+df_andhra_13_2013_sum = df_andhra_13_2013.sum(axis = 0, skipna = True)
+print(df_andhra_13_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_andhra_13_2014 = df_andhra_13.loc[df_andhra_13['Crop_Year'] == 2014,'Area':'Production']
+df_andhra_13_2014_sum = df_andhra_13_2014.sum(axis = 0, skipna = True) 
+print(df_andhra_13_2014_sum)
+print("---------------------------------")
+
+
+# plotting  Andhra( [1] ANANTAPUR )
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_andhra_1_1997_sum['Area'],
+      df_andhra_1_1998_sum['Area'],
+      df_andhra_1_1999_sum['Area'],
+      df_andhra_1_2000_sum['Area'],
+      df_andhra_1_2001_sum['Area'], 
+      df_andhra_1_2002_sum['Area'],
+      df_andhra_1_2003_sum['Area'],
+      df_andhra_1_2004_sum['Area'],
+      df_andhra_1_2005_sum['Area'],
+      df_andhra_1_2006_sum['Area'],
+      df_andhra_1_2007_sum['Area'],
+      df_andhra_1_2008_sum['Area'],
+      df_andhra_1_2009_sum['Area'],
+      df_andhra_1_2010_sum['Area'],
+      df_andhra_1_2011_sum['Area'],
+      df_andhra_1_2012_sum['Area'],
+      df_andhra_1_2013_sum['Area'],
+      df_andhra_1_2014_sum['Area'])
+
+y22 =(df_andhra_1_1997_sum['Production'],
+      df_andhra_1_1998_sum['Production'],
+      df_andhra_1_1999_sum['Production'],
+      df_andhra_1_2000_sum['Production'],
+      df_andhra_1_2001_sum['Production'], 
+      df_andhra_1_2002_sum['Production'],
+      df_andhra_1_2003_sum['Production'],
+      df_andhra_1_2004_sum['Production'],
+      df_andhra_1_2005_sum['Production'],
+      df_andhra_1_2006_sum['Production'],
+      df_andhra_1_2007_sum['Production'],
+      df_andhra_1_2008_sum['Production'],
+      df_andhra_1_2009_sum['Production'],
+      df_andhra_1_2010_sum['Production'],
+      df_andhra_1_2011_sum['Production'],
+      df_andhra_1_2012_sum['Production'],
+      df_andhra_1_2013_sum['Production'],
+      df_andhra_1_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-2 : Andhra( [1] ANANTAPUR )(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-2 : Andhra( [1] ANANTAPUR )(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+           
+# plotting Andhra( [2] CHITTOOR )
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_andhra_2_1997_sum['Area'],
+      df_andhra_2_1998_sum['Area'],
+      df_andhra_2_1999_sum['Area'],
+      df_andhra_2_2000_sum['Area'],
+      df_andhra_2_2001_sum['Area'], 
+      df_andhra_2_2002_sum['Area'],
+      df_andhra_2_2003_sum['Area'],
+      df_andhra_2_2004_sum['Area'],
+      df_andhra_2_2005_sum['Area'],
+      df_andhra_2_2006_sum['Area'],
+      df_andhra_2_2007_sum['Area'],
+      df_andhra_2_2008_sum['Area'],
+      df_andhra_2_2009_sum['Area'],
+      df_andhra_2_2010_sum['Area'],
+      df_andhra_2_2011_sum['Area'],
+      df_andhra_2_2012_sum['Area'],
+      df_andhra_2_2013_sum['Area'],
+      df_andhra_2_2014_sum['Area'])
+
+y22 =(df_andhra_2_1997_sum['Production'],
+      df_andhra_2_1998_sum['Production'],
+      df_andhra_2_1999_sum['Production'],
+      df_andhra_2_2000_sum['Production'],
+      df_andhra_2_2001_sum['Production'], 
+      df_andhra_2_2002_sum['Production'],
+      df_andhra_2_2003_sum['Production'],
+      df_andhra_2_2004_sum['Production'],
+      df_andhra_2_2005_sum['Production'],
+      df_andhra_2_2006_sum['Production'],
+      df_andhra_2_2007_sum['Production'],
+      df_andhra_2_2008_sum['Production'],
+      df_andhra_2_2009_sum['Production'],
+      df_andhra_2_2010_sum['Production'],
+      df_andhra_2_2011_sum['Production'],
+      df_andhra_2_2012_sum['Production'],
+      df_andhra_2_2013_sum['Production'],
+      df_andhra_2_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-2 : Andhra( [2] CHITTOOR )(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-2 : Andhra( [2] CHITTOOR )(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting Andhra( [3] EAST GODAVARI )
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_andhra_3_1997_sum['Area'],
+      df_andhra_3_1998_sum['Area'],
+      df_andhra_3_1999_sum['Area'],
+      df_andhra_3_2000_sum['Area'],
+      df_andhra_3_2001_sum['Area'], 
+      df_andhra_3_2002_sum['Area'],
+      df_andhra_3_2003_sum['Area'],
+      df_andhra_3_2004_sum['Area'],
+      df_andhra_3_2005_sum['Area'],
+      df_andhra_3_2006_sum['Area'],
+      df_andhra_3_2007_sum['Area'],
+      df_andhra_3_2008_sum['Area'],
+      df_andhra_3_2009_sum['Area'],
+      df_andhra_3_2010_sum['Area'],
+      df_andhra_3_2011_sum['Area'],
+      df_andhra_3_2012_sum['Area'],
+      df_andhra_3_2013_sum['Area'],
+      df_andhra_3_2014_sum['Area'])
+
+y22 =(df_andhra_3_1997_sum['Production'],
+      df_andhra_3_1998_sum['Production'],
+      df_andhra_3_1999_sum['Production'],
+      df_andhra_3_2000_sum['Production'],
+      df_andhra_3_2001_sum['Production'], 
+      df_andhra_3_2002_sum['Production'],
+      df_andhra_3_2003_sum['Production'],
+      df_andhra_3_2004_sum['Production'],
+      df_andhra_3_2005_sum['Production'],
+      df_andhra_3_2006_sum['Production'],
+      df_andhra_3_2007_sum['Production'],
+      df_andhra_3_2008_sum['Production'],
+      df_andhra_3_2009_sum['Production'],
+      df_andhra_3_2010_sum['Production'],
+      df_andhra_3_2011_sum['Production'],
+      df_andhra_3_2012_sum['Production'],
+      df_andhra_3_2013_sum['Production'],
+      df_andhra_3_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-2 : Andhra( [3] EAST GODAVARI )(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-2 : Andhra( [3] EAST GODAVARI )(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting Andhra( [4] GUNTUR )
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_andhra_4_1997_sum['Area'],
+      df_andhra_4_1998_sum['Area'],
+      df_andhra_4_1999_sum['Area'],
+      df_andhra_4_2000_sum['Area'],
+      df_andhra_4_2001_sum['Area'], 
+      df_andhra_4_2002_sum['Area'],
+      df_andhra_4_2003_sum['Area'],
+      df_andhra_4_2004_sum['Area'],
+      df_andhra_4_2005_sum['Area'],
+      df_andhra_4_2006_sum['Area'],
+      df_andhra_4_2007_sum['Area'],
+      df_andhra_4_2008_sum['Area'],
+      df_andhra_4_2009_sum['Area'],
+      df_andhra_4_2010_sum['Area'],
+      df_andhra_4_2011_sum['Area'],
+      df_andhra_4_2012_sum['Area'],
+      df_andhra_4_2013_sum['Area'],
+      df_andhra_4_2014_sum['Area'])
+
+y22 =(df_andhra_4_1997_sum['Production'],
+      df_andhra_4_1998_sum['Production'],
+      df_andhra_4_1999_sum['Production'],
+      df_andhra_4_2000_sum['Production'],
+      df_andhra_4_2001_sum['Production'], 
+      df_andhra_4_2002_sum['Production'],
+      df_andhra_4_2003_sum['Production'],
+      df_andhra_4_2004_sum['Production'],
+      df_andhra_4_2005_sum['Production'],
+      df_andhra_4_2006_sum['Production'],
+      df_andhra_4_2007_sum['Production'],
+      df_andhra_4_2008_sum['Production'],
+      df_andhra_4_2009_sum['Production'],
+      df_andhra_4_2010_sum['Production'],
+      df_andhra_4_2011_sum['Production'],
+      df_andhra_4_2012_sum['Production'],
+      df_andhra_4_2013_sum['Production'],
+      df_andhra_4_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-2 : Andhra( [4] GUNTUR )(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-2 : Andhra( [4] GUNTUR )(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting Andhra( [5] KADAPA )
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_andhra_5_1997_sum['Area'],
+      df_andhra_5_1998_sum['Area'],
+      df_andhra_5_1999_sum['Area'],
+      df_andhra_5_2000_sum['Area'],
+      df_andhra_5_2001_sum['Area'], 
+      df_andhra_5_2002_sum['Area'],
+      df_andhra_5_2003_sum['Area'],
+      df_andhra_5_2004_sum['Area'],
+      df_andhra_5_2005_sum['Area'],
+      df_andhra_5_2006_sum['Area'],
+      df_andhra_5_2007_sum['Area'],
+      df_andhra_5_2008_sum['Area'],
+      df_andhra_5_2009_sum['Area'],
+      df_andhra_5_2010_sum['Area'],
+      df_andhra_5_2011_sum['Area'],
+      df_andhra_5_2012_sum['Area'],
+      df_andhra_5_2013_sum['Area'],
+      df_andhra_5_2014_sum['Area'])
+
+y22 =(df_andhra_5_1997_sum['Production'],
+      df_andhra_5_1998_sum['Production'],
+      df_andhra_5_1999_sum['Production'],
+      df_andhra_5_2000_sum['Production'],
+      df_andhra_5_2001_sum['Production'], 
+      df_andhra_5_2002_sum['Production'],
+      df_andhra_5_2003_sum['Production'],
+      df_andhra_5_2004_sum['Production'],
+      df_andhra_5_2005_sum['Production'],
+      df_andhra_5_2006_sum['Production'],
+      df_andhra_5_2007_sum['Production'],
+      df_andhra_5_2008_sum['Production'],
+      df_andhra_5_2009_sum['Production'],
+      df_andhra_5_2010_sum['Production'],
+      df_andhra_5_2011_sum['Production'],
+      df_andhra_5_2012_sum['Production'],
+      df_andhra_5_2013_sum['Production'],
+      df_andhra_5_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-2 : Andhra( [5] KADAPA )(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-2 : Andhra( [5] KADAPA )(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting Andhra( [6] KRISHNA )
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_andhra_6_1997_sum['Area'],
+      df_andhra_6_1998_sum['Area'],
+      df_andhra_6_1999_sum['Area'],
+      df_andhra_6_2000_sum['Area'],
+      df_andhra_6_2001_sum['Area'], 
+      df_andhra_6_2002_sum['Area'],
+      df_andhra_6_2003_sum['Area'],
+      df_andhra_6_2004_sum['Area'],
+      df_andhra_6_2005_sum['Area'],
+      df_andhra_6_2006_sum['Area'],
+      df_andhra_6_2007_sum['Area'],
+      df_andhra_6_2008_sum['Area'],
+      df_andhra_6_2009_sum['Area'],
+      df_andhra_6_2010_sum['Area'],
+      df_andhra_6_2011_sum['Area'],
+      df_andhra_6_2012_sum['Area'],
+      df_andhra_6_2013_sum['Area'],
+      df_andhra_6_2014_sum['Area'])
+
+y22 =(df_andhra_6_1997_sum['Production'],
+      df_andhra_6_1998_sum['Production'],
+      df_andhra_6_1999_sum['Production'],
+      df_andhra_6_2000_sum['Production'],
+      df_andhra_6_2001_sum['Production'], 
+      df_andhra_6_2002_sum['Production'],
+      df_andhra_6_2003_sum['Production'],
+      df_andhra_6_2004_sum['Production'],
+      df_andhra_6_2005_sum['Production'],
+      df_andhra_6_2006_sum['Production'],
+      df_andhra_6_2007_sum['Production'],
+      df_andhra_6_2008_sum['Production'],
+      df_andhra_6_2009_sum['Production'],
+      df_andhra_6_2010_sum['Production'],
+      df_andhra_6_2011_sum['Production'],
+      df_andhra_6_2012_sum['Production'],
+      df_andhra_6_2013_sum['Production'],
+      df_andhra_6_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-2 : Andhra( [6] KRISHNA )(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-2 : Andhra( [6] KRISHNA )(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting Andhra( [7] KURNOOL)
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_andhra_7_1997_sum['Area'],
+      df_andhra_7_1998_sum['Area'],
+      df_andhra_7_1999_sum['Area'],
+      df_andhra_7_2000_sum['Area'],
+      df_andhra_7_2001_sum['Area'], 
+      df_andhra_7_2002_sum['Area'],
+      df_andhra_7_2003_sum['Area'],
+      df_andhra_7_2004_sum['Area'],
+      df_andhra_7_2005_sum['Area'],
+      df_andhra_7_2006_sum['Area'],
+      df_andhra_7_2007_sum['Area'],
+      df_andhra_7_2008_sum['Area'],
+      df_andhra_7_2009_sum['Area'],
+      df_andhra_7_2010_sum['Area'],
+      df_andhra_7_2011_sum['Area'],
+      df_andhra_7_2012_sum['Area'],
+      df_andhra_7_2013_sum['Area'],
+      df_andhra_7_2014_sum['Area'])
+
+y22 =(df_andhra_7_1997_sum['Production'],
+      df_andhra_7_1998_sum['Production'],
+      df_andhra_7_1999_sum['Production'],
+      df_andhra_7_2000_sum['Production'],
+      df_andhra_7_2001_sum['Production'], 
+      df_andhra_7_2002_sum['Production'],
+      df_andhra_7_2003_sum['Production'],
+      df_andhra_7_2004_sum['Production'],
+      df_andhra_7_2005_sum['Production'],
+      df_andhra_7_2006_sum['Production'],
+      df_andhra_7_2007_sum['Production'],
+      df_andhra_7_2008_sum['Production'],
+      df_andhra_7_2009_sum['Production'],
+      df_andhra_7_2010_sum['Production'],
+      df_andhra_7_2011_sum['Production'],
+      df_andhra_7_2012_sum['Production'],
+      df_andhra_7_2013_sum['Production'],
+      df_andhra_7_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-2 : Andhra( [7] KURNOOL)(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-2 : Andhra( [7] KURNOOL)(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting Andhra( [8] PRAKASAM )
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_andhra_8_1997_sum['Area'],
+      df_andhra_8_1998_sum['Area'],
+      df_andhra_8_1999_sum['Area'],
+      df_andhra_8_2000_sum['Area'],
+      df_andhra_8_2001_sum['Area'], 
+      df_andhra_8_2002_sum['Area'],
+      df_andhra_8_2003_sum['Area'],
+      df_andhra_8_2004_sum['Area'],
+      df_andhra_8_2005_sum['Area'],
+      df_andhra_8_2006_sum['Area'],
+      df_andhra_8_2007_sum['Area'],
+      df_andhra_8_2008_sum['Area'],
+      df_andhra_8_2009_sum['Area'],
+      df_andhra_8_2010_sum['Area'],
+      df_andhra_8_2011_sum['Area'],
+      df_andhra_8_2012_sum['Area'],
+      df_andhra_8_2013_sum['Area'],
+      df_andhra_8_2014_sum['Area'])
+
+y22 =(df_andhra_8_1997_sum['Production'],
+      df_andhra_8_1998_sum['Production'],
+      df_andhra_8_1999_sum['Production'],
+      df_andhra_8_2000_sum['Production'],
+      df_andhra_8_2001_sum['Production'], 
+      df_andhra_8_2002_sum['Production'],
+      df_andhra_8_2003_sum['Production'],
+      df_andhra_8_2004_sum['Production'],
+      df_andhra_8_2005_sum['Production'],
+      df_andhra_8_2006_sum['Production'],
+      df_andhra_8_2007_sum['Production'],
+      df_andhra_8_2008_sum['Production'],
+      df_andhra_8_2009_sum['Production'],
+      df_andhra_8_2010_sum['Production'],
+      df_andhra_8_2011_sum['Production'],
+      df_andhra_8_2012_sum['Production'],
+      df_andhra_8_2013_sum['Production'],
+      df_andhra_8_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-2 : Andhra( [8] PRAKASAM )(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-2 : Andhra( [8] PRAKASAM )(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting Andhra( [9] SPSR NELLORE)
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_andhra_9_1997_sum['Area'],
+      df_andhra_9_1998_sum['Area'],
+      df_andhra_9_1999_sum['Area'],
+      df_andhra_9_2000_sum['Area'],
+      df_andhra_9_2001_sum['Area'], 
+      df_andhra_9_2002_sum['Area'],
+      df_andhra_9_2003_sum['Area'],
+      df_andhra_9_2004_sum['Area'],
+      df_andhra_9_2005_sum['Area'],
+      df_andhra_9_2006_sum['Area'],
+      df_andhra_9_2007_sum['Area'],
+      df_andhra_9_2008_sum['Area'],
+      df_andhra_9_2009_sum['Area'],
+      df_andhra_9_2010_sum['Area'],
+      df_andhra_9_2011_sum['Area'],
+      df_andhra_9_2012_sum['Area'],
+      df_andhra_9_2013_sum['Area'],
+      df_andhra_9_2014_sum['Area'])
+
+y22 =(df_andhra_9_1997_sum['Production'],
+      df_andhra_9_1998_sum['Production'],
+      df_andhra_9_1999_sum['Production'],
+      df_andhra_9_2000_sum['Production'],
+      df_andhra_9_2001_sum['Production'], 
+      df_andhra_9_2002_sum['Production'],
+      df_andhra_9_2003_sum['Production'],
+      df_andhra_9_2004_sum['Production'],
+      df_andhra_9_2005_sum['Production'],
+      df_andhra_9_2006_sum['Production'],
+      df_andhra_9_2007_sum['Production'],
+      df_andhra_9_2008_sum['Production'],
+      df_andhra_9_2009_sum['Production'],
+      df_andhra_9_2010_sum['Production'],
+      df_andhra_9_2011_sum['Production'],
+      df_andhra_9_2012_sum['Production'],
+      df_andhra_9_2013_sum['Production'],
+      df_andhra_9_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-2 : Andhra( [9] SPSR NELLORE)(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-2 : Andhra( [9] SPSR NELLORE)(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting Andhra( [10] SRIKAKULAM )
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_andhra_10_1997_sum['Area'],
+      df_andhra_10_1998_sum['Area'],
+      df_andhra_10_1999_sum['Area'],
+      df_andhra_10_2000_sum['Area'],
+      df_andhra_10_2001_sum['Area'], 
+      df_andhra_10_2002_sum['Area'],
+      df_andhra_10_2003_sum['Area'],
+      df_andhra_10_2004_sum['Area'],
+      df_andhra_10_2005_sum['Area'],
+      df_andhra_10_2006_sum['Area'],
+      df_andhra_10_2007_sum['Area'],
+      df_andhra_10_2008_sum['Area'],
+      df_andhra_10_2009_sum['Area'],
+      df_andhra_10_2010_sum['Area'],
+      df_andhra_10_2011_sum['Area'],
+      df_andhra_10_2012_sum['Area'],
+      df_andhra_10_2013_sum['Area'],
+      df_andhra_10_2014_sum['Area'])
+
+y22 =(df_andhra_10_1997_sum['Production'],
+      df_andhra_10_1998_sum['Production'],
+      df_andhra_10_1999_sum['Production'],
+      df_andhra_10_2000_sum['Production'],
+      df_andhra_10_2001_sum['Production'], 
+      df_andhra_10_2002_sum['Production'],
+      df_andhra_10_2003_sum['Production'],
+      df_andhra_10_2004_sum['Production'],
+      df_andhra_10_2005_sum['Production'],
+      df_andhra_10_2006_sum['Production'],
+      df_andhra_10_2007_sum['Production'],
+      df_andhra_10_2008_sum['Production'],
+      df_andhra_10_2009_sum['Production'],
+      df_andhra_10_2010_sum['Production'],
+      df_andhra_10_2011_sum['Production'],
+      df_andhra_10_2012_sum['Production'],
+      df_andhra_10_2013_sum['Production'],
+      df_andhra_10_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-2 : Andhra( [10] SRIKAKULAM )(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-2 : Andhra( [10] SRIKAKULAM )(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting Andhra( [11] VISAKHAPATANAM )
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_andhra_11_1997_sum['Area'],
+      df_andhra_11_1998_sum['Area'],
+      df_andhra_11_1999_sum['Area'],
+      df_andhra_11_2000_sum['Area'],
+      df_andhra_11_2001_sum['Area'], 
+      df_andhra_11_2002_sum['Area'],
+      df_andhra_11_2003_sum['Area'],
+      df_andhra_11_2004_sum['Area'],
+      df_andhra_11_2005_sum['Area'],
+      df_andhra_11_2006_sum['Area'],
+      df_andhra_11_2007_sum['Area'],
+      df_andhra_11_2008_sum['Area'],
+      df_andhra_11_2009_sum['Area'],
+      df_andhra_11_2010_sum['Area'],
+      df_andhra_11_2011_sum['Area'],
+      df_andhra_11_2012_sum['Area'],
+      df_andhra_11_2013_sum['Area'],
+      df_andhra_11_2014_sum['Area'])
+
+y22 =(df_andhra_11_1997_sum['Production'],
+      df_andhra_11_1998_sum['Production'],
+      df_andhra_11_1999_sum['Production'],
+      df_andhra_11_2000_sum['Production'],
+      df_andhra_11_2001_sum['Production'], 
+      df_andhra_11_2002_sum['Production'],
+      df_andhra_11_2003_sum['Production'],
+      df_andhra_11_2004_sum['Production'],
+      df_andhra_11_2005_sum['Production'],
+      df_andhra_11_2006_sum['Production'],
+      df_andhra_11_2007_sum['Production'],
+      df_andhra_11_2008_sum['Production'],
+      df_andhra_11_2009_sum['Production'],
+      df_andhra_11_2010_sum['Production'],
+      df_andhra_11_2011_sum['Production'],
+      df_andhra_11_2012_sum['Production'],
+      df_andhra_11_2013_sum['Production'],
+      df_andhra_11_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-2 : Andhra( [11] VISAKHAPATANAM )(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-2 : Andhra( [11] VISAKHAPATANAM )(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting Andhra( [12] VIZIANAGARAM )
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_andhra_12_1997_sum['Area'],
+      df_andhra_12_1998_sum['Area'],
+      df_andhra_12_1999_sum['Area'],
+      df_andhra_12_2000_sum['Area'],
+      df_andhra_12_2001_sum['Area'], 
+      df_andhra_12_2002_sum['Area'],
+      df_andhra_12_2003_sum['Area'],
+      df_andhra_12_2004_sum['Area'],
+      df_andhra_12_2005_sum['Area'],
+      df_andhra_12_2006_sum['Area'],
+      df_andhra_12_2007_sum['Area'],
+      df_andhra_12_2008_sum['Area'],
+      df_andhra_12_2009_sum['Area'],
+      df_andhra_12_2010_sum['Area'],
+      df_andhra_12_2011_sum['Area'],
+      df_andhra_12_2012_sum['Area'],
+      df_andhra_12_2013_sum['Area'],
+      df_andhra_12_2014_sum['Area'])
+
+y22 =(df_andhra_12_1997_sum['Production'],
+      df_andhra_12_1998_sum['Production'],
+      df_andhra_12_1999_sum['Production'],
+      df_andhra_12_2000_sum['Production'],
+      df_andhra_12_2001_sum['Production'], 
+      df_andhra_12_2002_sum['Production'],
+      df_andhra_12_2003_sum['Production'],
+      df_andhra_12_2004_sum['Production'],
+      df_andhra_12_2005_sum['Production'],
+      df_andhra_12_2006_sum['Production'],
+      df_andhra_12_2007_sum['Production'],
+      df_andhra_12_2008_sum['Production'],
+      df_andhra_12_2009_sum['Production'],
+      df_andhra_12_2010_sum['Production'],
+      df_andhra_12_2011_sum['Production'],
+      df_andhra_12_2012_sum['Production'],
+      df_andhra_12_2013_sum['Production'],
+      df_andhra_12_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-2 : Andhra( [12] VIZIANAGARAM )(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-2 : Andhra( [12] VIZIANAGARAM )(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting Andhra( [13] WEST GODAVARI )
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_andhra_13_1997_sum['Area'],
+      df_andhra_13_1998_sum['Area'],
+      df_andhra_13_1999_sum['Area'],
+      df_andhra_13_2000_sum['Area'],
+      df_andhra_13_2001_sum['Area'], 
+      df_andhra_13_2002_sum['Area'],
+      df_andhra_13_2003_sum['Area'],
+      df_andhra_13_2004_sum['Area'],
+      df_andhra_13_2005_sum['Area'],
+      df_andhra_13_2006_sum['Area'],
+      df_andhra_13_2007_sum['Area'],
+      df_andhra_13_2008_sum['Area'],
+      df_andhra_13_2009_sum['Area'],
+      df_andhra_13_2010_sum['Area'],
+      df_andhra_13_2011_sum['Area'],
+      df_andhra_13_2012_sum['Area'],
+      df_andhra_13_2013_sum['Area'],
+      df_andhra_13_2014_sum['Area'])
+
+y22 =(df_andhra_13_1997_sum['Production'],
+      df_andhra_13_1998_sum['Production'],
+      df_andhra_13_1999_sum['Production'],
+      df_andhra_13_2000_sum['Production'],
+      df_andhra_13_2001_sum['Production'], 
+      df_andhra_13_2002_sum['Production'],
+      df_andhra_13_2003_sum['Production'],
+      df_andhra_13_2004_sum['Production'],
+      df_andhra_13_2005_sum['Production'],
+      df_andhra_13_2006_sum['Production'],
+      df_andhra_13_2007_sum['Production'],
+      df_andhra_13_2008_sum['Production'],
+      df_andhra_13_2009_sum['Production'],
+      df_andhra_13_2010_sum['Production'],
+      df_andhra_13_2011_sum['Production'],
+      df_andhra_13_2012_sum['Production'],
+      df_andhra_13_2013_sum['Production'],
+      df_andhra_13_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-2 : Andhra( [13] WEST GODAVARI )(Area)')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-2 : Andhra( [13] WEST GODAVARI )(production )')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+
+

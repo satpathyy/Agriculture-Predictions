@@ -1,0 +1,1729 @@
+# -*- coding: utf-8 -*-
+#-----(1) data analysis of agriculture sector -----
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import random
+
+df = pd.read_csv ('C:/Users/Jeet Das/Desktop/Major Project - Indian Economy/Project ( Section 1-Indian Economy)/Section-1_Data_sheet/(02)_agriculture.csv',encoding="cp1252")
+
+print("\n------- output data :-----------\n")
+print("Agriculture data analysis:")
+
+# Question – A : get row and column numbers 
+
+def dimension():
+    print('---------------------------------------------')
+    print("Dimension of the data frame = ",df.shape)
+    print('---------------------------------------------')
+
+# Question – B : print column names :
+
+def column_names():
+    print('Column names as follows :')
+    print('---------------------------------------------')
+    count = 1
+    for col in df.columns: 
+        print(count,"-->",col)
+        count = count+1
+    print("---------------------------------------------\n")
+
+#Question – C : State_Name (using GROUP BY method) and no. of states :
+
+def states():
+    state_names = df.groupby(['State_Name'])[['District_Name']].count()
+    print("\t states names : ")
+    print("-------------------------------")
+    print(state_names)
+    print("-------------------------------")
+    count = 0
+    for row in range(len(state_names)): 
+            count = count+1
+    print("total no. of states = ",count)        
+    print("-----------------------------\n")
+
+# state - 1 : Andaman and Nicobar Islands
+df_andaman = df[df.State_Name == 'Andaman and Nicobar Islands']
+
+# state -2 : Andhra Pradesh
+df_andhra = df[df.State_Name == 'Andhra Pradesh']
+
+# state -3 : Arunachal Pradesh
+df_arunachal = df[df.State_Name == 'Arunachal Pradesh']
+
+# state -4 : Assam
+df_assam = df[df.State_Name == 'Assam']
+
+# state -5 : Bihar
+df_bihar = df[df.State_Name == 'Bihar']
+
+# state -6 : Chandigarh
+df_candigarh = df[df.State_Name == 'Chandigarh']
+
+# state -7 : Chhattisgarh
+df_chattisgarh = df[df.State_Name == 'Chhattisgarh']
+
+# state -8 : Dadra and Nagar Haveli
+df_dadra = df[df.State_Name == 'Dadra and Nagar Haveli']
+
+# state -9 : Goa
+df_goa = df[df.State_Name == 'Goa']
+
+# state -10: Gujarat
+df_gujrat = df[df.State_Name == 'Gujarat']
+
+# state -11: Haryana
+df_haryana = df[df.State_Name == 'Haryana']
+
+# state -12: Himachal Pradesh
+df_himachal = df[df.State_Name == 'Himachal Pradesh']
+
+# state -13: Jammu and Kashmir
+df_jammu = df[df.State_Name == 'Jammu and Kashmir']
+
+# state -14: Jharkhand
+df_jharkand = df[df.State_Name == 'Jharkhand']
+
+# state -15: Karnataka
+df_karnataka = df[df.State_Name == 'Karnataka']
+
+# state -16: Kerala
+df_kerala = df[df.State_Name == 'kerala']
+
+# state -17: Madhya Pradesh
+df_madhya = df[df.State_Name == 'Madhya Pradesh']
+
+# state -18: Maharashtra
+df_maharashtra = df[df.State_Name == 'Maharashtra']
+
+# state -19: Manipur
+df_manipur = df[df.State_Name == 'Manipur']
+
+# state -20: Meghalaya
+df_meghalaya = df[df.State_Name == 'Meghalaya']
+
+# state -21: Mizoram
+df_mizoram = df[df.State_Name == 'Mizoram']
+
+# state -22: Nagaland
+df_nagaland = df[df.State_Name == 'Nagaland']
+
+# state -23: Odisha
+df_odisha = df[df.State_Name == 'Odisha']
+
+# state -24: Puducherry
+df_puducherry = df[df.State_Name == 'Puducherry']
+
+# state -25: Punjab
+df_punjab = df[df.State_Name == 'Punjab']
+
+# state -26: Rajasthan
+df_rajasthan = df[df.State_Name == 'Rajasthan']
+
+# state -27: Sikkim
+df_sikkim = df[df.State_Name == 'Sikkim']
+
+# state -28: Tamil Nadu
+df_tamilnadu = df[df.State_Name == 'Tamil Nadu']
+
+# state -29: Telangana
+df_telangana = df[df.State_Name == 'Telangana']
+
+# state -30: Tripura
+df_tripura = df[df.State_Name == 'Tripura']
+
+# state -31: Uttar Pradesh
+df_uttar = df[df.State_Name == 'Uttar Pradesh']
+
+# state -32: Uttarakhand
+df_uttarakhand = df[df.State_Name == 'Uttarakhand']
+
+# state -33: West Bengal
+df_wb = df[df.State_Name == 'West Bengal']
+
+# Question - D : print state names and Calculate no. of districts of all states
+
+def district_of_all_states():
+
+    # state - 1 : Andaman and Nicobar Islands 
+
+    df_andaman = df[df.State_Name == 'Andaman and Nicobar Islands']
+    df_andaman_dist = df_andaman.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_andaman_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_andaman_dist)): 
+        count = count+1
+    print("total no. of district in state - 1 : Andaman and Nicobar Islands = ",count)        
+    print("-----------------------------\n")
+  
+    # state -2 : Andhra Pradesh  
+
+    df_andhra = df[df.State_Name == 'Andhra Pradesh']
+    df_andhra_dist = df_andhra.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_andhra_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_andhra_dist)): 
+        count = count+1
+    print("total no. of district in state -2 : Andhra Pradesh = ",count)        
+    print("-----------------------------\n")                      
+                                                                  
+    # state -3 : Arunachal Pradesh 
+
+    df_arunachal = df[df.State_Name == 'Arunachal Pradesh']
+    df_arunachal_dist = df_arunachal.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_arunachal_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_arunachal_dist)): 
+        count = count+1
+    print("total no. of district in state -3 : Arunachal Pradesh = ",count)        
+    print("-----------------------------\n")                    
+                                                            
+    # state -4 : Assam
+
+    df_assam = df[df.State_Name == 'Assam']
+    df_assam_dist = df_assam.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_assam_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_assam_dist)): 
+        count = count+1
+    print("total no. of district in state -4 : Assam = ",count)        
+    print("-----------------------------\n")                                  
+                                                                                                
+    # state -5 : Bihar 
+
+    df_bihar = df[df.State_Name == 'Bihar']
+    df_bihar_dist = df_bihar.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_bihar_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_bihar_dist)): 
+        count = count+1
+    print("total no. of district in state -5 : Bihar = ",count)        
+    print("-----------------------------\n")                                 
+                                                                                             
+    # state -6 : Chandigarh
+
+    df_candigarh = df[df.State_Name == 'Chandigarh']
+    df_candigarh_dist = df_candigarh.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_candigarh_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_candigarh_dist)): 
+        count = count+1
+    print("total no. of district in state -6 : Chandigarh = ",count)        
+    print("-----------------------------\n")                            
+                                                                              
+    # state -7 : Chhattisgarh
+
+    df_chattisgarh = df[df.State_Name == 'Chhattisgarh']
+    df_chattisgarh_dist = df_chattisgarh.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_chattisgarh_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_chattisgarh_dist)): 
+        count = count+1
+    print("total no. of district in state -7 : Chhattisgarh = ",count)        
+    print("-----------------------------\n")                           
+                                                                           
+    # state -8 : Dadra and Nagar Haveli 
+
+    df_dadra = df[df.State_Name == 'Dadra and Nagar Haveli']
+    df_dadra_dist = df_dadra.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_dadra_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_dadra_dist)): 
+        count = count+1
+    print("total no. of district in state -8 : Dadra and Nagar Haveli = ",count)        
+    print("-----------------------------\n")  
+                                
+    # state -9 : Goa 
+
+    df_goa = df[df.State_Name == 'Goa']
+    df_goa_dist = df_goa.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_goa_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_goa_dist)): 
+        count = count+1
+    print("total no. of district in state -9 : Goa = ",count)        
+    print("-----------------------------\n")                                     
+                                                                                                         
+    # state -10: Gujarat
+
+    df_gujrat = df[df.State_Name == 'Gujarat']
+    df_gujrat_dist = df_gujrat.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_gujrat_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_gujrat_dist)): 
+        count = count+1
+    print("total no. of district in state -10: Gujarat = ",count)        
+    print("-----------------------------\n")                                 
+                                                                                             
+    # state -11: Haryana 
+
+    df_haryana = df[df.State_Name == 'Haryana']
+    df_haryana_dist = df_haryana.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_haryana_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_haryana_dist)): 
+        count = count+1
+    print("total no. of district in state -11: Haryana = ",count)        
+    print("-----------------------------\n")                                
+                                                                                          
+    # state -12: Himachal Pradesh
+
+    df_himachal = df[df.State_Name == 'Himachal Pradesh']
+    df_himachal_dist = df_himachal.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_himachal_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_himachal_dist)): 
+        count = count+1
+    print("total no. of district in state -12: Himachal Pradesh = ",count)        
+    print("-----------------------------\n")                        
+                                                                  
+    # state -13: Jammu and Kashmir
+
+    df_jammu = df[df.State_Name == 'Jammu and Kashmir']
+    df_jammu_dist = df_jammu.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_jammu_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_jammu_dist)): 
+        count = count+1
+    print("total no. of district in state -13: Jammu and Kashmir = ",count)        
+    print("-----------------------------\n")                       
+                                                               
+    # state -14: Jharkhand 
+
+    df_jharkand = df[df.State_Name == 'Jharkhand']
+    df_jharkand_dist = df_jharkand.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_jharkand_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_jharkand_dist)): 
+        count = count+1
+    print("total no. of district in state -14: Jharkhand = ",count)        
+    print("-----------------------------\n")                              
+                                                                                    
+    # state -15: Karnataka 
+
+    df_karnataka = df[df.State_Name == 'Karnataka']
+    df_karnataka_dist = df_karnataka.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_karnataka_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_karnataka_dist)): 
+        count = count+1
+    print("total no. of district in state -15: Karnataka = ",count)        
+    print("-----------------------------\n")                             
+                                                                                 
+    # state -16: Kerala
+
+    df_kerala = df[df.State_Name == 'kerala']
+    df_kerala_dist = df_kerala.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_kerala_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_kerala_dist)): 
+        count = count+1
+    print("total no. of district in state -16: Kerala = ",count)        
+    print("-----------------------------\n")                                  
+                                                                                                
+    # state -17: Madhya Pradesh 
+
+    df_madhya = df[df.State_Name == 'Madhya Pradesh']
+    df_madhya_dist = df_madhya.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_madhya_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_madhya_dist)): 
+        count = count+1
+    print("total no. of district in state -17: Madhya Pradesh = ",count)        
+    print("-----------------------------\n")                        
+                                                                  
+    # state -18: Maharashtra
+
+    df_maharashtra = df[df.State_Name == 'Maharashtra']
+    df_maharashtra_dist = df_maharashtra.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_maharashtra_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_maharashtra_dist)): 
+        count = count+1
+    print("total no. of district in state -18: Maharashtra = ",count)        
+    print("-----------------------------\n")                              
+                                                                              
+    # state -19: Manipur
+
+    df_manipur = df[df.State_Name == 'Manipur']
+    df_manipur_dist = df_manipur.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_manipur_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_manipur_dist)): 
+        count = count+1
+    print("total no. of district in state -19: Manipur = ",count)        
+    print("-----------------------------\n")                                 
+                                                                                             
+    # state -20: Meghalaya  
+
+    df_meghalaya = df[df.State_Name == 'Meghalaya']
+    df_meghalaya_dist = df_meghalaya.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_meghalaya_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_meghalaya_dist)): 
+        count = count+1
+    print("total no. of district in state -20: Meghalaya  = ",count)        
+    print("-----------------------------\n")                             
+                                                                                 
+    # state -21: Mizoram
+
+    df_mizoram = df[df.State_Name == 'Mizoram']
+    df_mizoram_dist = df_mizoram.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_mizoram_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_mizoram_dist)): 
+        count = count+1
+    print("total no. of district in state -21: Mizoram = ",count)        
+    print("-----------------------------\n")                                  
+                                                                                                
+    # state -22: Nagaland  
+
+    df_nagaland = df[df.State_Name == 'Nagaland']
+    df_nagaland_dist = df_nagaland.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_nagaland_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_nagaland_dist)): 
+        count = count+1
+    print("total no. of district in state -22: Nagaland  = ",count)        
+    print("-----------------------------\n")                              
+                                                                                    
+    # state -23: Odisha 
+
+    df_odisha = df[df.State_Name == 'Odisha']
+    df_odisha_dist = df_odisha.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_odisha_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_odisha_dist)): 
+        count = count+1
+    print("total no. of district in state -23: Odisha = ",count)        
+    print("-----------------------------\n")                                
+                                                                                          
+    # state -24: Puducherry
+
+    df_puducherry = df[df.State_Name == 'Puducherry']
+    df_puducherry_dist = df_puducherry.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_puducherry_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_puducherry_dist)): 
+        count = count+1
+    print("total no. of district in state -24: Puducherry = ",count)        
+    print("-----------------------------\n")                               
+                                                                                       
+    # state -25: Punjab
+
+    df_punjab = df[df.State_Name == 'Punjab']
+    df_punjab_dist = df_punjab.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_punjab_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_punjab_dist)): 
+        count = count+1
+    print("total no. of district in state -25: Punjab = ",count)        
+    print("-----------------------------\n")                                  
+                                                                                                
+    # state -26: Rajasthan
+
+    df_rajasthan = df[df.State_Name == 'Rajasthan']
+    df_rajasthan_dist = df_rajasthan.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_rajasthan_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_rajasthan_dist)): 
+        count = count+1
+    print("total no. of district in state -26: Rajasthan = ",count)        
+    print("-----------------------------\n")                              
+                                                                                    
+    # state -27: Sikkim
+
+    df_sikkim = df[df.State_Name == 'Sikkim']
+    df_sikkim_dist = df_sikkim.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_sikkim_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_sikkim_dist)): 
+        count = count+1
+    print("total no. of district in state -27: Sikkim = ",count)        
+    print("-----------------------------\n")                                   
+                                                                                                   
+    # state -28: Tamil Nadu 
+
+    df_tamilnadu = df[df.State_Name == 'Tamil Nadu']
+    df_tamilnadu_dist = df_tamilnadu.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_tamilnadu_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_tamilnadu_dist)): 
+        count = count+1
+    print("total no. of district in state -28: Tamil Nadu = ",count)        
+    print("-----------------------------\n")                            
+                                                                              
+    # state -29: Telangana 
+
+    df_telangana = df[df.State_Name == 'Telangana']
+    df_telangana_dist = df_telangana.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_telangana_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_telangana_dist)): 
+        count = count+1
+    print("total no. of district in state -29: Telangana = ",count)        
+    print("-----------------------------\n")                               
+                                                                                    
+    # state -30: Tripura  
+
+    df_tripura = df[df.State_Name == 'Tripura']
+    df_tripura_dist = df_tripura.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_tripura_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_tripura_dist)): 
+        count = count+1
+    print("total no. of district in state -30: Tripura = ",count)        
+    print("-----------------------------\n")                               
+                                                                                       
+    # state -31: Uttar Pradesh  
+
+    df_uttar = df[df.State_Name == 'Uttar Pradesh']
+    df_uttar_dist = df_uttar.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_uttar_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_uttar_dist)): 
+        count = count+1
+    print("total no. of district in state -31: Uttar Pradesh = ",count)        
+    print("-----------------------------\n")                        
+                                                                  
+    # state -32: Uttarakhand 
+
+    df_uttarakhand = df[df.State_Name == 'Uttarakhand']
+    df_uttarakhand_dist = df_uttarakhand.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_uttarakhand_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_uttarakhand_dist)): 
+        count = count+1
+    print("total no. of district in state -32: Uttarakhand = ",count)        
+    print("-----------------------------\n")                            
+                                                                              
+    # state -33: West Bengal 
+
+    df_wb = df[df.State_Name == 'West Bengal']
+    df_wb_dist = df_wb.groupby(['District_Name'])[['Crop_Year']].count()
+    print(df_wb_dist)
+    print("-----------------------------")
+    count = 0
+    for row in range(len(df_wb_dist)): 
+        count = count+1
+    print("total no. of district in state -33: West Bengal = ",count)        
+    print("-----------------------------\n")  
+
+
+# ----- indian area of production in year 2000 ------
+
+df_area_2000 = ( 
+   sum(df_andaman['Area'][df_andaman['Crop_Year'] == 2000])
++ sum(df_andhra['Area'][df_andhra['Crop_Year'] == 2000])
++ sum(df_arunachal['Area'][df_arunachal['Crop_Year'] == 2000])
++ sum(df_assam['Area'][df_assam['Crop_Year'] == 2000])
++ sum(df_bihar['Area'][df_bihar['Crop_Year'] == 2000])
++ sum(df_candigarh['Area'][df_candigarh['Crop_Year'] == 2000])
++ sum(df_chattisgarh['Area'][df_chattisgarh['Crop_Year'] == 2000])
++ sum(df_dadra['Area'][df_dadra['Crop_Year'] == 2000])
++ sum(df_goa['Area'][df_goa['Crop_Year'] == 2000])
++ sum(df_gujrat['Area'][df_gujrat['Crop_Year'] == 2000])
++ sum(df_haryana['Area'][df_haryana['Crop_Year'] == 2000])
++ sum(df_himachal['Area'][df_himachal['Crop_Year'] == 2000])
++ sum(df_jammu['Area'][df_jammu['Crop_Year'] == 2000])
++ sum(df_jharkand['Area'][df_jharkand['Crop_Year'] == 2000])
++ sum(df_karnataka['Area'][df_karnataka['Crop_Year'] == 2000])
++ sum(df_kerala['Area'][df_kerala['Crop_Year'] == 2000])
++ sum(df_madhya['Area'][df_madhya['Crop_Year'] == 2000])
++ sum(df_maharashtra['Area'][df_maharashtra['Crop_Year'] == 2000])
++ sum(df_manipur['Area'][df_manipur['Crop_Year'] == 2000])
++ sum(df_meghalaya['Area'][df_meghalaya['Crop_Year'] == 2000])
++ sum(df_mizoram['Area'][df_mizoram['Crop_Year'] == 2000])
++ sum(df_nagaland['Area'][df_nagaland['Crop_Year'] == 2000])
++ sum(df_odisha['Area'][df_odisha['Crop_Year'] == 2000])
++ sum(df_puducherry['Area'][df_puducherry['Crop_Year'] == 2000])
++ sum(df_punjab['Area'][df_punjab['Crop_Year'] == 2000])
++ sum(df_rajasthan['Area'][df_rajasthan['Crop_Year'] == 2000])
++ sum(df_sikkim['Area'][df_sikkim['Crop_Year'] == 2000])
++ sum(df_tamilnadu['Area'][df_tamilnadu['Crop_Year'] == 2000])
++ sum(df_telangana['Area'][df_telangana['Crop_Year'] == 2000])
++ sum(df_tripura['Area'][df_tripura['Crop_Year'] == 2000])
++ sum(df_uttar['Area'][df_uttar['Crop_Year'] == 2000])
++ sum(df_uttarakhand['Area'][df_uttarakhand['Crop_Year'] == 2000])
++ sum(df_wb['Area'][df_wb['Crop_Year'] == 2000])
+)
+
+# ----- indian area of production in year 2001 ------
+
+df_area_2001 = ( 
+  sum(df_andaman['Area'][df_andaman['Crop_Year'] == 2001])
++ sum(df_andhra['Area'][df_andhra['Crop_Year'] == 2001])
++ sum(df_arunachal['Area'][df_arunachal['Crop_Year'] == 2001])
++ sum(df_assam['Area'][df_assam['Crop_Year'] == 2001])
++ sum(df_bihar['Area'][df_bihar['Crop_Year'] == 2001])
++ sum(df_candigarh['Area'][df_candigarh['Crop_Year'] == 2001])
++ sum(df_chattisgarh['Area'][df_chattisgarh['Crop_Year'] == 2001])
++ sum(df_dadra['Area'][df_dadra['Crop_Year'] == 2001])
++ sum(df_goa['Area'][df_goa['Crop_Year'] == 2001])
++ sum(df_gujrat['Area'][df_gujrat['Crop_Year'] == 2001])
++ sum(df_haryana['Area'][df_haryana['Crop_Year'] == 2001])
++ sum(df_himachal['Area'][df_himachal['Crop_Year'] == 2001])
++ sum(df_jammu['Area'][df_jammu['Crop_Year'] == 2001])
++ sum(df_jharkand['Area'][df_jharkand['Crop_Year'] == 2001])
++ sum(df_karnataka['Area'][df_karnataka['Crop_Year'] == 2001])
++ sum(df_kerala['Area'][df_kerala['Crop_Year'] == 2001])
++ sum(df_madhya['Area'][df_madhya['Crop_Year'] == 2001])
++ sum(df_maharashtra['Area'][df_maharashtra['Crop_Year'] == 2001])
++ sum(df_manipur['Area'][df_manipur['Crop_Year'] == 2001])
++ sum(df_meghalaya['Area'][df_meghalaya['Crop_Year'] == 2001])
++ sum(df_mizoram['Area'][df_mizoram['Crop_Year'] == 2001])
++ sum(df_nagaland['Area'][df_nagaland['Crop_Year'] == 2001])
++ sum(df_odisha['Area'][df_odisha['Crop_Year'] == 2001])
++ sum(df_puducherry['Area'][df_puducherry['Crop_Year'] == 2001])
++ sum(df_punjab['Area'][df_punjab['Crop_Year'] == 2001])
++ sum(df_rajasthan['Area'][df_rajasthan['Crop_Year'] == 2001])
++ sum(df_sikkim['Area'][df_sikkim['Crop_Year'] == 2001])
++ sum(df_tamilnadu['Area'][df_tamilnadu['Crop_Year'] == 2001])
++ sum(df_telangana['Area'][df_telangana['Crop_Year'] == 2001])
++ sum(df_tripura['Area'][df_tripura['Crop_Year'] == 2001])
++ sum(df_uttar['Area'][df_uttar['Crop_Year'] == 2001])
++ sum(df_uttarakhand['Area'][df_uttarakhand['Crop_Year'] == 2001])
++ sum(df_wb['Area'][df_wb['Crop_Year'] == 2001])
+)
+
+# ----- indian area of production in year 2002 ------
+
+df_area_2002 = ( 
+  sum(df_andaman['Area'][df_andaman['Crop_Year'] == 2002])
++ sum(df_andhra['Area'][df_andhra['Crop_Year'] == 2002])
++ sum(df_arunachal['Area'][df_arunachal['Crop_Year'] == 2002])
++ sum(df_assam['Area'][df_assam['Crop_Year'] == 2002])
++ sum(df_bihar['Area'][df_bihar['Crop_Year'] == 2002])
++ sum(df_candigarh['Area'][df_candigarh['Crop_Year'] == 2002])
++ sum(df_chattisgarh['Area'][df_chattisgarh['Crop_Year'] == 2002])
++ sum(df_dadra['Area'][df_dadra['Crop_Year'] == 2002])
++ sum(df_goa['Area'][df_goa['Crop_Year'] == 2002])
++ sum(df_gujrat['Area'][df_gujrat['Crop_Year'] == 2002])
++ sum(df_haryana['Area'][df_haryana['Crop_Year'] == 2002])
++ sum(df_himachal['Area'][df_himachal['Crop_Year'] == 2002])
++ sum(df_jammu['Area'][df_jammu['Crop_Year'] == 2002])
++ sum(df_jharkand['Area'][df_jharkand['Crop_Year'] == 2002])
++ sum(df_karnataka['Area'][df_karnataka['Crop_Year'] == 2002])
++ sum(df_kerala['Area'][df_kerala['Crop_Year'] == 2002])
++ sum(df_madhya['Area'][df_madhya['Crop_Year'] == 2002])
++ sum(df_maharashtra['Area'][df_maharashtra['Crop_Year'] == 2002])
++ sum(df_manipur['Area'][df_manipur['Crop_Year'] == 2002])
++ sum(df_meghalaya['Area'][df_meghalaya['Crop_Year'] == 2002])
++ sum(df_mizoram['Area'][df_mizoram['Crop_Year'] == 2002])
++ sum(df_nagaland['Area'][df_nagaland['Crop_Year'] == 2002])
++ sum(df_odisha['Area'][df_odisha['Crop_Year'] == 2002])
++ sum(df_puducherry['Area'][df_puducherry['Crop_Year'] == 2002])
++ sum(df_punjab['Area'][df_punjab['Crop_Year'] == 2002])
++ sum(df_rajasthan['Area'][df_rajasthan['Crop_Year'] == 2002])
++ sum(df_sikkim['Area'][df_sikkim['Crop_Year'] == 2002])
++ sum(df_tamilnadu['Area'][df_tamilnadu['Crop_Year'] == 2002])
++ sum(df_telangana['Area'][df_telangana['Crop_Year'] == 2002])
++ sum(df_tripura['Area'][df_tripura['Crop_Year'] == 2002])
++ sum(df_uttar['Area'][df_uttar['Crop_Year'] == 2002])
++ sum(df_uttarakhand['Area'][df_uttarakhand['Crop_Year'] == 2002])
++ sum(df_wb['Area'][df_wb['Crop_Year'] == 2002])
+)
+
+# ----- indian area of production in year 2003 ------
+
+df_area_2003 = ( 
+  sum(df_andaman['Area'][df_andaman['Crop_Year'] == 2003])
++ sum(df_andhra['Area'][df_andhra['Crop_Year'] == 2003])
++ sum(df_arunachal['Area'][df_arunachal['Crop_Year'] == 2003])
++ sum(df_assam['Area'][df_assam['Crop_Year'] == 2003])
++ sum(df_bihar['Area'][df_bihar['Crop_Year'] == 2003])
++ sum(df_candigarh['Area'][df_candigarh['Crop_Year'] == 2003])
++ sum(df_chattisgarh['Area'][df_chattisgarh['Crop_Year'] == 2003])
++ sum(df_dadra['Area'][df_dadra['Crop_Year'] == 2003])
++ sum(df_goa['Area'][df_goa['Crop_Year'] == 2003])
++ sum(df_gujrat['Area'][df_gujrat['Crop_Year'] == 2003])
++ sum(df_haryana['Area'][df_haryana['Crop_Year'] == 2003])
++ sum(df_himachal['Area'][df_himachal['Crop_Year'] == 2003])
++ sum(df_jammu['Area'][df_jammu['Crop_Year'] == 2003])
++ sum(df_jharkand['Area'][df_jharkand['Crop_Year'] == 2003])
++ sum(df_karnataka['Area'][df_karnataka['Crop_Year'] == 2003])
++ sum(df_kerala['Area'][df_kerala['Crop_Year'] == 2003])
++ sum(df_madhya['Area'][df_madhya['Crop_Year'] == 2003])
++ sum(df_maharashtra['Area'][df_maharashtra['Crop_Year'] == 2003])
++ sum(df_manipur['Area'][df_manipur['Crop_Year'] == 2003])
++ sum(df_meghalaya['Area'][df_meghalaya['Crop_Year'] == 2003])
++ sum(df_mizoram['Area'][df_mizoram['Crop_Year'] == 2003])
++ sum(df_nagaland['Area'][df_nagaland['Crop_Year'] == 2003])
++ sum(df_odisha['Area'][df_odisha['Crop_Year'] == 2003])
++ sum(df_puducherry['Area'][df_puducherry['Crop_Year'] == 2003])
++ sum(df_punjab['Area'][df_punjab['Crop_Year'] == 2003])
++ sum(df_rajasthan['Area'][df_rajasthan['Crop_Year'] == 2003])
++ sum(df_sikkim['Area'][df_sikkim['Crop_Year'] == 2003])
++ sum(df_tamilnadu['Area'][df_tamilnadu['Crop_Year'] == 2003])
++ sum(df_telangana['Area'][df_telangana['Crop_Year'] == 2003])
++ sum(df_tripura['Area'][df_tripura['Crop_Year'] == 2003])
++ sum(df_uttar['Area'][df_uttar['Crop_Year'] == 2003])
++ sum(df_uttarakhand['Area'][df_uttarakhand['Crop_Year'] == 2003])
++ sum(df_wb['Area'][df_wb['Crop_Year'] == 2003])
+)
+
+# ----- indian area of production in year 2004 ------
+
+df_area_2004 = ( 
+  sum(df_andaman['Area'][df_andaman['Crop_Year'] == 2004])
++ sum(df_andhra['Area'][df_andhra['Crop_Year'] == 2004])
++ sum(df_arunachal['Area'][df_arunachal['Crop_Year'] == 2004])
++ sum(df_assam['Area'][df_assam['Crop_Year'] == 2004])
++ sum(df_bihar['Area'][df_bihar['Crop_Year'] == 2004])
++ sum(df_candigarh['Area'][df_candigarh['Crop_Year'] == 2004])
++ sum(df_chattisgarh['Area'][df_chattisgarh['Crop_Year'] == 2004])
++ sum(df_dadra['Area'][df_dadra['Crop_Year'] == 2004])
++ sum(df_goa['Area'][df_goa['Crop_Year'] == 2004])
++ sum(df_gujrat['Area'][df_gujrat['Crop_Year'] == 2004])
++ sum(df_haryana['Area'][df_haryana['Crop_Year'] == 2004])
++ sum(df_himachal['Area'][df_himachal['Crop_Year'] == 2004])
++ sum(df_jammu['Area'][df_jammu['Crop_Year'] == 2004])
++ sum(df_jharkand['Area'][df_jharkand['Crop_Year'] == 2004])
++ sum(df_karnataka['Area'][df_karnataka['Crop_Year'] == 2004])
++ sum(df_kerala['Area'][df_kerala['Crop_Year'] == 2004])
++ sum(df_madhya['Area'][df_madhya['Crop_Year'] == 2004])
++ sum(df_maharashtra['Area'][df_maharashtra['Crop_Year'] == 2004])
++ sum(df_manipur['Area'][df_manipur['Crop_Year'] == 2004])
++ sum(df_meghalaya['Area'][df_meghalaya['Crop_Year'] == 2004])
++ sum(df_mizoram['Area'][df_mizoram['Crop_Year'] == 2004])
++ sum(df_nagaland['Area'][df_nagaland['Crop_Year'] == 2004])
++ sum(df_odisha['Area'][df_odisha['Crop_Year'] == 2004])
++ sum(df_puducherry['Area'][df_puducherry['Crop_Year'] == 2004])
++ sum(df_punjab['Area'][df_punjab['Crop_Year'] == 2004])
++ sum(df_rajasthan['Area'][df_rajasthan['Crop_Year'] == 2004])
++ sum(df_sikkim['Area'][df_sikkim['Crop_Year'] == 2004])
++ sum(df_tamilnadu['Area'][df_tamilnadu['Crop_Year'] == 2004])
++ sum(df_telangana['Area'][df_telangana['Crop_Year'] == 2004])
++ sum(df_tripura['Area'][df_tripura['Crop_Year'] == 2004])
++ sum(df_uttar['Area'][df_uttar['Crop_Year'] == 2004])
++ sum(df_uttarakhand['Area'][df_uttarakhand['Crop_Year'] == 2004])
++ sum(df_wb['Area'][df_wb['Crop_Year'] == 2004])
+)
+
+# ----- indian area of production in year 2005 ------
+
+df_area_2005 = ( 
+  sum(df_andaman['Area'][df_andaman['Crop_Year'] == 2005])
++ sum(df_andhra['Area'][df_andhra['Crop_Year'] == 2005])
++ sum(df_arunachal['Area'][df_arunachal['Crop_Year'] == 2005])
++ sum(df_assam['Area'][df_assam['Crop_Year'] == 2005])
++ sum(df_bihar['Area'][df_bihar['Crop_Year'] == 2005])
++ sum(df_candigarh['Area'][df_candigarh['Crop_Year'] == 2005])
++ sum(df_chattisgarh['Area'][df_chattisgarh['Crop_Year'] == 2005])
++ sum(df_dadra['Area'][df_dadra['Crop_Year'] == 2005])
++ sum(df_goa['Area'][df_goa['Crop_Year'] == 2005])
++ sum(df_gujrat['Area'][df_gujrat['Crop_Year'] == 2005])
++ sum(df_haryana['Area'][df_haryana['Crop_Year'] == 2005])
++ sum(df_himachal['Area'][df_himachal['Crop_Year'] == 2005])
++ sum(df_jammu['Area'][df_jammu['Crop_Year'] == 2005])
++ sum(df_jharkand['Area'][df_jharkand['Crop_Year'] == 2005])
++ sum(df_karnataka['Area'][df_karnataka['Crop_Year'] == 2005])
++ sum(df_kerala['Area'][df_kerala['Crop_Year'] == 2005])
++ sum(df_madhya['Area'][df_madhya['Crop_Year'] == 2005])
++ sum(df_maharashtra['Area'][df_maharashtra['Crop_Year'] == 2005])
++ sum(df_manipur['Area'][df_manipur['Crop_Year'] == 2005])
++ sum(df_meghalaya['Area'][df_meghalaya['Crop_Year'] == 2005])
++ sum(df_mizoram['Area'][df_mizoram['Crop_Year'] == 2005])
++ sum(df_nagaland['Area'][df_nagaland['Crop_Year'] == 2005])
++ sum(df_odisha['Area'][df_odisha['Crop_Year'] == 2005])
++ sum(df_puducherry['Area'][df_puducherry['Crop_Year'] == 2005])
++ sum(df_punjab['Area'][df_punjab['Crop_Year'] == 2005])
++ sum(df_rajasthan['Area'][df_rajasthan['Crop_Year'] == 2005])
++ sum(df_sikkim['Area'][df_sikkim['Crop_Year'] == 2005])
++ sum(df_tamilnadu['Area'][df_tamilnadu['Crop_Year'] == 2005])
++ sum(df_telangana['Area'][df_telangana['Crop_Year'] == 2005])
++ sum(df_tripura['Area'][df_tripura['Crop_Year'] == 2005])
++ sum(df_uttar['Area'][df_uttar['Crop_Year'] == 2005])
++ sum(df_uttarakhand['Area'][df_uttarakhand['Crop_Year'] == 2005])
++ sum(df_wb['Area'][df_wb['Crop_Year'] == 2005])
+)
+
+# ----- indian area of production in year 2006 ------
+
+df_area_2006 = ( 
+  sum(df_andaman['Area'][df_andaman['Crop_Year'] == 2006])
++ sum(df_andhra['Area'][df_andhra['Crop_Year'] == 2006])
++ sum(df_arunachal['Area'][df_arunachal['Crop_Year'] == 2006])
++ sum(df_assam['Area'][df_assam['Crop_Year'] == 2006])
++ sum(df_bihar['Area'][df_bihar['Crop_Year'] == 2006])
++ sum(df_candigarh['Area'][df_candigarh['Crop_Year'] == 2006])
++ sum(df_chattisgarh['Area'][df_chattisgarh['Crop_Year'] == 2006])
++ sum(df_dadra['Area'][df_dadra['Crop_Year'] == 2006])
++ sum(df_goa['Area'][df_goa['Crop_Year'] == 2006])
++ sum(df_gujrat['Area'][df_gujrat['Crop_Year'] == 2006])
++ sum(df_haryana['Area'][df_haryana['Crop_Year'] == 2006])
++ sum(df_himachal['Area'][df_himachal['Crop_Year'] == 2006])
++ sum(df_jammu['Area'][df_jammu['Crop_Year'] == 2006])
++ sum(df_jharkand['Area'][df_jharkand['Crop_Year'] == 2006])
++ sum(df_karnataka['Area'][df_karnataka['Crop_Year'] == 2006])
++ sum(df_kerala['Area'][df_kerala['Crop_Year'] == 2006])
++ sum(df_madhya['Area'][df_madhya['Crop_Year'] == 2006])
++ sum(df_maharashtra['Area'][df_maharashtra['Crop_Year'] == 2006])
++ sum(df_manipur['Area'][df_manipur['Crop_Year'] == 2006])
++ sum(df_meghalaya['Area'][df_meghalaya['Crop_Year'] == 2006])
++ sum(df_mizoram['Area'][df_mizoram['Crop_Year'] == 2006])
++ sum(df_nagaland['Area'][df_nagaland['Crop_Year'] == 2006])
++ sum(df_odisha['Area'][df_odisha['Crop_Year'] == 2006])
++ sum(df_puducherry['Area'][df_puducherry['Crop_Year'] == 2006])
++ sum(df_punjab['Area'][df_punjab['Crop_Year'] == 2006])
++ sum(df_rajasthan['Area'][df_rajasthan['Crop_Year'] == 2006])
++ sum(df_sikkim['Area'][df_sikkim['Crop_Year'] == 2006])
++ sum(df_tamilnadu['Area'][df_tamilnadu['Crop_Year'] == 2006])
++ sum(df_telangana['Area'][df_telangana['Crop_Year'] == 2006])
++ sum(df_tripura['Area'][df_tripura['Crop_Year'] == 2006])
++ sum(df_uttar['Area'][df_uttar['Crop_Year'] == 2006])
++ sum(df_uttarakhand['Area'][df_uttarakhand['Crop_Year'] == 2006])
++ sum(df_wb['Area'][df_wb['Crop_Year'] == 2006])
+)
+
+# ----- indian area of production in year 2007 ------
+
+df_area_2007 = ( 
+  sum(df_andaman['Area'][df_andaman['Crop_Year'] == 2007])
++ sum(df_andhra['Area'][df_andhra['Crop_Year'] == 2007])
++ sum(df_arunachal['Area'][df_arunachal['Crop_Year'] == 2007])
++ sum(df_assam['Area'][df_assam['Crop_Year'] == 2007])
++ sum(df_bihar['Area'][df_bihar['Crop_Year'] == 2007])
++ sum(df_candigarh['Area'][df_candigarh['Crop_Year'] == 2007])
++ sum(df_chattisgarh['Area'][df_chattisgarh['Crop_Year'] == 2007])
++ sum(df_dadra['Area'][df_dadra['Crop_Year'] == 2007])
++ sum(df_goa['Area'][df_goa['Crop_Year'] == 2007])
++ sum(df_gujrat['Area'][df_gujrat['Crop_Year'] == 2007])
++ sum(df_haryana['Area'][df_haryana['Crop_Year'] == 2007])
++ sum(df_himachal['Area'][df_himachal['Crop_Year'] == 2007])
++ sum(df_jammu['Area'][df_jammu['Crop_Year'] == 2007])
++ sum(df_jharkand['Area'][df_jharkand['Crop_Year'] == 2007])
++ sum(df_karnataka['Area'][df_karnataka['Crop_Year'] == 2007])
++ sum(df_kerala['Area'][df_kerala['Crop_Year'] == 2007])
++ sum(df_madhya['Area'][df_madhya['Crop_Year'] == 2007])
++ sum(df_maharashtra['Area'][df_maharashtra['Crop_Year'] == 2007])
++ sum(df_manipur['Area'][df_manipur['Crop_Year'] == 2007])
++ sum(df_meghalaya['Area'][df_meghalaya['Crop_Year'] == 2007])
++ sum(df_mizoram['Area'][df_mizoram['Crop_Year'] == 2007])
++ sum(df_nagaland['Area'][df_nagaland['Crop_Year'] == 2007])
++ sum(df_odisha['Area'][df_odisha['Crop_Year'] == 2007])
++ sum(df_puducherry['Area'][df_puducherry['Crop_Year'] == 2007])
++ sum(df_punjab['Area'][df_punjab['Crop_Year'] == 2007])
++ sum(df_rajasthan['Area'][df_rajasthan['Crop_Year'] == 2007])
++ sum(df_sikkim['Area'][df_sikkim['Crop_Year'] == 2007])
++ sum(df_tamilnadu['Area'][df_tamilnadu['Crop_Year'] == 2007])
++ sum(df_telangana['Area'][df_telangana['Crop_Year'] == 2007])
++ sum(df_tripura['Area'][df_tripura['Crop_Year'] == 2007])
++ sum(df_uttar['Area'][df_uttar['Crop_Year'] == 2007])
++ sum(df_uttarakhand['Area'][df_uttarakhand['Crop_Year'] == 2007])
++ sum(df_wb['Area'][df_wb['Crop_Year'] == 2007])
+)
+
+# ----- indian area of production in year 2008 ------
+
+df_area_2008 = ( 
+  sum(df_andaman['Area'][df_andaman['Crop_Year'] == 2008])
++ sum(df_andhra['Area'][df_andhra['Crop_Year'] == 2008])
++ sum(df_arunachal['Area'][df_arunachal['Crop_Year'] == 2008])
++ sum(df_assam['Area'][df_assam['Crop_Year'] == 2008])
++ sum(df_bihar['Area'][df_bihar['Crop_Year'] == 2008])
++ sum(df_candigarh['Area'][df_candigarh['Crop_Year'] == 2008])
++ sum(df_chattisgarh['Area'][df_chattisgarh['Crop_Year'] == 2008])
++ sum(df_dadra['Area'][df_dadra['Crop_Year'] == 2008])
++ sum(df_goa['Area'][df_goa['Crop_Year'] == 2008])
++ sum(df_gujrat['Area'][df_gujrat['Crop_Year'] == 2008])
++ sum(df_haryana['Area'][df_haryana['Crop_Year'] == 2008])
++ sum(df_himachal['Area'][df_himachal['Crop_Year'] == 2008])
++ sum(df_jammu['Area'][df_jammu['Crop_Year'] == 2008])
++ sum(df_jharkand['Area'][df_jharkand['Crop_Year'] == 2008])
++ sum(df_karnataka['Area'][df_karnataka['Crop_Year'] == 2008])
++ sum(df_kerala['Area'][df_kerala['Crop_Year'] == 2008])
++ sum(df_madhya['Area'][df_madhya['Crop_Year'] == 2008])
++ sum(df_maharashtra['Area'][df_maharashtra['Crop_Year'] == 2008])
++ sum(df_manipur['Area'][df_manipur['Crop_Year'] == 2008])
++ sum(df_meghalaya['Area'][df_meghalaya['Crop_Year'] == 2008])
++ sum(df_mizoram['Area'][df_mizoram['Crop_Year'] == 2008])
++ sum(df_nagaland['Area'][df_nagaland['Crop_Year'] == 2008])
++ sum(df_odisha['Area'][df_odisha['Crop_Year'] == 2008])
++ sum(df_puducherry['Area'][df_puducherry['Crop_Year'] == 2008])
++ sum(df_punjab['Area'][df_punjab['Crop_Year'] == 2008])
++ sum(df_rajasthan['Area'][df_rajasthan['Crop_Year'] == 2008])
++ sum(df_sikkim['Area'][df_sikkim['Crop_Year'] == 2008])
++ sum(df_tamilnadu['Area'][df_tamilnadu['Crop_Year'] == 2008])
++ sum(df_telangana['Area'][df_telangana['Crop_Year'] == 2008])
++ sum(df_tripura['Area'][df_tripura['Crop_Year'] == 2008])
++ sum(df_uttar['Area'][df_uttar['Crop_Year'] == 2008])
++ sum(df_uttarakhand['Area'][df_uttarakhand['Crop_Year'] == 2008])
++ sum(df_wb['Area'][df_wb['Crop_Year'] == 2008])
+)
+
+# ----- indian area of production in year 2009 ------
+
+df_area_2009 = ( 
+  sum(df_andaman['Area'][df_andaman['Crop_Year'] == 2009])
++ sum(df_andhra['Area'][df_andhra['Crop_Year'] == 2009])
++ sum(df_arunachal['Area'][df_arunachal['Crop_Year'] == 2009])
++ sum(df_assam['Area'][df_assam['Crop_Year'] == 2009])
++ sum(df_bihar['Area'][df_bihar['Crop_Year'] == 2009])
++ sum(df_candigarh['Area'][df_candigarh['Crop_Year'] == 2009])
++ sum(df_chattisgarh['Area'][df_chattisgarh['Crop_Year'] == 2009])
++ sum(df_dadra['Area'][df_dadra['Crop_Year'] == 2009])
++ sum(df_goa['Area'][df_goa['Crop_Year'] == 2009])
++ sum(df_gujrat['Area'][df_gujrat['Crop_Year'] == 2009])
++ sum(df_haryana['Area'][df_haryana['Crop_Year'] == 2009])
++ sum(df_himachal['Area'][df_himachal['Crop_Year'] == 2009])
++ sum(df_jammu['Area'][df_jammu['Crop_Year'] == 2009])
++ sum(df_jharkand['Area'][df_jharkand['Crop_Year'] == 2009])
++ sum(df_karnataka['Area'][df_karnataka['Crop_Year'] == 2009])
++ sum(df_kerala['Area'][df_kerala['Crop_Year'] == 2009])
++ sum(df_madhya['Area'][df_madhya['Crop_Year'] == 2009])
++ sum(df_maharashtra['Area'][df_maharashtra['Crop_Year'] == 2009])
++ sum(df_manipur['Area'][df_manipur['Crop_Year'] == 2009])
++ sum(df_meghalaya['Area'][df_meghalaya['Crop_Year'] == 2009])
++ sum(df_mizoram['Area'][df_mizoram['Crop_Year'] == 2009])
++ sum(df_nagaland['Area'][df_nagaland['Crop_Year'] == 2009])
++ sum(df_odisha['Area'][df_odisha['Crop_Year'] == 2009])
++ sum(df_puducherry['Area'][df_puducherry['Crop_Year'] == 2009])
++ sum(df_punjab['Area'][df_punjab['Crop_Year'] == 2009])
++ sum(df_rajasthan['Area'][df_rajasthan['Crop_Year'] == 2009])
++ sum(df_sikkim['Area'][df_sikkim['Crop_Year'] == 2009])
++ sum(df_tamilnadu['Area'][df_tamilnadu['Crop_Year'] == 2009])
++ sum(df_telangana['Area'][df_telangana['Crop_Year'] == 2009])
++ sum(df_tripura['Area'][df_tripura['Crop_Year'] == 2009])
++ sum(df_uttar['Area'][df_uttar['Crop_Year'] == 2009])
++ sum(df_uttarakhand['Area'][df_uttarakhand['Crop_Year'] == 2009])
++ sum(df_wb['Area'][df_wb['Crop_Year'] == 2009])
+)
+
+# ----- indian area of production in year 2010 ------
+
+df_area_2010 = ( 
+  sum(df_andaman['Area'][df_andaman['Crop_Year'] == 2010])
++ sum(df_andhra['Area'][df_andhra['Crop_Year'] == 2010])
++ sum(df_arunachal['Area'][df_arunachal['Crop_Year'] == 2010])
++ sum(df_assam['Area'][df_assam['Crop_Year'] == 2010])
++ sum(df_bihar['Area'][df_bihar['Crop_Year'] == 2010])
++ sum(df_candigarh['Area'][df_candigarh['Crop_Year'] == 2010])
++ sum(df_chattisgarh['Area'][df_chattisgarh['Crop_Year'] == 2010])
++ sum(df_dadra['Area'][df_dadra['Crop_Year'] == 2010])
++ sum(df_goa['Area'][df_goa['Crop_Year'] == 2010])
++ sum(df_gujrat['Area'][df_gujrat['Crop_Year'] == 2010])
++ sum(df_haryana['Area'][df_haryana['Crop_Year'] == 2010])
++ sum(df_himachal['Area'][df_himachal['Crop_Year'] == 2010])
++ sum(df_jammu['Area'][df_jammu['Crop_Year'] == 2010])
++ sum(df_jharkand['Area'][df_jharkand['Crop_Year'] == 2010])
++ sum(df_karnataka['Area'][df_karnataka['Crop_Year'] == 2010])
++ sum(df_kerala['Area'][df_kerala['Crop_Year'] == 2010])
++ sum(df_madhya['Area'][df_madhya['Crop_Year'] == 2010])
++ sum(df_maharashtra['Area'][df_maharashtra['Crop_Year'] == 2010])
++ sum(df_manipur['Area'][df_manipur['Crop_Year'] == 2010])
++ sum(df_meghalaya['Area'][df_meghalaya['Crop_Year'] == 2010])
++ sum(df_mizoram['Area'][df_mizoram['Crop_Year'] == 2010])
++ sum(df_nagaland['Area'][df_nagaland['Crop_Year'] == 2010])
++ sum(df_odisha['Area'][df_odisha['Crop_Year'] == 2010])
++ sum(df_puducherry['Area'][df_puducherry['Crop_Year'] == 2010])
++ sum(df_punjab['Area'][df_punjab['Crop_Year'] == 2010])
++ sum(df_rajasthan['Area'][df_rajasthan['Crop_Year'] == 2010])
++ sum(df_sikkim['Area'][df_sikkim['Crop_Year'] == 2010])
++ sum(df_tamilnadu['Area'][df_tamilnadu['Crop_Year'] == 2010])
++ sum(df_telangana['Area'][df_telangana['Crop_Year'] == 2010])
++ sum(df_tripura['Area'][df_tripura['Crop_Year'] == 2010])
++ sum(df_uttar['Area'][df_uttar['Crop_Year'] == 2010])
++ sum(df_uttarakhand['Area'][df_uttarakhand['Crop_Year'] == 2010])
++ sum(df_wb['Area'][df_wb['Crop_Year'] == 2010])
+)
+
+# ----- indian Production  in year 2000 ------
+
+df_Production_2000 = ( 
+   sum(df_andaman['Production'][df_andaman['Crop_Year'] == 2000])
++ sum(df_andhra['Production'][df_andhra['Crop_Year'] == 2000])
++ sum(df_arunachal['Production'][df_arunachal['Crop_Year'] == 2000])
++ sum(df_assam['Production'][df_assam['Crop_Year'] == 2000])
++ sum(df_bihar['Production'][df_bihar['Crop_Year'] == 2000])
++ sum(df_candigarh['Production'][df_candigarh['Crop_Year'] == 2000])
++ sum(df_chattisgarh['Production'][df_chattisgarh['Crop_Year'] == 2000])
++ sum(df_dadra['Production'][df_dadra['Crop_Year'] == 2000])
++ sum(df_goa['Production'][df_goa['Crop_Year'] == 2000])
++ sum(df_gujrat['Production'][df_gujrat['Crop_Year'] == 2000])
++ sum(df_haryana['Production'][df_haryana['Crop_Year'] == 2000])
++ sum(df_himachal['Production'][df_himachal['Crop_Year'] == 2000])
++ sum(df_jammu['Production'][df_jammu['Crop_Year'] == 2000])
++ sum(df_jharkand['Production'][df_jharkand['Crop_Year'] == 2000])
++ sum(df_karnataka['Production'][df_karnataka['Crop_Year'] == 2000])
++ sum(df_kerala['Production'][df_kerala['Crop_Year'] == 2000])
++ sum(df_madhya['Production'][df_madhya['Crop_Year'] == 2000])
++ sum(df_maharashtra['Production'][df_maharashtra['Crop_Year'] == 2000])
++ sum(df_manipur['Production'][df_manipur['Crop_Year'] == 2000])
++ sum(df_meghalaya['Production'][df_meghalaya['Crop_Year'] == 2000])
++ sum(df_mizoram['Production'][df_mizoram['Crop_Year'] == 2000])
++ sum(df_nagaland['Production'][df_nagaland['Crop_Year'] == 2000])
++ sum(df_odisha['Production'][df_odisha['Crop_Year'] == 2000])
++ sum(df_puducherry['Production'][df_puducherry['Crop_Year'] == 2000])
++ sum(df_punjab['Production'][df_punjab['Crop_Year'] == 2000])
++ sum(df_rajasthan['Production'][df_rajasthan['Crop_Year'] == 2000])
++ sum(df_sikkim['Production'][df_sikkim['Crop_Year'] == 2000])
++ sum(df_tamilnadu['Production'][df_tamilnadu['Crop_Year'] == 2000])
++ sum(df_telangana['Production'][df_telangana['Crop_Year'] == 2000])
++ sum(df_tripura['Production'][df_tripura['Crop_Year'] == 2000])
++ sum(df_uttar['Production'][df_uttar['Crop_Year'] == 2000])
++ sum(df_uttarakhand['Production'][df_uttarakhand['Crop_Year'] == 2000])
++ sum(df_wb['Production'][df_wb['Crop_Year'] == 2000])
+)
+
+# ----- indian Production  in year 2001 ------
+
+df_Production_2001 = ( 
+  sum(df_andaman['Production'][df_andaman['Crop_Year'] == 2001])
++ sum(df_andhra['Production'][df_andhra['Crop_Year'] == 2001])
++ sum(df_arunachal['Production'][df_arunachal['Crop_Year'] == 2001])
++ sum(df_assam['Production'][df_assam['Crop_Year'] == 2001])
++ sum(df_bihar['Production'][df_bihar['Crop_Year'] == 2001])
++ sum(df_candigarh['Production'][df_candigarh['Crop_Year'] == 2001])
++ sum(df_chattisgarh['Production'][df_chattisgarh['Crop_Year'] == 2001])
++ sum(df_dadra['Production'][df_dadra['Crop_Year'] == 2001])
++ sum(df_goa['Production'][df_goa['Crop_Year'] == 2001])
++ sum(df_gujrat['Production'][df_gujrat['Crop_Year'] == 2001])
++ sum(df_haryana['Production'][df_haryana['Crop_Year'] == 2001])
++ sum(df_himachal['Production'][df_himachal['Crop_Year'] == 2001])
++ sum(df_jammu['Production'][df_jammu['Crop_Year'] == 2001])
++ sum(df_jharkand['Production'][df_jharkand['Crop_Year'] == 2001])
++ sum(df_karnataka['Production'][df_karnataka['Crop_Year'] == 2001])
++ sum(df_kerala['Production'][df_kerala['Crop_Year'] == 2001])
++ sum(df_madhya['Production'][df_madhya['Crop_Year'] == 2001])
++ sum(df_maharashtra['Production'][df_maharashtra['Crop_Year'] == 2001])
++ sum(df_manipur['Production'][df_manipur['Crop_Year'] == 2001])
++ sum(df_meghalaya['Production'][df_meghalaya['Crop_Year'] == 2001])
++ sum(df_mizoram['Production'][df_mizoram['Crop_Year'] == 2001])
++ sum(df_nagaland['Production'][df_nagaland['Crop_Year'] == 2001])
++ sum(df_odisha['Production'][df_odisha['Crop_Year'] == 2001])
++ sum(df_puducherry['Production'][df_puducherry['Crop_Year'] == 2001])
++ sum(df_punjab['Production'][df_punjab['Crop_Year'] == 2001])
++ sum(df_rajasthan['Production'][df_rajasthan['Crop_Year'] == 2001])
++ sum(df_sikkim['Production'][df_sikkim['Crop_Year'] == 2001])
++ sum(df_tamilnadu['Production'][df_tamilnadu['Crop_Year'] == 2001])
++ sum(df_telangana['Production'][df_telangana['Crop_Year'] == 2001])
++ sum(df_tripura['Production'][df_tripura['Crop_Year'] == 2001])
++ sum(df_uttar['Production'][df_uttar['Crop_Year'] == 2001])
++ sum(df_uttarakhand['Production'][df_uttarakhand['Crop_Year'] == 2001])
++ sum(df_wb['Production'][df_wb['Crop_Year'] == 2001])
+)
+
+# ----- indian Production  in year 2002 ------
+
+df_Production_2002 = ( 
+  sum(df_andaman['Production'][df_andaman['Crop_Year'] == 2002])
++ sum(df_andhra['Production'][df_andhra['Crop_Year'] == 2002])
++ sum(df_arunachal['Production'][df_arunachal['Crop_Year'] == 2002])
++ sum(df_assam['Production'][df_assam['Crop_Year'] == 2002])
++ sum(df_bihar['Production'][df_bihar['Crop_Year'] == 2002])
++ sum(df_candigarh['Production'][df_candigarh['Crop_Year'] == 2002])
++ sum(df_chattisgarh['Production'][df_chattisgarh['Crop_Year'] == 2002])
++ sum(df_dadra['Production'][df_dadra['Crop_Year'] == 2002])
++ sum(df_goa['Production'][df_goa['Crop_Year'] == 2002])
++ sum(df_gujrat['Production'][df_gujrat['Crop_Year'] == 2002])
++ sum(df_haryana['Production'][df_haryana['Crop_Year'] == 2002])
++ sum(df_himachal['Production'][df_himachal['Crop_Year'] == 2002])
++ sum(df_jammu['Production'][df_jammu['Crop_Year'] == 2002])
++ sum(df_jharkand['Production'][df_jharkand['Crop_Year'] == 2002])
++ sum(df_karnataka['Production'][df_karnataka['Crop_Year'] == 2002])
++ sum(df_kerala['Production'][df_kerala['Crop_Year'] == 2002])
++ sum(df_madhya['Production'][df_madhya['Crop_Year'] == 2002])
++ sum(df_maharashtra['Production'][df_maharashtra['Crop_Year'] == 2002])
++ sum(df_manipur['Production'][df_manipur['Crop_Year'] == 2002])
++ sum(df_meghalaya['Production'][df_meghalaya['Crop_Year'] == 2002])
++ sum(df_mizoram['Production'][df_mizoram['Crop_Year'] == 2002])
++ sum(df_nagaland['Production'][df_nagaland['Crop_Year'] == 2002])
++ sum(df_odisha['Production'][df_odisha['Crop_Year'] == 2002])
++ sum(df_puducherry['Production'][df_puducherry['Crop_Year'] == 2002])
++ sum(df_punjab['Production'][df_punjab['Crop_Year'] == 2002])
++ sum(df_rajasthan['Production'][df_rajasthan['Crop_Year'] == 2002])
++ sum(df_sikkim['Production'][df_sikkim['Crop_Year'] == 2002])
++ sum(df_tamilnadu['Production'][df_tamilnadu['Crop_Year'] == 2002])
++ sum(df_telangana['Production'][df_telangana['Crop_Year'] == 2002])
++ sum(df_tripura['Production'][df_tripura['Crop_Year'] == 2002])
++ sum(df_uttar['Production'][df_uttar['Crop_Year'] == 2002])
++ sum(df_uttarakhand['Production'][df_uttarakhand['Crop_Year'] == 2002])
++ sum(df_wb['Production'][df_wb['Crop_Year'] == 2002])
+)
+
+# ----- indian Production  in year 2003 ------
+
+df_Production_2003 = ( 
+  sum(df_andaman['Production'][df_andaman['Crop_Year'] == 2003])
++ sum(df_andhra['Production'][df_andhra['Crop_Year'] == 2003])
++ sum(df_arunachal['Production'][df_arunachal['Crop_Year'] == 2003])
++ sum(df_assam['Production'][df_assam['Crop_Year'] == 2003])
++ sum(df_bihar['Production'][df_bihar['Crop_Year'] == 2003])
++ sum(df_candigarh['Production'][df_candigarh['Crop_Year'] == 2003])
++ sum(df_chattisgarh['Production'][df_chattisgarh['Crop_Year'] == 2003])
++ sum(df_dadra['Production'][df_dadra['Crop_Year'] == 2003])
++ sum(df_goa['Production'][df_goa['Crop_Year'] == 2003])
++ sum(df_gujrat['Production'][df_gujrat['Crop_Year'] == 2003])
++ sum(df_haryana['Production'][df_haryana['Crop_Year'] == 2003])
++ sum(df_himachal['Production'][df_himachal['Crop_Year'] == 2003])
++ sum(df_jammu['Production'][df_jammu['Crop_Year'] == 2003])
++ sum(df_jharkand['Production'][df_jharkand['Crop_Year'] == 2003])
++ sum(df_karnataka['Production'][df_karnataka['Crop_Year'] == 2003])
++ sum(df_kerala['Production'][df_kerala['Crop_Year'] == 2003])
++ sum(df_madhya['Production'][df_madhya['Crop_Year'] == 2003])
++ sum(df_maharashtra['Production'][df_maharashtra['Crop_Year'] == 2003])
++ sum(df_manipur['Production'][df_manipur['Crop_Year'] == 2003])
++ sum(df_meghalaya['Production'][df_meghalaya['Crop_Year'] == 2003])
++ sum(df_mizoram['Production'][df_mizoram['Crop_Year'] == 2003])
++ sum(df_nagaland['Production'][df_nagaland['Crop_Year'] == 2003])
++ sum(df_odisha['Production'][df_odisha['Crop_Year'] == 2003])
++ sum(df_puducherry['Production'][df_puducherry['Crop_Year'] == 2003])
++ sum(df_punjab['Production'][df_punjab['Crop_Year'] == 2003])
++ sum(df_rajasthan['Production'][df_rajasthan['Crop_Year'] == 2003])
++ sum(df_sikkim['Production'][df_sikkim['Crop_Year'] == 2003])
++ sum(df_tamilnadu['Production'][df_tamilnadu['Crop_Year'] == 2003])
++ sum(df_telangana['Production'][df_telangana['Crop_Year'] == 2003])
++ sum(df_tripura['Production'][df_tripura['Crop_Year'] == 2003])
++ sum(df_uttar['Production'][df_uttar['Crop_Year'] == 2003])
++ sum(df_uttarakhand['Production'][df_uttarakhand['Crop_Year'] == 2003])
++ sum(df_wb['Production'][df_wb['Crop_Year'] == 2003])
+)
+
+# ----- indian Production  in year 2004 ------
+
+df_Production_2004 = ( 
+  sum(df_andaman['Production'][df_andaman['Crop_Year'] == 2004])
++ sum(df_andhra['Production'][df_andhra['Crop_Year'] == 2004])
++ sum(df_arunachal['Production'][df_arunachal['Crop_Year'] == 2004])
++ sum(df_assam['Production'][df_assam['Crop_Year'] == 2004])
++ sum(df_bihar['Production'][df_bihar['Crop_Year'] == 2004])
++ sum(df_candigarh['Production'][df_candigarh['Crop_Year'] == 2004])
++ sum(df_chattisgarh['Production'][df_chattisgarh['Crop_Year'] == 2004])
++ sum(df_dadra['Production'][df_dadra['Crop_Year'] == 2004])
++ sum(df_goa['Production'][df_goa['Crop_Year'] == 2004])
++ sum(df_gujrat['Production'][df_gujrat['Crop_Year'] == 2004])
++ sum(df_haryana['Production'][df_haryana['Crop_Year'] == 2004])
++ sum(df_himachal['Production'][df_himachal['Crop_Year'] == 2004])
++ sum(df_jammu['Production'][df_jammu['Crop_Year'] == 2004])
++ sum(df_jharkand['Production'][df_jharkand['Crop_Year'] == 2004])
++ sum(df_karnataka['Production'][df_karnataka['Crop_Year'] == 2004])
++ sum(df_kerala['Production'][df_kerala['Crop_Year'] == 2004])
++ sum(df_madhya['Production'][df_madhya['Crop_Year'] == 2004])
++ sum(df_maharashtra['Production'][df_maharashtra['Crop_Year'] == 2004])
++ sum(df_manipur['Production'][df_manipur['Crop_Year'] == 2004])
++ sum(df_meghalaya['Production'][df_meghalaya['Crop_Year'] == 2004])
++ sum(df_mizoram['Production'][df_mizoram['Crop_Year'] == 2004])
++ sum(df_nagaland['Production'][df_nagaland['Crop_Year'] == 2004])
++ sum(df_odisha['Production'][df_odisha['Crop_Year'] == 2004])
++ sum(df_puducherry['Production'][df_puducherry['Crop_Year'] == 2004])
++ sum(df_punjab['Production'][df_punjab['Crop_Year'] == 2004])
++ sum(df_rajasthan['Production'][df_rajasthan['Crop_Year'] == 2004])
++ sum(df_sikkim['Production'][df_sikkim['Crop_Year'] == 2004])
++ sum(df_tamilnadu['Production'][df_tamilnadu['Crop_Year'] == 2004])
++ sum(df_telangana['Production'][df_telangana['Crop_Year'] == 2004])
++ sum(df_tripura['Production'][df_tripura['Crop_Year'] == 2004])
++ sum(df_uttar['Production'][df_uttar['Crop_Year'] == 2004])
++ sum(df_uttarakhand['Production'][df_uttarakhand['Crop_Year'] == 2004])
++ sum(df_wb['Production'][df_wb['Crop_Year'] == 2004])
+)
+
+# ----- indian Production  in year 2005 ------
+
+df_Production_2005 = ( 
+  sum(df_andaman['Production'][df_andaman['Crop_Year'] == 2005])
++ sum(df_andhra['Production'][df_andhra['Crop_Year'] == 2005])
++ sum(df_arunachal['Production'][df_arunachal['Crop_Year'] == 2005])
++ sum(df_assam['Production'][df_assam['Crop_Year'] == 2005])
++ sum(df_bihar['Production'][df_bihar['Crop_Year'] == 2005])
++ sum(df_candigarh['Production'][df_candigarh['Crop_Year'] == 2005])
++ sum(df_chattisgarh['Production'][df_chattisgarh['Crop_Year'] == 2005])
++ sum(df_dadra['Production'][df_dadra['Crop_Year'] == 2005])
++ sum(df_goa['Production'][df_goa['Crop_Year'] == 2005])
++ sum(df_gujrat['Production'][df_gujrat['Crop_Year'] == 2005])
++ sum(df_haryana['Production'][df_haryana['Crop_Year'] == 2005])
++ sum(df_himachal['Production'][df_himachal['Crop_Year'] == 2005])
++ sum(df_jammu['Production'][df_jammu['Crop_Year'] == 2005])
++ sum(df_jharkand['Production'][df_jharkand['Crop_Year'] == 2005])
++ sum(df_karnataka['Production'][df_karnataka['Crop_Year'] == 2005])
++ sum(df_kerala['Production'][df_kerala['Crop_Year'] == 2005])
++ sum(df_madhya['Production'][df_madhya['Crop_Year'] == 2005])
++ sum(df_maharashtra['Production'][df_maharashtra['Crop_Year'] == 2005])
++ sum(df_manipur['Production'][df_manipur['Crop_Year'] == 2005])
++ sum(df_meghalaya['Production'][df_meghalaya['Crop_Year'] == 2005])
++ sum(df_mizoram['Production'][df_mizoram['Crop_Year'] == 2005])
++ sum(df_nagaland['Production'][df_nagaland['Crop_Year'] == 2005])
++ sum(df_odisha['Production'][df_odisha['Crop_Year'] == 2005])
++ sum(df_puducherry['Production'][df_puducherry['Crop_Year'] == 2005])
++ sum(df_punjab['Production'][df_punjab['Crop_Year'] == 2005])
++ sum(df_rajasthan['Production'][df_rajasthan['Crop_Year'] == 2005])
++ sum(df_sikkim['Production'][df_sikkim['Crop_Year'] == 2005])
++ sum(df_tamilnadu['Production'][df_tamilnadu['Crop_Year'] == 2005])
++ sum(df_telangana['Production'][df_telangana['Crop_Year'] == 2005])
++ sum(df_tripura['Production'][df_tripura['Crop_Year'] == 2005])
++ sum(df_uttar['Production'][df_uttar['Crop_Year'] == 2005])
++ sum(df_uttarakhand['Production'][df_uttarakhand['Crop_Year'] == 2005])
++ sum(df_wb['Production'][df_wb['Crop_Year'] == 2005])
+)
+
+# ----- indian Production  in year 2006 ------
+
+df_Production_2006 = ( 
+  sum(df_andaman['Production'][df_andaman['Crop_Year'] == 2006])
++ sum(df_andhra['Production'][df_andhra['Crop_Year'] == 2006])
++ sum(df_arunachal['Production'][df_arunachal['Crop_Year'] == 2006])
++ sum(df_assam['Production'][df_assam['Crop_Year'] == 2006])
++ sum(df_bihar['Production'][df_bihar['Crop_Year'] == 2006])
++ sum(df_candigarh['Production'][df_candigarh['Crop_Year'] == 2006])
++ sum(df_chattisgarh['Production'][df_chattisgarh['Crop_Year'] == 2006])
++ sum(df_dadra['Production'][df_dadra['Crop_Year'] == 2006])
++ sum(df_goa['Production'][df_goa['Crop_Year'] == 2006])
++ sum(df_gujrat['Production'][df_gujrat['Crop_Year'] == 2006])
++ sum(df_haryana['Production'][df_haryana['Crop_Year'] == 2006])
++ sum(df_himachal['Production'][df_himachal['Crop_Year'] == 2006])
++ sum(df_jammu['Production'][df_jammu['Crop_Year'] == 2006])
++ sum(df_jharkand['Production'][df_jharkand['Crop_Year'] == 2006])
++ sum(df_karnataka['Production'][df_karnataka['Crop_Year'] == 2006])
++ sum(df_kerala['Production'][df_kerala['Crop_Year'] == 2006])
++ sum(df_madhya['Production'][df_madhya['Crop_Year'] == 2006])
++ sum(df_maharashtra['Production'][df_maharashtra['Crop_Year'] == 2006])
++ sum(df_manipur['Production'][df_manipur['Crop_Year'] == 2006])
++ sum(df_meghalaya['Production'][df_meghalaya['Crop_Year'] == 2006])
++ sum(df_mizoram['Production'][df_mizoram['Crop_Year'] == 2006])
++ sum(df_nagaland['Production'][df_nagaland['Crop_Year'] == 2006])
++ sum(df_odisha['Production'][df_odisha['Crop_Year'] == 2006])
++ sum(df_puducherry['Production'][df_puducherry['Crop_Year'] == 2006])
++ sum(df_punjab['Production'][df_punjab['Crop_Year'] == 2006])
++ sum(df_rajasthan['Production'][df_rajasthan['Crop_Year'] == 2006])
++ sum(df_sikkim['Production'][df_sikkim['Crop_Year'] == 2006])
++ sum(df_tamilnadu['Production'][df_tamilnadu['Crop_Year'] == 2006])
++ sum(df_telangana['Production'][df_telangana['Crop_Year'] == 2006])
++ sum(df_tripura['Production'][df_tripura['Crop_Year'] == 2006])
++ sum(df_uttar['Production'][df_uttar['Crop_Year'] == 2006])
++ sum(df_uttarakhand['Production'][df_uttarakhand['Crop_Year'] == 2006])
++ sum(df_wb['Production'][df_wb['Crop_Year'] == 2006])
+)
+
+# ----- indian Production  in year 2007 ------
+
+df_Production_2007 = ( 
+  sum(df_andaman['Production'][df_andaman['Crop_Year'] == 2007])
++ sum(df_andhra['Production'][df_andhra['Crop_Year'] == 2007])
++ sum(df_arunachal['Production'][df_arunachal['Crop_Year'] == 2007])
++ sum(df_assam['Production'][df_assam['Crop_Year'] == 2007])
++ sum(df_bihar['Production'][df_bihar['Crop_Year'] == 2007])
++ sum(df_candigarh['Production'][df_candigarh['Crop_Year'] == 2007])
++ sum(df_chattisgarh['Production'][df_chattisgarh['Crop_Year'] == 2007])
++ sum(df_dadra['Production'][df_dadra['Crop_Year'] == 2007])
++ sum(df_goa['Production'][df_goa['Crop_Year'] == 2007])
++ sum(df_gujrat['Production'][df_gujrat['Crop_Year'] == 2007])
++ sum(df_haryana['Production'][df_haryana['Crop_Year'] == 2007])
++ sum(df_himachal['Production'][df_himachal['Crop_Year'] == 2007])
++ sum(df_jammu['Production'][df_jammu['Crop_Year'] == 2007])
++ sum(df_jharkand['Production'][df_jharkand['Crop_Year'] == 2007])
++ sum(df_karnataka['Production'][df_karnataka['Crop_Year'] == 2007])
++ sum(df_kerala['Production'][df_kerala['Crop_Year'] == 2007])
++ sum(df_madhya['Production'][df_madhya['Crop_Year'] == 2007])
++ sum(df_maharashtra['Production'][df_maharashtra['Crop_Year'] == 2007])
++ sum(df_manipur['Production'][df_manipur['Crop_Year'] == 2007])
++ sum(df_meghalaya['Production'][df_meghalaya['Crop_Year'] == 2007])
++ sum(df_mizoram['Production'][df_mizoram['Crop_Year'] == 2007])
++ sum(df_nagaland['Production'][df_nagaland['Crop_Year'] == 2007])
++ sum(df_odisha['Production'][df_odisha['Crop_Year'] == 2007])
++ sum(df_puducherry['Production'][df_puducherry['Crop_Year'] == 2007])
++ sum(df_punjab['Production'][df_punjab['Crop_Year'] == 2007])
++ sum(df_rajasthan['Production'][df_rajasthan['Crop_Year'] == 2007])
++ sum(df_sikkim['Production'][df_sikkim['Crop_Year'] == 2007])
++ sum(df_tamilnadu['Production'][df_tamilnadu['Crop_Year'] == 2007])
++ sum(df_telangana['Production'][df_telangana['Crop_Year'] == 2007])
++ sum(df_tripura['Production'][df_tripura['Crop_Year'] == 2007])
++ sum(df_uttar['Production'][df_uttar['Crop_Year'] == 2007])
++ sum(df_uttarakhand['Production'][df_uttarakhand['Crop_Year'] == 2007])
++ sum(df_wb['Production'][df_wb['Crop_Year'] == 2007])
+)
+
+# ----- indian Production  in year 2008 ------
+
+df_Production_2008 = ( 
+  sum(df_andaman['Production'][df_andaman['Crop_Year'] == 2008])
++ sum(df_andhra['Production'][df_andhra['Crop_Year'] == 2008])
++ sum(df_arunachal['Production'][df_arunachal['Crop_Year'] == 2008])
++ sum(df_assam['Production'][df_assam['Crop_Year'] == 2008])
++ sum(df_bihar['Production'][df_bihar['Crop_Year'] == 2008])
++ sum(df_candigarh['Production'][df_candigarh['Crop_Year'] == 2008])
++ sum(df_chattisgarh['Production'][df_chattisgarh['Crop_Year'] == 2008])
++ sum(df_dadra['Production'][df_dadra['Crop_Year'] == 2008])
++ sum(df_goa['Production'][df_goa['Crop_Year'] == 2008])
++ sum(df_gujrat['Production'][df_gujrat['Crop_Year'] == 2008])
++ sum(df_haryana['Production'][df_haryana['Crop_Year'] == 2008])
++ sum(df_himachal['Production'][df_himachal['Crop_Year'] == 2008])
++ sum(df_jammu['Production'][df_jammu['Crop_Year'] == 2008])
++ sum(df_jharkand['Production'][df_jharkand['Crop_Year'] == 2008])
++ sum(df_karnataka['Production'][df_karnataka['Crop_Year'] == 2008])
++ sum(df_kerala['Production'][df_kerala['Crop_Year'] == 2008])
++ sum(df_madhya['Production'][df_madhya['Crop_Year'] == 2008])
++ sum(df_maharashtra['Production'][df_maharashtra['Crop_Year'] == 2008])
++ sum(df_manipur['Production'][df_manipur['Crop_Year'] == 2008])
++ sum(df_meghalaya['Production'][df_meghalaya['Crop_Year'] == 2008])
++ sum(df_mizoram['Production'][df_mizoram['Crop_Year'] == 2008])
++ sum(df_nagaland['Production'][df_nagaland['Crop_Year'] == 2008])
++ sum(df_odisha['Production'][df_odisha['Crop_Year'] == 2008])
++ sum(df_puducherry['Production'][df_puducherry['Crop_Year'] == 2008])
++ sum(df_punjab['Production'][df_punjab['Crop_Year'] == 2008])
++ sum(df_rajasthan['Production'][df_rajasthan['Crop_Year'] == 2008])
++ sum(df_sikkim['Production'][df_sikkim['Crop_Year'] == 2008])
++ sum(df_tamilnadu['Production'][df_tamilnadu['Crop_Year'] == 2008])
++ sum(df_telangana['Production'][df_telangana['Crop_Year'] == 2008])
++ sum(df_tripura['Production'][df_tripura['Crop_Year'] == 2008])
++ sum(df_uttar['Production'][df_uttar['Crop_Year'] == 2008])
++ sum(df_uttarakhand['Production'][df_uttarakhand['Crop_Year'] == 2008])
++ sum(df_wb['Production'][df_wb['Crop_Year'] == 2008])
+)
+
+# ----- indian Production  in year 2009 ------
+
+df_Production_2009 = ( 
+  sum(df_andaman['Production'][df_andaman['Crop_Year'] == 2009])
++ sum(df_andhra['Production'][df_andhra['Crop_Year'] == 2009])
++ sum(df_arunachal['Production'][df_arunachal['Crop_Year'] == 2009])
++ sum(df_assam['Production'][df_assam['Crop_Year'] == 2009])
++ sum(df_bihar['Production'][df_bihar['Crop_Year'] == 2009])
++ sum(df_candigarh['Production'][df_candigarh['Crop_Year'] == 2009])
++ sum(df_chattisgarh['Production'][df_chattisgarh['Crop_Year'] == 2009])
++ sum(df_dadra['Production'][df_dadra['Crop_Year'] == 2009])
++ sum(df_goa['Production'][df_goa['Crop_Year'] == 2009])
++ sum(df_gujrat['Production'][df_gujrat['Crop_Year'] == 2009])
++ sum(df_haryana['Production'][df_haryana['Crop_Year'] == 2009])
++ sum(df_himachal['Production'][df_himachal['Crop_Year'] == 2009])
++ sum(df_jammu['Production'][df_jammu['Crop_Year'] == 2009])
++ sum(df_jharkand['Production'][df_jharkand['Crop_Year'] == 2009])
++ sum(df_karnataka['Production'][df_karnataka['Crop_Year'] == 2009])
++ sum(df_kerala['Production'][df_kerala['Crop_Year'] == 2009])
++ sum(df_madhya['Production'][df_madhya['Crop_Year'] == 2009])
++ sum(df_maharashtra['Production'][df_maharashtra['Crop_Year'] == 2009])
++ sum(df_manipur['Production'][df_manipur['Crop_Year'] == 2009])
++ sum(df_meghalaya['Production'][df_meghalaya['Crop_Year'] == 2009])
++ sum(df_mizoram['Production'][df_mizoram['Crop_Year'] == 2009])
++ sum(df_nagaland['Production'][df_nagaland['Crop_Year'] == 2009])
++ sum(df_odisha['Production'][df_odisha['Crop_Year'] == 2009])
++ sum(df_puducherry['Production'][df_puducherry['Crop_Year'] == 2009])
++ sum(df_punjab['Production'][df_punjab['Crop_Year'] == 2009])
++ sum(df_rajasthan['Production'][df_rajasthan['Crop_Year'] == 2009])
++ sum(df_sikkim['Production'][df_sikkim['Crop_Year'] == 2009])
++ sum(df_tamilnadu['Production'][df_tamilnadu['Crop_Year'] == 2009])
++ sum(df_telangana['Production'][df_telangana['Crop_Year'] == 2009])
++ sum(df_tripura['Production'][df_tripura['Crop_Year'] == 2009])
++ sum(df_uttar['Production'][df_uttar['Crop_Year'] == 2009])
++ sum(df_uttarakhand['Production'][df_uttarakhand['Crop_Year'] == 2009])
++ sum(df_wb['Production'][df_wb['Crop_Year'] == 2009])
+)
+
+# ----- indian Production  in year 2010 ------
+
+df_Production_2010 = ( 
+  sum(df_andaman['Production'][df_andaman['Crop_Year'] == 2010])
++ sum(df_andhra['Production'][df_andhra['Crop_Year'] == 2010])
++ sum(df_arunachal['Production'][df_arunachal['Crop_Year'] == 2010])
++ sum(df_assam['Production'][df_assam['Crop_Year'] == 2010])
++ sum(df_bihar['Production'][df_bihar['Crop_Year'] == 2010])
++ sum(df_candigarh['Production'][df_candigarh['Crop_Year'] == 2010])
++ sum(df_chattisgarh['Production'][df_chattisgarh['Crop_Year'] == 2010])
++ sum(df_dadra['Production'][df_dadra['Crop_Year'] == 2010])
++ sum(df_goa['Production'][df_goa['Crop_Year'] == 2010])
++ sum(df_gujrat['Production'][df_gujrat['Crop_Year'] == 2010])
++ sum(df_haryana['Production'][df_haryana['Crop_Year'] == 2010])
++ sum(df_himachal['Production'][df_himachal['Crop_Year'] == 2010])
++ sum(df_jammu['Production'][df_jammu['Crop_Year'] == 2010])
++ sum(df_jharkand['Production'][df_jharkand['Crop_Year'] == 2010])
++ sum(df_karnataka['Production'][df_karnataka['Crop_Year'] == 2010])
++ sum(df_kerala['Production'][df_kerala['Crop_Year'] == 2010])
++ sum(df_madhya['Production'][df_madhya['Crop_Year'] == 2010])
++ sum(df_maharashtra['Production'][df_maharashtra['Crop_Year'] == 2010])
++ sum(df_manipur['Production'][df_manipur['Crop_Year'] == 2010])
++ sum(df_meghalaya['Production'][df_meghalaya['Crop_Year'] == 2010])
++ sum(df_mizoram['Production'][df_mizoram['Crop_Year'] == 2010])
++ sum(df_nagaland['Production'][df_nagaland['Crop_Year'] == 2010])
++ sum(df_odisha['Production'][df_odisha['Crop_Year'] == 2010])
++ sum(df_puducherry['Production'][df_puducherry['Crop_Year'] == 2010])
++ sum(df_punjab['Production'][df_punjab['Crop_Year'] == 2010])
++ sum(df_rajasthan['Production'][df_rajasthan['Crop_Year'] == 2010])
++ sum(df_sikkim['Production'][df_sikkim['Crop_Year'] == 2010])
++ sum(df_tamilnadu['Production'][df_tamilnadu['Crop_Year'] == 2010])
++ sum(df_telangana['Production'][df_telangana['Crop_Year'] == 2010])
++ sum(df_tripura['Production'][df_tripura['Crop_Year'] == 2010])
++ sum(df_uttar['Production'][df_uttar['Crop_Year'] == 2010])
++ sum(df_uttarakhand['Production'][df_uttarakhand['Crop_Year'] == 2010])
++ sum(df_wb['Production'][df_wb['Crop_Year'] == 2010])
+)
+
+def production_area_data():
+
+    print("\n----------------------------------------------------")
+    print("\tArea of production in India (2000 to 2010)")
+    print("-------------------------------------------------------\n")
+    print("[01] Area of production in year 2000 =",df_area_2000)
+    print("[02] Area of production in year 2001 =",df_area_2001)
+    print("[03] Area of production in year 2002 =",df_area_2002)
+    print("[04] Area of production in year 2003 =",df_area_2003)
+    print("[05] Area of production in year 2004 =",df_area_2004)
+    print("[06] Area of production in year 2005 =",df_area_2005)
+    print("[07] Area of production in year 2006 =",df_area_2006)
+    print("[08] Area of production in year 2007 =",df_area_2007)
+    print("[09] Area of production in year 2008 =",df_area_2008)
+    print("[10] Area of production in year 2009 =",df_area_2009)
+    print("[11] Area of production in year 2010 =",df_area_2010)
+    print("-------------------------------------------------------\n")
+
+
+def production_data():
+    
+    print("\n----------------------------------------------------")
+    print("\tProduction  in India (2000 to 2010)")
+    print("-------------------------------------------------------\n")
+    print("[01] Production  in year 2000 =",df_Production_2000)
+    print("[02] Production  in year 2001 =",df_Production_2001)
+    print("[03] Production  in year 2002 =",df_Production_2002)
+    print("[04] Production  in year 2003 =",df_Production_2003)
+    print("[05] Production  in year 2004 =",df_Production_2004)
+    print("[06] Production  in year 2005 =",df_Production_2005)
+    print("[07] Production  in year 2006 =",df_Production_2006)
+    print("[08] Production  in year 2007 =",df_Production_2007)
+    print("[09] Production  in year 2008 =",df_Production_2008)
+    print("[10] Production  in year 2009 =",df_Production_2009)
+    print("[11] Production  in year 2010 =",df_Production_2010)
+    print("-------------------------------------------------------\n")
+
+
+df_year = (2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010)
+df_area_2000_10 = (df_area_2000//pow(10,5),
+                   df_area_2001//pow(10,5),
+                   df_area_2002//pow(10,5),
+                   df_area_2003//pow(10,5),
+                   df_area_2004//pow(10,5),
+                   df_area_2005//pow(10,5),
+                   df_area_2005//pow(10,5),
+                   df_area_2005//pow(10,5),
+                   df_area_2005//pow(10,5),
+                   df_area_2009//pow(10,5),
+                   df_area_2010//pow(10,5))
+
+df_Production_2000_10 = (
+                   df_Production_2000//pow(10,6),
+                   df_Production_2001//pow(10,6),
+                   df_Production_2002//pow(10,6),
+                   df_Production_2003//pow(10,6),
+                   df_Production_2004//pow(10,6),
+                   df_Production_2006//pow(10,6),
+                   df_Production_2006//pow(10,6),
+                   df_Production_2006//pow(10,6),
+                   df_Production_2006//pow(10,6),
+                   df_Production_2009//pow(10,6),
+                   df_Production_2010//pow(10,6))
+    
+def area_and_production_plot():                   
+                                                 
+    plt.title("Crop_year vs. (production_area & production)[2000 to 2010]")
+    plt.plot(df_year,df_area_2000_10,linestyle="dashed",label="Area * 10^5")                   
+    plt.plot(df_year,df_Production_2000_10,label="Production * 10^6")
+    plt.legend()                   
+    plt.show()
+
+
+
+# [area of production] predection model design using linear regression 
+
+def estimate_coef(x, y): 
+	
+	n = np.size(x)  # size of data set
+	mean_x = np.mean(x) 
+	mean_y = np.mean(y) 
+	xy  = np.sum(y*x) - n*(mean_y)*(mean_x) 
+	xx  = np.sum(x*x) - n*(mean_x)*(mean_x)  
+	b_1 = xy / xx 
+	b_0 = (mean_y) - b_1*(mean_x)
+	return(b_0,b_1) 
+
+def production_area_prediction_2025(x,y,b,bm,a): 
+    
+    # Create perdiction upto 2023
+    # Using Equation : y = b_0 + (b_1 * x)
+    
+    df_area_2010_1 = df_area_2010//pow(10,5)
+    df_area_2011 = bm + (a * 2011)
+    df_area_2012 = bm + (a * 2012)
+    df_area_2013 = bm + (a * 2013)
+    df_area_2014 = bm + (a * 2014)
+    df_area_2015 = bm + (a * 2015)
+    df_area_2016 = bm + (a * 2016)
+    df_area_2017 = bm + (a * 2017)
+    df_area_2018 = bm + (a * 2018)
+    df_area_2019 = bm + (a * 2019)
+    df_area_2020 = bm + (a * 2020)
+    df_area_2021 = bm + (a * 2021)
+    df_area_2022 = bm + (a * 2022)
+    df_area_2023 = bm + (a * 2023)
+    df_area_2024 = bm + (a * 2024)
+    df_area_2025 = bm + (a * 2025)
+    
+    df_2000_2023 =(df_area_2010_1,
+                   df_area_2011,df_area_2012,df_area_2013,
+                   df_area_2014,df_area_2015,df_area_2016,
+                   df_area_2017,df_area_2018,df_area_2019,
+                   df_area_2020,df_area_2021,df_area_2022,
+                   df_area_2023,df_area_2024,df_area_2025 )
+                   
+    df_year1 = (2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,
+               2022,2023,2024,2025)
+    
+    # plot regression line
+          
+    plt.plot(x, y, color = "m",marker = "o",label="Actual production area * 10^5")  
+    y_pred = b[0] + b[1]*x 
+    plt.plot(x, y_pred, color = "g",label="Regression line") 
+    plt.xlabel('year -- >') 
+    plt.ylabel('Area of production --->')                                  
+    
+    # plot prediction line
+    
+    plt.title("Prediction for production area from 2011 to 2025 ")
+    plt.plot(df_year1,df_2000_2023,linestyle="dashed",label="Predicted production area * 10^5")
+    plt.legend()
+    plt.show()
+    
+    mean_y = np.mean(y)
+    area_growth_2011 = (((df_area_2011)-(mean_y))/(mean_y))*100
+    area_growth_2012 = (((df_area_2012)-(mean_y))/(mean_y))*100
+    area_growth_2013 = (((df_area_2013)-(mean_y))/(mean_y))*100
+    area_growth_2014 = (((df_area_2014)-(mean_y))/(mean_y))*100
+    area_growth_2015 = (((df_area_2015)-(mean_y))/(mean_y))*100
+    area_growth_2016 = (((df_area_2016)-(mean_y))/(mean_y))*100
+    area_growth_2017 = (((df_area_2017)-(mean_y))/(mean_y))*100
+    area_growth_2018 = (((df_area_2018)-(mean_y))/(mean_y))*100
+    area_growth_2019 = (((df_area_2019)-(mean_y))/(mean_y))*100
+    area_growth_2020 = (((df_area_2020)-(mean_y))/(mean_y))*100
+    area_growth_2021 = (((df_area_2021)-(mean_y))/(mean_y))*100
+    area_growth_2022 = (((df_area_2022)-(mean_y))/(mean_y))*100
+    area_growth_2023 = (((df_area_2023)-(mean_y))/(mean_y))*100
+    area_growth_2024 = (((df_area_2024)-(mean_y))/(mean_y))*100
+    area_growth_2025 = (((df_area_2025)-(mean_y))/(mean_y))*100
+    
+    
+    print("\n----------------------------------------------------------")
+    print("production area growth according to prediction model")
+    print("--------------------------------------------------------\n")
+    print("Production area gowth in 2011 = ",area_growth_2011,"%")
+    print("Production area gowth in 2012 = ",area_growth_2012,"%")
+    print("Production area gowth in 2013 = ",area_growth_2013,"%")
+    print("Production area gowth in 2014 = ",area_growth_2014,"%")
+    print("Production area gowth in 2015 = ",area_growth_2015,"%")
+    print("Production area gowth in 2016 = ",area_growth_2016,"%")
+    print("Production area gowth in 2017 = ",area_growth_2017,"%")
+    print("Production area gowth in 2018 = ",area_growth_2018,"%")
+    print("Production area gowth in 2019 = ",area_growth_2019,"%")
+    print("Production area gowth in 2020 = ",area_growth_2020,"%")
+    print("Production area gowth in 2021 = ",area_growth_2021,"%")
+    print("Production area gowth in 2022 = ",area_growth_2022,"%")
+    print("Production area gowth in 2023 = ",area_growth_2023,"%")
+    print("Production area gowth in 2024 = ",area_growth_2024,"%")
+    print("Production area gowth in 2025 = ",area_growth_2025,"%")
+    print("--------------------------------------------------------\n")
+
+
+#---- Production prediction model -----
+
+def estimate_coef1(x, y): 
+	
+	n = np.size(x)  # size of data set
+	mean_x = np.mean(x) 
+	mean_y = np.mean(y) 
+	xy  = np.sum(y*x) - n*(mean_y)*(mean_x) 
+	xx  = np.sum(x*x) - n*(mean_x)*(mean_x)  
+	b_1 = xy / xx 
+	b_0 = (mean_y) - b_1*(mean_x)
+	return(b_0,b_1) 
+
+def Production_prediction_2025(x,y,b,bm,a): 
+    
+    # Create perdiction upto 2023
+    # Using Equation : y = b_0 + (b_1 * x)
+   
+    df_Production_2010_1 = df_Production_2010//pow(10,6)
+    df_Production_2011 = bm + (a * 2011)
+    df_Production_2012 = bm + (a * 2012)
+    df_Production_2013 = bm + (a * 2013)
+    df_Production_2014 = bm + (a * 2014)
+    df_Production_2015 = bm + (a * 2015)
+    df_Production_2016 = bm + (a * 2016)
+    df_Production_2017 = bm + (a * 2017)
+    df_Production_2018 = bm + (a * 2018)
+    df_Production_2019 = bm + (a * 2019)
+    df_Production_2020 = bm + (a * 2020)
+    df_Production_2021 = bm + (a * 2021)
+    df_Production_2022 = bm + (a * 2022)
+    df_Production_2023 = bm + (a * 2023)
+    df_Production_2024 = bm + (a * 2024)
+    df_Production_2025 = bm + (a * 2025)
+    
+    df_production_2000_2023 =(df_Production_2010_1,
+                   df_Production_2011,df_Production_2012,df_Production_2013,
+                   df_Production_2014,df_Production_2015,df_Production_2016,
+                   df_Production_2017,df_Production_2018,df_Production_2019,
+                   df_Production_2020,df_Production_2021,df_Production_2022,
+                   df_Production_2023,df_Production_2024,df_Production_2025 )
+                   
+    df_year1 = (2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,
+               2022,2023,2024,2025)
+    
+    # plot regression line
+          
+    plt.plot(x, y, color = "m",marker = "o",label="Actual production * 10^6")  
+    y_pred = b[0] + b[1]*x 
+    plt.plot(x, y_pred, color = "g",label="Regression line") 
+    plt.xlabel('year -- >') 
+    plt.ylabel('production --->')                                  
+    
+    # plot prediction line
+    
+    plt.title("Prediction for Crop Production from 2011 to 2025 ")
+    plt.plot(df_year1,df_production_2000_2023,linestyle="dashed",label="Predicted Production * 10^6")
+    plt.legend()
+    plt.show()
+    
+    mean_y = np.mean(y)
+    Production_growth_2011 = (((df_Production_2011)-(mean_y))/(mean_y))*100
+    Production_growth_2012 = (((df_Production_2012)-(mean_y))/(mean_y))*100
+    Production_growth_2013 = (((df_Production_2013)-(mean_y))/(mean_y))*100
+    Production_growth_2014 = (((df_Production_2014)-(mean_y))/(mean_y))*100
+    Production_growth_2015 = (((df_Production_2015)-(mean_y))/(mean_y))*100
+    Production_growth_2016 = (((df_Production_2016)-(mean_y))/(mean_y))*100
+    Production_growth_2017 = (((df_Production_2017)-(mean_y))/(mean_y))*100
+    Production_growth_2018 = (((df_Production_2018)-(mean_y))/(mean_y))*100
+    Production_growth_2019 = (((df_Production_2019)-(mean_y))/(mean_y))*100
+    Production_growth_2020 = (((df_Production_2020)-(mean_y))/(mean_y))*100
+    Production_growth_2021 = (((df_Production_2021)-(mean_y))/(mean_y))*100
+    Production_growth_2022 = (((df_Production_2022)-(mean_y))/(mean_y))*100
+    Production_growth_2023 = (((df_Production_2023)-(mean_y))/(mean_y))*100
+    Production_growth_2024 = (((df_Production_2024)-(mean_y))/(mean_y))*100
+    Production_growth_2025 = (((df_Production_2025)-(mean_y))/(mean_y))*100
+    
+    print("\n----------------------------------------------------------")
+    print("Production growth according to prediction model")
+    print("--------------------------------------------------------\n")
+    print("Production gowth in 2011 = ",Production_growth_2011,"%")
+    print("Production gowth in 2012 = ",Production_growth_2012,"%")
+    print("Production gowth in 2013 = ",Production_growth_2013,"%")
+    print("Production gowth in 2014 = ",Production_growth_2014,"%")
+    print("Production gowth in 2015 = ",Production_growth_2015,"%")
+    print("Production gowth in 2016 = ",Production_growth_2016,"%")
+    print("Production gowth in 2017 = ",Production_growth_2017,"%")
+    print("Production gowth in 2018 = ",Production_growth_2018,"%")
+    print("Production gowth in 2019 = ",Production_growth_2019,"%")
+    print("Production gowth in 2020 = ",Production_growth_2020,"%")
+    print("Production gowth in 2021 = ",Production_growth_2021,"%")
+    print("Production gowth in 2022 = ",Production_growth_2022,"%")
+    print("Production gowth in 2023 = ",Production_growth_2023,"%")
+    print("Production gowth in 2024 = ",Production_growth_2024,"%")
+    print("Production gowth in 2025 = ",Production_growth_2025,"%")
+    print("--------------------------------------------------------\n")
+
+
+def agriculture_main():
+    
+    ch = 1
+    while (ch == 1):
+        print("-----------------------------------------")
+        print("\tMain menu (Agriculture Data Aanlysis) :")
+        print("-----------------------------------------\n")
+        print("[1] Print dimension of the data file")
+        print("[2] Print column names of the data file")
+        print("[3] Print available states in the data")
+        print("[4] Print districts of all states")
+        print("[5] Print production data")
+        print("[6] Print production area data")
+        print("[7] Plot area and production (without prediction)")
+        print("[8] Area prediction model and print growth rate")
+        print("[9] Production prediction model and print growth rate")
+        print("---------------------------------------")
+        
+        op = input("enter your option : ")
+        op1 = int(op,10)
+        
+        if op1 == 1:
+            dimension()
+        
+        elif op1 == 2:    
+            column_names()
+            
+        elif op1 == 3:
+            states()
+        
+        elif op1 == 4 :
+            district_of_all_states()
+            
+        elif op1 == 5:
+            production_data()
+        
+        elif op1 == 6:
+            production_area_data()
+        
+        elif op1 == 7:
+            area_and_production_plot()
+            break
+        
+        elif op1 == 8:
+            x = np.array(df_year)
+            y = np.array(df_area_2000_10) 
+            b = estimate_coef(x, y)
+            print("\n----------------------")
+            print("Estimated coefficients for area:\n----------------------\n") 
+            print("b_0 = {}\nb_1 = {}".format(b[0], b[1])) 
+            print("----------------------\n")    
+            production_area_prediction_2025(x,y,b,b[0],b[1])
+            break
+        
+        elif op1 == 9 :
+            x = np.array(df_year)
+            y = np.array(df_Production_2000_10) 
+            b = estimate_coef1(x, y)
+            print("\n----------------------")
+            print("Estimated coefficients for production:\n----------------------\n") 
+            print("b_0 = {}\nb_1 = {}".format(b[0], b[1])) 
+            print("----------------------\n")    
+            Production_prediction_2025(x,y,b,b[0],b[1])
+            break
+            
+        
+        else:
+            print("wrong input !!")
+        
+        #------- exit process design --------   
+         
+        ch1 = input("enter:\n[0] for exit\n[1] for continue : ")
+        ch =int(ch1,10)
+                
+if __name__ == "__main__": 
+	agriculture_main() 
+

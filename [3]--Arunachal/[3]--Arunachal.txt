@@ -1,0 +1,3198 @@
+# -*- coding: utf-8 -*-
+#-----(1) data analysis of agriculture sector -----
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import random
+
+df = pd.read_csv ('C:/Users/Jeet Das/Desktop/Major Project - Indian Economy/Project ( Section 1-Indian Economy)/Section-1_Data_sheet/(02)_agriculture.csv',encoding="cp1252")
+
+print("\n------- output data :-----------\n")
+print("Agriculture data analysis:")
+print("\n-----------------------------------\n")
+
+# Question – A : get row and column numbers 
+
+print('---------------------------------------------')
+print("Dimension of the data frame = ",df.shape)
+print('---------------------------------------------')
+
+# Question – B : print column names :
+
+
+print('------------------------\n Column names as follows :')
+print('------------------------\n')
+count = 0
+for col in df.columns: 
+        print(count,"-->",col)
+        count = count+1
+print("\n-----------------------------\n")
+
+#Question – C : State_Name (using GROUP BY method) and no. of states :
+
+state_names = df.groupby(['State_Name'])[['District_Name']].count()
+print("---------------------------------")
+print("\t states names : ")
+print("-------------------------------")
+print(state_names)
+print("-------------------------------")
+count = 0
+for row in range(len(state_names)): 
+        count = count+1
+print("total no. of states = ",count)        
+print("-----------------------------\n")
+
+
+#Question-(3) Arunachal Pradesh
+
+print("---- State-3 : Arunachal Pradesh -----")
+df_arunachal = df[df.State_Name == 'Arunachal Pradesh']
+df_arunachal_dist = df_arunachal.groupby(['District_Name'])[['Crop_Year']].count()
+print(df_arunachal_dist)
+
+# crop year in Arunachal Pradesh
+
+print("--- Crop year in Arunachal Pradesh ----")
+df_arunachal_year = df_arunachal.groupby(['Crop_Year'])[['Crop_Year']].count()
+print(df_arunachal_year)
+
+# crop types in Arunachal Pradesh
+
+print("--- Crop types in Arunachal Pradesh -----")
+df_arunachal_crop = df_arunachal.groupby(['Crop'])[['Crop']].count()
+print(df_arunachal_crop)
+
+# details of arunachal : [1] ANJAW 
+
+print("---- Details of arunachal : [1] ANJAW ------")
+df_arunachal_1 = df_arunachal[df_arunachal.District_Name == 'ANJAW']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_1_1997     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_1_1997_sum = df_arunachal_1_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_1_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_1_1998     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_1_1998_sum = df_arunachal_1_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_1_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_1_1999     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_1_1999_sum = df_arunachal_1_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_1_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_1_2000     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_1_2000_sum = df_arunachal_1_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_1_2001     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_1_2001_sum = df_arunachal_1_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_1_2002     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_1_2002_sum = df_arunachal_1_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_1_2003     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_1_2003_sum = df_arunachal_1_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_1_2004     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_1_2004_sum = df_arunachal_1_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_1_2005     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_1_2005_sum = df_arunachal_1_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_1_2006     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_1_2006_sum = df_arunachal_1_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_1_2007     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_1_2007_sum = df_arunachal_1_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_1_2008     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_1_2008_sum = df_arunachal_1_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_1_2009     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_1_2009_sum = df_arunachal_1_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_1_2010     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_1_2010_sum = df_arunachal_1_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_1_2011     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_1_2011_sum = df_arunachal_1_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_1_2012     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_1_2012_sum = df_arunachal_1_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_1_2013     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_1_2013_sum = df_arunachal_1_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_1_2014     = df_arunachal_1.loc[df_arunachal_1['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_1_2014_sum = df_arunachal_1_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_1_2014_sum)
+print("---------------------------------")
+        
+# details of arunachal : [2] CHANGLANG  
+
+print("--- Details of arunachal : [2] CHANGLANG ------")
+df_arunachal_2 = df_arunachal[df_arunachal.District_Name == 'CHANGLANG']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_2_1997     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_2_1997_sum = df_arunachal_2_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_2_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_2_1998     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_2_1998_sum = df_arunachal_2_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_2_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_2_1999     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_2_1999_sum = df_arunachal_2_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_2_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_2_2000     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_2_2000_sum = df_arunachal_2_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_2_2001     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_2_2001_sum = df_arunachal_2_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_2_2002     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_2_2002_sum = df_arunachal_2_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_2_2003     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_2_2003_sum = df_arunachal_2_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_2_2004     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_2_2004_sum = df_arunachal_2_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_2_2005     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_2_2005_sum = df_arunachal_2_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_2_2006     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_2_2006_sum = df_arunachal_2_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_2_2007     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_2_2007_sum = df_arunachal_2_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_2_2008     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_2_2008_sum = df_arunachal_2_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_2_2009     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_2_2009_sum = df_arunachal_2_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_2_2010     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_2_2010_sum = df_arunachal_2_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_2_2011     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_2_2011_sum = df_arunachal_2_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_2_2012     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_2_2012_sum = df_arunachal_2_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_2_2013     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_2_2013_sum = df_arunachal_2_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_2_2014     = df_arunachal_2.loc[df_arunachal_2['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_2_2014_sum = df_arunachal_2_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_2_2014_sum)
+print("---------------------------------")
+                                                       
+# details of arunachal : [3] DIBANG VALLEY  
+
+print("--- Details of arunachal : [3] DIBANG VALLEY -------- ")
+df_arunachal_3 = df_arunachal[df_arunachal.District_Name == 'DIBANG VALLEY']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_3_1997     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_3_1997_sum = df_arunachal_3_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_3_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_3_1998     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_3_1998_sum = df_arunachal_3_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_3_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_3_1999     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_3_1999_sum = df_arunachal_3_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_3_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_3_2000     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_3_2000_sum = df_arunachal_3_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_3_2001     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_3_2001_sum = df_arunachal_3_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_3_2002     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_3_2002_sum = df_arunachal_3_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_3_2003     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_3_2003_sum = df_arunachal_3_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_3_2004     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_3_2004_sum = df_arunachal_3_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_3_2005     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_3_2005_sum = df_arunachal_3_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_3_2006     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_3_2006_sum = df_arunachal_3_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_3_2007     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_3_2007_sum = df_arunachal_3_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_3_2008     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_3_2008_sum = df_arunachal_3_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_3_2009     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_3_2009_sum = df_arunachal_3_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_3_2010     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_3_2010_sum = df_arunachal_3_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_3_2011     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_3_2011_sum = df_arunachal_3_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_3_2012     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_3_2012_sum = df_arunachal_3_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_3_2013     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_3_2013_sum = df_arunachal_3_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_3_2014     = df_arunachal_3.loc[df_arunachal_3['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_3_2014_sum = df_arunachal_3_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_3_2014_sum)
+print("---------------------------------")
+                                    
+# details of arunachal : [4] EAST KAMENG 
+
+print("---- Details of arunachal : [4] EAST KAMENG -----")
+df_arunachal_4 = df_arunachal[df_arunachal.District_Name == 'EAST KAMENG']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_4_1997     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_4_1997_sum = df_arunachal_4_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_4_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_4_1998     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_4_1998_sum = df_arunachal_4_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_4_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_4_1999     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_4_1999_sum = df_arunachal_4_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_4_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_4_2000     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_4_2000_sum = df_arunachal_4_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_4_2001     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_4_2001_sum = df_arunachal_4_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_4_2002     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_4_2002_sum = df_arunachal_4_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_4_2003     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_4_2003_sum = df_arunachal_4_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_4_2004     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_4_2004_sum = df_arunachal_4_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_4_2005     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_4_2005_sum = df_arunachal_4_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_4_2006     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_4_2006_sum = df_arunachal_4_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_4_2007     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_4_2007_sum = df_arunachal_4_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_4_2008     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_4_2008_sum = df_arunachal_4_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_4_2009     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_4_2009_sum = df_arunachal_4_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_4_2010     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_4_2010_sum = df_arunachal_4_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_4_2011     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_4_2011_sum = df_arunachal_4_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_4_2012     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_4_2012_sum = df_arunachal_4_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_4_2013     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_4_2013_sum = df_arunachal_4_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_4_2014     = df_arunachal_4.loc[df_arunachal_4['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_4_2014_sum = df_arunachal_4_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_4_2014_sum)
+print("---------------------------------")
+                    
+# details of arunachal : [5] EAST SIANG 
+
+print("--- Details of arunachal : [5] EAST SIANG -----")
+df_arunachal_5 = df_arunachal[df_arunachal.District_Name == 'EAST SIANG']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_5_1997     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_5_1997_sum = df_arunachal_5_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_5_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_5_1998     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_5_1998_sum = df_arunachal_5_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_5_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_5_1999     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_5_1999_sum = df_arunachal_5_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_5_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_5_2000     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_5_2000_sum = df_arunachal_5_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_5_2001     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_5_2001_sum = df_arunachal_5_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_5_2002     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_5_2002_sum = df_arunachal_5_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_5_2003     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_5_2003_sum = df_arunachal_5_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_5_2004     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_5_2004_sum = df_arunachal_5_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_5_2005     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_5_2005_sum = df_arunachal_5_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_5_2006     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_5_2006_sum = df_arunachal_5_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_5_2007     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_5_2007_sum = df_arunachal_5_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_5_2008     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_5_2008_sum = df_arunachal_5_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_5_2009     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_5_2009_sum = df_arunachal_5_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_5_2010     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_5_2010_sum = df_arunachal_5_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_5_2011     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_5_2011_sum = df_arunachal_5_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_5_2012     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_5_2012_sum = df_arunachal_5_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_5_2013     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_5_2013_sum = df_arunachal_5_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_5_2014     = df_arunachal_5.loc[df_arunachal_5['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_5_2014_sum = df_arunachal_5_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_5_2014_sum)
+print("---------------------------------")
+                         
+# details of arunachal : [6] KURUNG KUMEY
+
+print("---- Details of arunachal : [6] KURUNG KUMEY-----")
+df_arunachal_6 = df_arunachal[df_arunachal.District_Name == 'KURUNG KUMEY']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_6_1997     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_6_1997_sum = df_arunachal_6_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_6_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_6_1998     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_6_1998_sum = df_arunachal_6_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_6_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_6_1999     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_6_1999_sum = df_arunachal_6_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_6_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_6_2000     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_6_2000_sum = df_arunachal_6_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_6_2001     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_6_2001_sum = df_arunachal_6_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_6_2002     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_6_2002_sum = df_arunachal_6_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_6_2003     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_6_2003_sum = df_arunachal_6_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_6_2004     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_6_2004_sum = df_arunachal_6_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_6_2005     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_6_2005_sum = df_arunachal_6_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_6_2006     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_6_2006_sum = df_arunachal_6_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_6_2007     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_6_2007_sum = df_arunachal_6_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_6_2008     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_6_2008_sum = df_arunachal_6_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_6_2009     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_6_2009_sum = df_arunachal_6_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_6_2010     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_6_2010_sum = df_arunachal_6_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_6_2011     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_6_2011_sum = df_arunachal_6_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_6_2012     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_6_2012_sum = df_arunachal_6_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_6_2013     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_6_2013_sum = df_arunachal_6_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_6_2014     = df_arunachal_6.loc[df_arunachal_6['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_6_2014_sum = df_arunachal_6_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_6_2014_sum)
+print("---------------------------------")
+                      
+# details of arunachal : [7] LOHIT 
+
+print("----- Details of arunachal : [7] LOHIT -----")
+df_arunachal_7 = df_arunachal[df_arunachal.District_Name == 'LOHIT']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_7_1997     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_7_1997_sum = df_arunachal_7_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_7_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_7_1998     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_7_1998_sum = df_arunachal_7_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_7_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_7_1999     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_7_1999_sum = df_arunachal_7_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_7_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_7_2000     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_7_2000_sum = df_arunachal_7_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_7_2001     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_7_2001_sum = df_arunachal_7_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_7_2002     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_7_2002_sum = df_arunachal_7_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_7_2003     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_7_2003_sum = df_arunachal_7_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_7_2004     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_7_2004_sum = df_arunachal_7_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_7_2005     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_7_2005_sum = df_arunachal_7_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_7_2006     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_7_2006_sum = df_arunachal_7_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_7_2007     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_7_2007_sum = df_arunachal_7_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_7_2008     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_7_2008_sum = df_arunachal_7_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_7_2009     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_7_2009_sum = df_arunachal_7_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_7_2010     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_7_2010_sum = df_arunachal_7_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_7_2011     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_7_2011_sum = df_arunachal_7_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_7_2012     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_7_2012_sum = df_arunachal_7_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_7_2013     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_7_2013_sum = df_arunachal_7_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_7_2014     = df_arunachal_7.loc[df_arunachal_7['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_7_2014_sum = df_arunachal_7_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_7_2014_sum)
+print("---------------------------------")
+                                                                                 
+# details of arunachal : [8] LONGDING  
+
+print("---- Details of arunachal : [8] LONGDING -------")
+df_arunachal_8 = df_arunachal[df_arunachal.District_Name == 'LONGDING']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_8_1997     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_8_1997_sum = df_arunachal_8_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_8_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_8_1998     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_8_1998_sum = df_arunachal_8_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_8_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_8_1999     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_8_1999_sum = df_arunachal_8_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_8_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_8_2000     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_8_2000_sum = df_arunachal_8_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_8_2001     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_8_2001_sum = df_arunachal_8_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_8_2002     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_8_2002_sum = df_arunachal_8_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_8_2003     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_8_2003_sum = df_arunachal_8_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_8_2004     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_8_2004_sum = df_arunachal_8_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_8_2005     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_8_2005_sum = df_arunachal_8_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_8_2006     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_8_2006_sum = df_arunachal_8_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_8_2007     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_8_2007_sum = df_arunachal_8_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_8_2008     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_8_2008_sum = df_arunachal_8_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_8_2009     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_8_2009_sum = df_arunachal_8_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_8_2010     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_8_2010_sum = df_arunachal_8_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_8_2011     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_8_2011_sum = df_arunachal_8_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_8_2012     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_8_2012_sum = df_arunachal_8_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_8_2013     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_8_2013_sum = df_arunachal_8_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_8_2014     = df_arunachal_8.loc[df_arunachal_8['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_8_2014_sum = df_arunachal_8_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_8_2014_sum)
+print("---------------------------------")
+                               
+# details of arunachal : [9] LOWER DIBANG VALLEY 
+
+print("----Details of arunachal : [9] LOWER DIBANG VALLEY-------")
+df_arunachal_9 = df_arunachal[df_arunachal.District_Name == 'LOWER DIBANG VALLEY']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_9_1997     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_9_1997_sum = df_arunachal_9_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_9_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_9_1998     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_9_1998_sum = df_arunachal_9_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_9_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_9_1999     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_9_1999_sum = df_arunachal_9_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_9_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_9_2000     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_9_2000_sum = df_arunachal_9_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_9_2001     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_9_2001_sum = df_arunachal_9_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_9_2002     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_9_2002_sum = df_arunachal_9_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_9_2003     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_9_2003_sum = df_arunachal_9_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_9_2004     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_9_2004_sum = df_arunachal_9_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_9_2005     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_9_2005_sum = df_arunachal_9_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_9_2006     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_9_2006_sum = df_arunachal_9_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_9_2007     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_9_2007_sum = df_arunachal_9_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_9_2008     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_9_2008_sum = df_arunachal_9_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_9_2009     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_9_2009_sum = df_arunachal_9_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_9_2010     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_9_2010_sum = df_arunachal_9_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_9_2011     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_9_2011_sum = df_arunachal_9_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_9_2012     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_9_2012_sum = df_arunachal_9_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_9_2013     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_9_2013_sum = df_arunachal_9_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_9_2014     = df_arunachal_9.loc[df_arunachal_9['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_9_2014_sum = df_arunachal_9_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_9_2014_sum)
+print("---------------------------------")
+
+# details of arunachal : [10] LOWER SUBANSIRI 
+
+print("--- Details of arunachal : [10] LOWER SUBANSIRI -----")
+df_arunachal_10 = df_arunachal[df_arunachal.District_Name == 'LOWER SUBANSIRI']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_10_1997     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_10_1997_sum = df_arunachal_10_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_10_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_10_1998     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_10_1998_sum = df_arunachal_10_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_10_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_10_1999     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_10_1999_sum = df_arunachal_10_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_10_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_10_2000     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_10_2000_sum = df_arunachal_10_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_10_2001     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_10_2001_sum = df_arunachal_10_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_10_2002     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_10_2002_sum = df_arunachal_10_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_10_2003     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_10_2003_sum = df_arunachal_10_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_10_2004     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_10_2004_sum = df_arunachal_10_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_10_2005     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_10_2005_sum = df_arunachal_10_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_10_2006     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_10_2006_sum = df_arunachal_10_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_10_2007     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_10_2007_sum = df_arunachal_10_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_10_2008     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_10_2008_sum = df_arunachal_10_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_10_2009     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_10_2009_sum = df_arunachal_10_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_10_2010     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_10_2010_sum = df_arunachal_10_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_10_2011     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_10_2011_sum = df_arunachal_10_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_10_2012     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_10_2012_sum = df_arunachal_10_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_10_2013     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_10_2013_sum = df_arunachal_10_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_10_2014     = df_arunachal_10.loc[df_arunachal_10['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_10_2014_sum = df_arunachal_10_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_10_2014_sum)
+print("---------------------------------")
+   
+# details of arunachal : [11] NAMSAI 
+
+print("--- Details of arunachal : [11] NAMSAI ----")
+df_arunachal_11 = df_arunachal[df_arunachal.District_Name == 'NAMSAI']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_11_1997     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_11_1997_sum = df_arunachal_11_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_11_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_11_1998     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_11_1998_sum = df_arunachal_11_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_11_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_11_1999     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_11_1999_sum = df_arunachal_11_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_11_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_11_2000     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_11_2000_sum = df_arunachal_11_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_11_2001     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_11_2001_sum = df_arunachal_11_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_11_2002     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_11_2002_sum = df_arunachal_11_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_11_2003     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_11_2003_sum = df_arunachal_11_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_11_2004     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_11_2004_sum = df_arunachal_11_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_11_2005     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_11_2005_sum = df_arunachal_11_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_11_2006     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_11_2006_sum = df_arunachal_11_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_11_2007     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_11_2007_sum = df_arunachal_11_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_11_2008     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_11_2008_sum = df_arunachal_11_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_11_2009     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_11_2009_sum = df_arunachal_11_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_11_2010     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_11_2010_sum = df_arunachal_11_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_11_2011     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_11_2011_sum = df_arunachal_11_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_11_2012     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_11_2012_sum = df_arunachal_11_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_11_2013     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_11_2013_sum = df_arunachal_11_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_11_2014     = df_arunachal_11.loc[df_arunachal_11['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_11_2014_sum = df_arunachal_11_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_11_2014_sum)
+print("---------------------------------")
+                                    
+# details of arunachal : [12] PAPUM PARE 
+
+print("---- Details of arunachal : [12] PAPUM PARE -----")
+df_arunachal_12 = df_arunachal[df_arunachal.District_Name == 'PAPUM PARE']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_12_1997     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_12_1997_sum = df_arunachal_12_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_12_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_12_1998     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_12_1998_sum = df_arunachal_12_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_12_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_12_1999     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_12_1999_sum = df_arunachal_12_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_12_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_12_2000     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_12_2000_sum = df_arunachal_12_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_12_2001     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_12_2001_sum = df_arunachal_12_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_12_2002     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_12_2002_sum = df_arunachal_12_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_12_2003     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_12_2003_sum = df_arunachal_12_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_12_2004     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_12_2004_sum = df_arunachal_12_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_12_2005     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_12_2005_sum = df_arunachal_12_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_12_2006     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_12_2006_sum = df_arunachal_12_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_12_2007     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_12_2007_sum = df_arunachal_12_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_12_2008     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_12_2008_sum = df_arunachal_12_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_12_2009     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_12_2009_sum = df_arunachal_12_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_12_2010     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_12_2010_sum = df_arunachal_12_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_12_2011     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_12_2011_sum = df_arunachal_12_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_12_2012     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_12_2012_sum = df_arunachal_12_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_12_2013     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_12_2013_sum = df_arunachal_12_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_12_2014     = df_arunachal_12.loc[df_arunachal_12['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_12_2014_sum = df_arunachal_12_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_12_2014_sum)
+print("---------------------------------")
+
+# details of arunachal : [13] TAWANG
+
+print("--- Details of arunachal : [13] TAWANG ----")
+df_arunachal_13 = df_arunachal[df_arunachal.District_Name == 'TAWANG']
+                  
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_13_1997     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_13_1997_sum = df_arunachal_13_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_13_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_13_1998     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_13_1998_sum = df_arunachal_13_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_13_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_13_1999     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_13_1999_sum = df_arunachal_13_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_13_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_13_2000     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_13_2000_sum = df_arunachal_13_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_13_2001     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_13_2001_sum = df_arunachal_13_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_13_2002     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_13_2002_sum = df_arunachal_13_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_13_2003     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_13_2003_sum = df_arunachal_13_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_13_2004     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_13_2004_sum = df_arunachal_13_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_13_2005     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_13_2005_sum = df_arunachal_13_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_13_2006     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_13_2006_sum = df_arunachal_13_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_13_2007     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_13_2007_sum = df_arunachal_13_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_13_2008     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_13_2008_sum = df_arunachal_13_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_13_2009     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_13_2009_sum = df_arunachal_13_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_13_2010     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_13_2010_sum = df_arunachal_13_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_13_2011     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_13_2011_sum = df_arunachal_13_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_13_2012     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_13_2012_sum = df_arunachal_13_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_13_2013     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_13_2013_sum = df_arunachal_13_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_13_2014     = df_arunachal_13.loc[df_arunachal_13['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_13_2014_sum = df_arunachal_13_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_13_2014_sum)
+print("---------------------------------")
+                                                                                                              
+# details of arunachal : [14] TIRAP
+
+print("----- Details of arunachal : [14] TIRAP ----")
+df_arunachal_14 = df_arunachal[df_arunachal.District_Name == 'TIRAP']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_14_1997     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_14_1997_sum = df_arunachal_14_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_14_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_14_1998     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_14_1998_sum = df_arunachal_14_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_14_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_14_1999     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_14_1999_sum = df_arunachal_14_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_14_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_14_2000     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_14_2000_sum = df_arunachal_14_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_14_2001     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_14_2001_sum = df_arunachal_14_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_14_2002     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_14_2002_sum = df_arunachal_14_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_14_2003     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_14_2003_sum = df_arunachal_14_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_14_2004     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_14_2004_sum = df_arunachal_14_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_14_2005     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_14_2005_sum = df_arunachal_14_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_14_2006     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_14_2006_sum = df_arunachal_14_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_14_2007     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_14_2007_sum = df_arunachal_14_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_14_2008     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_14_2008_sum = df_arunachal_14_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_14_2009     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_14_2009_sum = df_arunachal_14_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_14_2010     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_14_2010_sum = df_arunachal_14_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_14_2011     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_14_2011_sum = df_arunachal_14_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_14_2012     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_14_2012_sum = df_arunachal_14_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_14_2013     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_14_2013_sum = df_arunachal_14_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_14_2014     = df_arunachal_14.loc[df_arunachal_14['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_14_2014_sum = df_arunachal_14_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_14_2014_sum)
+print("---------------------------------")              
+                                                          
+# details of arunachal : [15] UPPER SIANG  
+
+print("---- Details of arunachal : [15] UPPER SIANG --- ")
+df_arunachal_15 = df_arunachal[df_arunachal.District_Name == 'UPPER SIANG']
+             
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_15_1997     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_15_1997_sum = df_arunachal_15_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_15_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_15_1998     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_15_1998_sum = df_arunachal_15_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_15_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_15_1999     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_15_1999_sum = df_arunachal_15_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_15_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_15_2000     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_15_2000_sum = df_arunachal_15_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_15_2001     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_15_2001_sum = df_arunachal_15_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_15_2002     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_15_2002_sum = df_arunachal_15_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_15_2003     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_15_2003_sum = df_arunachal_15_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_15_2004     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_15_2004_sum = df_arunachal_15_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_15_2005     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_15_2005_sum = df_arunachal_15_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_15_2006     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_15_2006_sum = df_arunachal_15_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_15_2007     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_15_2007_sum = df_arunachal_15_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_15_2008     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_15_2008_sum = df_arunachal_15_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_15_2009     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_15_2009_sum = df_arunachal_15_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_15_2010     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_15_2010_sum = df_arunachal_15_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_15_2011     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_15_2011_sum = df_arunachal_15_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_15_2012     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_15_2012_sum = df_arunachal_15_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_15_2013     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_15_2013_sum = df_arunachal_15_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_15_2014     = df_arunachal_15.loc[df_arunachal_15['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_15_2014_sum = df_arunachal_15_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_15_2014_sum)
+print("---------------------------------")             
+                                      
+# details of arunachal : [16] UPPER SUBANSIRI 
+
+print("---- Details of arunachal : [16] UPPER SUBANSIRI ----")
+df_arunachal_16 = df_arunachal[df_arunachal.District_Name == 'UPPER SUBANSIRI']
+          
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_16_1997     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_16_1997_sum = df_arunachal_16_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_16_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_16_1998     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_16_1998_sum = df_arunachal_16_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_16_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_16_1999     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_16_1999_sum = df_arunachal_16_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_16_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_16_2000     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_16_2000_sum = df_arunachal_16_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_16_2001     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_16_2001_sum = df_arunachal_16_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_16_2002     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_16_2002_sum = df_arunachal_16_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_16_2003     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_16_2003_sum = df_arunachal_16_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_16_2004     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_16_2004_sum = df_arunachal_16_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_16_2005     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_16_2005_sum = df_arunachal_16_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_16_2006     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_16_2006_sum = df_arunachal_16_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_16_2007     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_16_2007_sum = df_arunachal_16_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_16_2008     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_16_2008_sum = df_arunachal_16_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_16_2009     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_16_2009_sum = df_arunachal_16_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_16_2010     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_16_2010_sum = df_arunachal_16_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_16_2011     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_16_2011_sum = df_arunachal_16_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_16_2012     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_16_2012_sum = df_arunachal_16_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_16_2013     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_16_2013_sum = df_arunachal_16_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_16_2014     = df_arunachal_16.loc[df_arunachal_16['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_16_2014_sum = df_arunachal_16_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_16_2014_sum)
+print("---------------------------------")
+                                                                  
+# details of arunachal : [17] WEST KAMENG 
+
+print("------ Details of arunachal : [17] WEST KAMENG ------")
+df_arunachal_17 = df_arunachal[df_arunachal.District_Name == 'WEST KAMENG']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_17_1997     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_17_1997_sum = df_arunachal_17_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_17_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_17_1998     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_17_1998_sum = df_arunachal_17_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_17_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_17_1999     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_17_1999_sum = df_arunachal_17_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_17_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_17_2000     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_17_2000_sum = df_arunachal_17_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_17_2001     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_17_2001_sum = df_arunachal_17_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_17_2002     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_17_2002_sum = df_arunachal_17_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_17_2003     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_17_2003_sum = df_arunachal_17_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_17_2004     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_17_2004_sum = df_arunachal_17_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_17_2005     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_17_2005_sum = df_arunachal_17_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_17_2006     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_17_2006_sum = df_arunachal_17_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_17_2007     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_17_2007_sum = df_arunachal_17_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_17_2008     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_17_2008_sum = df_arunachal_17_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_17_2009     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_17_2009_sum = df_arunachal_17_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_17_2010     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_17_2010_sum = df_arunachal_17_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_17_2011     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_17_2011_sum = df_arunachal_17_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_17_2012     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_17_2012_sum = df_arunachal_17_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_17_2013     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_17_2013_sum = df_arunachal_17_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_17_2014     = df_arunachal_17.loc[df_arunachal_17['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_17_2014_sum = df_arunachal_17_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_17_2014_sum)
+print("---------------------------------")
+                  
+# details of arunachal : [18] WEST SIANG                 
+
+print("---- Details of arunachal : [18] WEST SIANG -------")
+df_arunachal_18 = df_arunachal[df_arunachal.District_Name == 'WEST SIANG']
+
+# Select rows from year =( 1997 to 2014 ) and all columns between 'Area' and 'Production'
+
+print("---------------------------------")
+print("Data for Crop_Year = 1997")
+print("---------------------------------")
+df_arunachal_18_1997     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 1997,'Area':'Production']
+df_arunachal_18_1997_sum = df_arunachal_18_1997.sum(axis = 0, skipna = True)
+print(df_arunachal_18_1997_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1998")
+print("---------------------------------")
+df_arunachal_18_1998     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 1998,'Area':'Production']
+df_arunachal_18_1998_sum = df_arunachal_18_1998.sum(axis = 0, skipna = True)
+print(df_arunachal_18_1998_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 1999")
+print("---------------------------------")
+df_arunachal_18_1999     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 1999,'Area':'Production']
+df_arunachal_18_1999_sum = df_arunachal_18_1999.sum(axis = 0, skipna = True)
+print(df_arunachal_18_1999_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2000")
+print("---------------------------------")
+df_arunachal_18_2000     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2000,'Area':'Production']
+df_arunachal_18_2000_sum = df_arunachal_18_2000.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2000_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2001")
+print("---------------------------------")
+df_arunachal_18_2001     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2001,'Area':'Production']
+df_arunachal_18_2001_sum = df_arunachal_18_2001.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2001_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2002")
+print("---------------------------------")
+df_arunachal_18_2002     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2002,'Area':'Production']
+df_arunachal_18_2002_sum = df_arunachal_18_2002.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2002_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2003")
+print("---------------------------------")
+df_arunachal_18_2003     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2003,'Area':'Production']
+df_arunachal_18_2003_sum = df_arunachal_18_2003.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2003_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2004")
+print("---------------------------------")
+df_arunachal_18_2004     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2004,'Area':'Production']
+df_arunachal_18_2004_sum = df_arunachal_18_2004.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2004_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2005")
+print("---------------------------------")
+df_arunachal_18_2005     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2005,'Area':'Production']
+df_arunachal_18_2005_sum = df_arunachal_18_2005.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2005_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2006")
+print("---------------------------------")
+df_arunachal_18_2006     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2006,'Area':'Production']
+df_arunachal_18_2006_sum = df_arunachal_18_2006.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2006_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2007")
+print("---------------------------------")
+df_arunachal_18_2007     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2007,'Area':'Production']
+df_arunachal_18_2007_sum = df_arunachal_18_2007.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2007_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2008")
+print("---------------------------------")
+df_arunachal_18_2008     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2008,'Area':'Production']
+df_arunachal_18_2008_sum = df_arunachal_18_2008.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2008_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2009")
+print("---------------------------------")
+df_arunachal_18_2009     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2009,'Area':'Production']
+df_arunachal_18_2009_sum = df_arunachal_18_2009.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2009_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2010")
+print("---------------------------------")
+df_arunachal_18_2010     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2010,'Area':'Production']
+df_arunachal_18_2010_sum = df_arunachal_18_2010.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2010_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2011")
+print("---------------------------------")
+df_arunachal_18_2011     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2011,'Area':'Production']
+df_arunachal_18_2011_sum = df_arunachal_18_2011.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2011_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2012")
+print("---------------------------------")
+df_arunachal_18_2012     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2012,'Area':'Production']
+df_arunachal_18_2012_sum = df_arunachal_18_2012.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2012_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2013")
+print("---------------------------------")
+df_arunachal_18_2013     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2013,'Area':'Production']
+df_arunachal_18_2013_sum = df_arunachal_18_2013.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2013_sum)
+print("---------------------------------")
+print("Data for Crop_Year = 2014")
+print("---------------------------------")
+df_arunachal_18_2014     = df_arunachal_18.loc[df_arunachal_18['Crop_Year'] == 2014,'Area':'Production']
+df_arunachal_18_2014_sum = df_arunachal_18_2014.sum(axis = 0, skipna = True)
+print(df_arunachal_18_2014_sum)
+print("---------------------------------")
+
+                                                                                                                                                                                                                                                                                                                                                                                                                          
+# plotting of Arunachal Pradesh 'Area' and 'Production'
+# plotting  A.P : [1] ANJAW                                                                                                                                                  
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_1_1997_sum['Area'],
+      df_arunachal_1_1998_sum['Area'],
+      df_arunachal_1_1999_sum['Area'],
+      df_arunachal_1_2000_sum['Area'],
+      df_arunachal_1_2001_sum['Area'], 
+      df_arunachal_1_2002_sum['Area'],
+      df_arunachal_1_2003_sum['Area'],
+      df_arunachal_1_2004_sum['Area'],
+      df_arunachal_1_2005_sum['Area'],
+      df_arunachal_1_2006_sum['Area'],
+      df_arunachal_1_2007_sum['Area'],
+      df_arunachal_1_2008_sum['Area'],
+      df_arunachal_1_2009_sum['Area'],
+      df_arunachal_1_2010_sum['Area'],
+      df_arunachal_1_2011_sum['Area'],
+      df_arunachal_1_2012_sum['Area'],
+      df_arunachal_1_2013_sum['Area'],
+      df_arunachal_1_2014_sum['Area'])
+
+y22 =(df_arunachal_1_1997_sum['Production'],
+      df_arunachal_1_1998_sum['Production'],
+      df_arunachal_1_1999_sum['Production'],
+      df_arunachal_1_2000_sum['Production'],
+      df_arunachal_1_2001_sum['Production'], 
+      df_arunachal_1_2002_sum['Production'],
+      df_arunachal_1_2003_sum['Production'],
+      df_arunachal_1_2004_sum['Production'],
+      df_arunachal_1_2005_sum['Production'],
+      df_arunachal_1_2006_sum['Production'],
+      df_arunachal_1_2007_sum['Production'],
+      df_arunachal_1_2008_sum['Production'],
+      df_arunachal_1_2009_sum['Production'],
+      df_arunachal_1_2010_sum['Production'],
+      df_arunachal_1_2011_sum['Production'],
+      df_arunachal_1_2012_sum['Production'],
+      df_arunachal_1_2013_sum['Production'],
+      df_arunachal_1_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [1] ANJAW (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [1] ANJAW (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
+# plotting  A.P : [2] CHANGLANG
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_2_1997_sum['Area'],
+      df_arunachal_2_1998_sum['Area'],
+      df_arunachal_2_1999_sum['Area'],
+      df_arunachal_2_2000_sum['Area'],
+      df_arunachal_2_2001_sum['Area'], 
+      df_arunachal_2_2002_sum['Area'],
+      df_arunachal_2_2003_sum['Area'],
+      df_arunachal_2_2004_sum['Area'],
+      df_arunachal_2_2005_sum['Area'],
+      df_arunachal_2_2006_sum['Area'],
+      df_arunachal_2_2007_sum['Area'],
+      df_arunachal_2_2008_sum['Area'],
+      df_arunachal_2_2009_sum['Area'],
+      df_arunachal_2_2010_sum['Area'],
+      df_arunachal_2_2011_sum['Area'],
+      df_arunachal_2_2012_sum['Area'],
+      df_arunachal_2_2013_sum['Area'],
+      df_arunachal_2_2014_sum['Area'])
+
+y22 =(df_arunachal_2_1997_sum['Production'],
+      df_arunachal_2_1998_sum['Production'],
+      df_arunachal_2_1999_sum['Production'],
+      df_arunachal_2_2000_sum['Production'],
+      df_arunachal_2_2001_sum['Production'], 
+      df_arunachal_2_2002_sum['Production'],
+      df_arunachal_2_2003_sum['Production'],
+      df_arunachal_2_2004_sum['Production'],
+      df_arunachal_2_2005_sum['Production'],
+      df_arunachal_2_2006_sum['Production'],
+      df_arunachal_2_2007_sum['Production'],
+      df_arunachal_2_2008_sum['Production'],
+      df_arunachal_2_2009_sum['Production'],
+      df_arunachal_2_2010_sum['Production'],
+      df_arunachal_2_2011_sum['Production'],
+      df_arunachal_2_2012_sum['Production'],
+      df_arunachal_2_2013_sum['Production'],
+      df_arunachal_2_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [2] CHANGLANG (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [2] CHANGLANG (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [3] DIBANG VALLEY
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_3_1997_sum['Area'],
+      df_arunachal_3_1998_sum['Area'],
+      df_arunachal_3_1999_sum['Area'],
+      df_arunachal_3_2000_sum['Area'],
+      df_arunachal_3_2001_sum['Area'], 
+      df_arunachal_3_2002_sum['Area'],
+      df_arunachal_3_2003_sum['Area'],
+      df_arunachal_3_2004_sum['Area'],
+      df_arunachal_3_2005_sum['Area'],
+      df_arunachal_3_2006_sum['Area'],
+      df_arunachal_3_2007_sum['Area'],
+      df_arunachal_3_2008_sum['Area'],
+      df_arunachal_3_2009_sum['Area'],
+      df_arunachal_3_2010_sum['Area'],
+      df_arunachal_3_2011_sum['Area'],
+      df_arunachal_3_2012_sum['Area'],
+      df_arunachal_3_2013_sum['Area'],
+      df_arunachal_3_2014_sum['Area'])
+
+y22 =(df_arunachal_3_1997_sum['Production'],
+      df_arunachal_3_1998_sum['Production'],
+      df_arunachal_3_1999_sum['Production'],
+      df_arunachal_3_2000_sum['Production'],
+      df_arunachal_3_2001_sum['Production'], 
+      df_arunachal_3_2002_sum['Production'],
+      df_arunachal_3_2003_sum['Production'],
+      df_arunachal_3_2004_sum['Production'],
+      df_arunachal_3_2005_sum['Production'],
+      df_arunachal_3_2006_sum['Production'],
+      df_arunachal_3_2007_sum['Production'],
+      df_arunachal_3_2008_sum['Production'],
+      df_arunachal_3_2009_sum['Production'],
+      df_arunachal_3_2010_sum['Production'],
+      df_arunachal_3_2011_sum['Production'],
+      df_arunachal_3_2012_sum['Production'],
+      df_arunachal_3_2013_sum['Production'],
+      df_arunachal_3_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [3] DIBANG VALLEY :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [3] DIBANG VALLEY :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [4] EAST KAMENG
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_4_1997_sum['Area'],
+      df_arunachal_4_1998_sum['Area'],
+      df_arunachal_4_1999_sum['Area'],
+      df_arunachal_4_2000_sum['Area'],
+      df_arunachal_4_2001_sum['Area'], 
+      df_arunachal_4_2002_sum['Area'],
+      df_arunachal_4_2003_sum['Area'],
+      df_arunachal_4_2004_sum['Area'],
+      df_arunachal_4_2005_sum['Area'],
+      df_arunachal_4_2006_sum['Area'],
+      df_arunachal_4_2007_sum['Area'],
+      df_arunachal_4_2008_sum['Area'],
+      df_arunachal_4_2009_sum['Area'],
+      df_arunachal_4_2010_sum['Area'],
+      df_arunachal_4_2011_sum['Area'],
+      df_arunachal_4_2012_sum['Area'],
+      df_arunachal_4_2013_sum['Area'],
+      df_arunachal_4_2014_sum['Area'])
+
+y22 =(df_arunachal_4_1997_sum['Production'],
+      df_arunachal_4_1998_sum['Production'],
+      df_arunachal_4_1999_sum['Production'],
+      df_arunachal_4_2000_sum['Production'],
+      df_arunachal_4_2001_sum['Production'], 
+      df_arunachal_4_2002_sum['Production'],
+      df_arunachal_4_2003_sum['Production'],
+      df_arunachal_4_2004_sum['Production'],
+      df_arunachal_4_2005_sum['Production'],
+      df_arunachal_4_2006_sum['Production'],
+      df_arunachal_4_2007_sum['Production'],
+      df_arunachal_4_2008_sum['Production'],
+      df_arunachal_4_2009_sum['Production'],
+      df_arunachal_4_2010_sum['Production'],
+      df_arunachal_4_2011_sum['Production'],
+      df_arunachal_4_2012_sum['Production'],
+      df_arunachal_4_2013_sum['Production'],
+      df_arunachal_4_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [4] EAST KAMENG :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [4] EAST KAMENG (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [5] EAST SIANG
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_5_1997_sum['Area'],
+      df_arunachal_5_1998_sum['Area'],
+      df_arunachal_5_1999_sum['Area'],
+      df_arunachal_5_2000_sum['Area'],
+      df_arunachal_5_2001_sum['Area'], 
+      df_arunachal_5_2002_sum['Area'],
+      df_arunachal_5_2003_sum['Area'],
+      df_arunachal_5_2004_sum['Area'],
+      df_arunachal_5_2005_sum['Area'],
+      df_arunachal_5_2006_sum['Area'],
+      df_arunachal_5_2007_sum['Area'],
+      df_arunachal_5_2008_sum['Area'],
+      df_arunachal_5_2009_sum['Area'],
+      df_arunachal_5_2010_sum['Area'],
+      df_arunachal_5_2011_sum['Area'],
+      df_arunachal_5_2012_sum['Area'],
+      df_arunachal_5_2013_sum['Area'],
+      df_arunachal_5_2014_sum['Area'])
+
+y22 =(df_arunachal_5_1997_sum['Production'],
+      df_arunachal_5_1998_sum['Production'],
+      df_arunachal_5_1999_sum['Production'],
+      df_arunachal_5_2000_sum['Production'],
+      df_arunachal_5_2001_sum['Production'], 
+      df_arunachal_5_2002_sum['Production'],
+      df_arunachal_5_2003_sum['Production'],
+      df_arunachal_5_2004_sum['Production'],
+      df_arunachal_5_2005_sum['Production'],
+      df_arunachal_5_2006_sum['Production'],
+      df_arunachal_5_2007_sum['Production'],
+      df_arunachal_5_2008_sum['Production'],
+      df_arunachal_5_2009_sum['Production'],
+      df_arunachal_5_2010_sum['Production'],
+      df_arunachal_5_2011_sum['Production'],
+      df_arunachal_5_2012_sum['Production'],
+      df_arunachal_5_2013_sum['Production'],
+      df_arunachal_5_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [5] EAST SIANG (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [5] EAST SIANG (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [6] KURUNG KUMEY
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_6_1997_sum['Area'],
+      df_arunachal_6_1998_sum['Area'],
+      df_arunachal_6_1999_sum['Area'],
+      df_arunachal_6_2000_sum['Area'],
+      df_arunachal_6_2001_sum['Area'], 
+      df_arunachal_6_2002_sum['Area'],
+      df_arunachal_6_2003_sum['Area'],
+      df_arunachal_6_2004_sum['Area'],
+      df_arunachal_6_2005_sum['Area'],
+      df_arunachal_6_2006_sum['Area'],
+      df_arunachal_6_2007_sum['Area'],
+      df_arunachal_6_2008_sum['Area'],
+      df_arunachal_6_2009_sum['Area'],
+      df_arunachal_6_2010_sum['Area'],
+      df_arunachal_6_2011_sum['Area'],
+      df_arunachal_6_2012_sum['Area'],
+      df_arunachal_6_2013_sum['Area'],
+      df_arunachal_6_2014_sum['Area'])
+
+y22 =(df_arunachal_6_1997_sum['Production'],
+      df_arunachal_6_1998_sum['Production'],
+      df_arunachal_6_1999_sum['Production'],
+      df_arunachal_6_2000_sum['Production'],
+      df_arunachal_6_2001_sum['Production'], 
+      df_arunachal_6_2002_sum['Production'],
+      df_arunachal_6_2003_sum['Production'],
+      df_arunachal_6_2004_sum['Production'],
+      df_arunachal_6_2005_sum['Production'],
+      df_arunachal_6_2006_sum['Production'],
+      df_arunachal_6_2007_sum['Production'],
+      df_arunachal_6_2008_sum['Production'],
+      df_arunachal_6_2009_sum['Production'],
+      df_arunachal_6_2010_sum['Production'],
+      df_arunachal_6_2011_sum['Production'],
+      df_arunachal_6_2012_sum['Production'],
+      df_arunachal_6_2013_sum['Production'],
+      df_arunachal_6_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [6] KURUNG KUMEY (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [6] KURUNG KUMEY (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [7] LOHIT
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_7_1997_sum['Area'],
+      df_arunachal_7_1998_sum['Area'],
+      df_arunachal_7_1999_sum['Area'],
+      df_arunachal_7_2000_sum['Area'],
+      df_arunachal_7_2001_sum['Area'], 
+      df_arunachal_7_2002_sum['Area'],
+      df_arunachal_7_2003_sum['Area'],
+      df_arunachal_7_2004_sum['Area'],
+      df_arunachal_7_2005_sum['Area'],
+      df_arunachal_7_2006_sum['Area'],
+      df_arunachal_7_2007_sum['Area'],
+      df_arunachal_7_2008_sum['Area'],
+      df_arunachal_7_2009_sum['Area'],
+      df_arunachal_7_2010_sum['Area'],
+      df_arunachal_7_2011_sum['Area'],
+      df_arunachal_7_2012_sum['Area'],
+      df_arunachal_7_2013_sum['Area'],
+      df_arunachal_7_2014_sum['Area'])
+
+y22 =(df_arunachal_7_1997_sum['Production'],
+      df_arunachal_7_1998_sum['Production'],
+      df_arunachal_7_1999_sum['Production'],
+      df_arunachal_7_2000_sum['Production'],
+      df_arunachal_7_2001_sum['Production'], 
+      df_arunachal_7_2002_sum['Production'],
+      df_arunachal_7_2003_sum['Production'],
+      df_arunachal_7_2004_sum['Production'],
+      df_arunachal_7_2005_sum['Production'],
+      df_arunachal_7_2006_sum['Production'],
+      df_arunachal_7_2007_sum['Production'],
+      df_arunachal_7_2008_sum['Production'],
+      df_arunachal_7_2009_sum['Production'],
+      df_arunachal_7_2010_sum['Production'],
+      df_arunachal_7_2011_sum['Production'],
+      df_arunachal_7_2012_sum['Production'],
+      df_arunachal_7_2013_sum['Production'],
+      df_arunachal_7_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [7] LOHIT (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [7] LOHIT (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [8] LONGDING
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_8_1997_sum['Area'],
+      df_arunachal_8_1998_sum['Area'],
+      df_arunachal_8_1999_sum['Area'],
+      df_arunachal_8_2000_sum['Area'],
+      df_arunachal_8_2001_sum['Area'], 
+      df_arunachal_8_2002_sum['Area'],
+      df_arunachal_8_2003_sum['Area'],
+      df_arunachal_8_2004_sum['Area'],
+      df_arunachal_8_2005_sum['Area'],
+      df_arunachal_8_2006_sum['Area'],
+      df_arunachal_8_2007_sum['Area'],
+      df_arunachal_8_2008_sum['Area'],
+      df_arunachal_8_2009_sum['Area'],
+      df_arunachal_8_2010_sum['Area'],
+      df_arunachal_8_2011_sum['Area'],
+      df_arunachal_8_2012_sum['Area'],
+      df_arunachal_8_2013_sum['Area'],
+      df_arunachal_8_2014_sum['Area'])
+
+y22 =(df_arunachal_8_1997_sum['Production'],
+      df_arunachal_8_1998_sum['Production'],
+      df_arunachal_8_1999_sum['Production'],
+      df_arunachal_8_2000_sum['Production'],
+      df_arunachal_8_2001_sum['Production'], 
+      df_arunachal_8_2002_sum['Production'],
+      df_arunachal_8_2003_sum['Production'],
+      df_arunachal_8_2004_sum['Production'],
+      df_arunachal_8_2005_sum['Production'],
+      df_arunachal_8_2006_sum['Production'],
+      df_arunachal_8_2007_sum['Production'],
+      df_arunachal_8_2008_sum['Production'],
+      df_arunachal_8_2009_sum['Production'],
+      df_arunachal_8_2010_sum['Production'],
+      df_arunachal_8_2011_sum['Production'],
+      df_arunachal_8_2012_sum['Production'],
+      df_arunachal_8_2013_sum['Production'],
+      df_arunachal_8_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [8] LONGDING (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [8] LONGDING (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [9] LOWER DIBANG VALLEY 
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_9_1997_sum['Area'],
+      df_arunachal_9_1998_sum['Area'],
+      df_arunachal_9_1999_sum['Area'],
+      df_arunachal_9_2000_sum['Area'],
+      df_arunachal_9_2001_sum['Area'], 
+      df_arunachal_9_2002_sum['Area'],
+      df_arunachal_9_2003_sum['Area'],
+      df_arunachal_9_2004_sum['Area'],
+      df_arunachal_9_2005_sum['Area'],
+      df_arunachal_9_2006_sum['Area'],
+      df_arunachal_9_2007_sum['Area'],
+      df_arunachal_9_2008_sum['Area'],
+      df_arunachal_9_2009_sum['Area'],
+      df_arunachal_9_2010_sum['Area'],
+      df_arunachal_9_2011_sum['Area'],
+      df_arunachal_9_2012_sum['Area'],
+      df_arunachal_9_2013_sum['Area'],
+      df_arunachal_9_2014_sum['Area'])
+
+y22 =(df_arunachal_9_1997_sum['Production'],
+      df_arunachal_9_1998_sum['Production'],
+      df_arunachal_9_1999_sum['Production'],
+      df_arunachal_9_2000_sum['Production'],
+      df_arunachal_9_2001_sum['Production'], 
+      df_arunachal_9_2002_sum['Production'],
+      df_arunachal_9_2003_sum['Production'],
+      df_arunachal_9_2004_sum['Production'],
+      df_arunachal_9_2005_sum['Production'],
+      df_arunachal_9_2006_sum['Production'],
+      df_arunachal_9_2007_sum['Production'],
+      df_arunachal_9_2008_sum['Production'],
+      df_arunachal_9_2009_sum['Production'],
+      df_arunachal_9_2010_sum['Production'],
+      df_arunachal_9_2011_sum['Production'],
+      df_arunachal_9_2012_sum['Production'],
+      df_arunachal_9_2013_sum['Production'],
+      df_arunachal_9_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [9] LOWER DIBANG VALLEY (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [9] LOWER DIBANG VALLEY (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [10] LOWER SUBANSIRI 
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_10_1997_sum['Area'],
+      df_arunachal_10_1998_sum['Area'],
+      df_arunachal_10_1999_sum['Area'],
+      df_arunachal_10_2000_sum['Area'],
+      df_arunachal_10_2001_sum['Area'], 
+      df_arunachal_10_2002_sum['Area'],
+      df_arunachal_10_2003_sum['Area'],
+      df_arunachal_10_2004_sum['Area'],
+      df_arunachal_10_2005_sum['Area'],
+      df_arunachal_10_2006_sum['Area'],
+      df_arunachal_10_2007_sum['Area'],
+      df_arunachal_10_2008_sum['Area'],
+      df_arunachal_10_2009_sum['Area'],
+      df_arunachal_10_2010_sum['Area'],
+      df_arunachal_10_2011_sum['Area'],
+      df_arunachal_10_2012_sum['Area'],
+      df_arunachal_10_2013_sum['Area'],
+      df_arunachal_10_2014_sum['Area'])
+
+y22 =(df_arunachal_10_1997_sum['Production'],
+      df_arunachal_10_1998_sum['Production'],
+      df_arunachal_10_1999_sum['Production'],
+      df_arunachal_10_2000_sum['Production'],
+      df_arunachal_10_2001_sum['Production'], 
+      df_arunachal_10_2002_sum['Production'],
+      df_arunachal_10_2003_sum['Production'],
+      df_arunachal_10_2004_sum['Production'],
+      df_arunachal_10_2005_sum['Production'],
+      df_arunachal_10_2006_sum['Production'],
+      df_arunachal_10_2007_sum['Production'],
+      df_arunachal_10_2008_sum['Production'],
+      df_arunachal_10_2009_sum['Production'],
+      df_arunachal_10_2010_sum['Production'],
+      df_arunachal_10_2011_sum['Production'],
+      df_arunachal_10_2012_sum['Production'],
+      df_arunachal_10_2013_sum['Production'],
+      df_arunachal_10_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [10] LOWER SUBANSIRI (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [10] LOWER SUBANSIRI (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [11] NAMSAI
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_11_1997_sum['Area'],
+      df_arunachal_11_1998_sum['Area'],
+      df_arunachal_11_1999_sum['Area'],
+      df_arunachal_11_2000_sum['Area'],
+      df_arunachal_11_2001_sum['Area'], 
+      df_arunachal_11_2002_sum['Area'],
+      df_arunachal_11_2003_sum['Area'],
+      df_arunachal_11_2004_sum['Area'],
+      df_arunachal_11_2005_sum['Area'],
+      df_arunachal_11_2006_sum['Area'],
+      df_arunachal_11_2007_sum['Area'],
+      df_arunachal_11_2008_sum['Area'],
+      df_arunachal_11_2009_sum['Area'],
+      df_arunachal_11_2010_sum['Area'],
+      df_arunachal_11_2011_sum['Area'],
+      df_arunachal_11_2012_sum['Area'],
+      df_arunachal_11_2013_sum['Area'],
+      df_arunachal_11_2014_sum['Area'])
+
+y22 =(df_arunachal_11_1997_sum['Production'],
+      df_arunachal_11_1998_sum['Production'],
+      df_arunachal_11_1999_sum['Production'],
+      df_arunachal_11_2000_sum['Production'],
+      df_arunachal_11_2001_sum['Production'], 
+      df_arunachal_11_2002_sum['Production'],
+      df_arunachal_11_2003_sum['Production'],
+      df_arunachal_11_2004_sum['Production'],
+      df_arunachal_11_2005_sum['Production'],
+      df_arunachal_11_2006_sum['Production'],
+      df_arunachal_11_2007_sum['Production'],
+      df_arunachal_11_2008_sum['Production'],
+      df_arunachal_11_2009_sum['Production'],
+      df_arunachal_11_2010_sum['Production'],
+      df_arunachal_11_2011_sum['Production'],
+      df_arunachal_11_2012_sum['Production'],
+      df_arunachal_11_2013_sum['Production'],
+      df_arunachal_11_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [11] NAMSAI (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [11] NAMSAI (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [12] PAPUM PARE
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_12_1997_sum['Area'],
+      df_arunachal_12_1998_sum['Area'],
+      df_arunachal_12_1999_sum['Area'],
+      df_arunachal_12_2000_sum['Area'],
+      df_arunachal_12_2001_sum['Area'], 
+      df_arunachal_12_2002_sum['Area'],
+      df_arunachal_12_2003_sum['Area'],
+      df_arunachal_12_2004_sum['Area'],
+      df_arunachal_12_2005_sum['Area'],
+      df_arunachal_12_2006_sum['Area'],
+      df_arunachal_12_2007_sum['Area'],
+      df_arunachal_12_2008_sum['Area'],
+      df_arunachal_12_2009_sum['Area'],
+      df_arunachal_12_2010_sum['Area'],
+      df_arunachal_12_2011_sum['Area'],
+      df_arunachal_12_2012_sum['Area'],
+      df_arunachal_12_2013_sum['Area'],
+      df_arunachal_12_2014_sum['Area'])
+
+y22 =(df_arunachal_12_1997_sum['Production'],
+      df_arunachal_12_1998_sum['Production'],
+      df_arunachal_12_1999_sum['Production'],
+      df_arunachal_12_2000_sum['Production'],
+      df_arunachal_12_2001_sum['Production'], 
+      df_arunachal_12_2002_sum['Production'],
+      df_arunachal_12_2003_sum['Production'],
+      df_arunachal_12_2004_sum['Production'],
+      df_arunachal_12_2005_sum['Production'],
+      df_arunachal_12_2006_sum['Production'],
+      df_arunachal_12_2007_sum['Production'],
+      df_arunachal_12_2008_sum['Production'],
+      df_arunachal_12_2009_sum['Production'],
+      df_arunachal_12_2010_sum['Production'],
+      df_arunachal_12_2011_sum['Production'],
+      df_arunachal_12_2012_sum['Production'],
+      df_arunachal_12_2013_sum['Production'],
+      df_arunachal_12_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [12] PAPUM PARE (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [12] PAPUM PARE (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [13] TAWANG
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_13_1997_sum['Area'],
+      df_arunachal_13_1998_sum['Area'],
+      df_arunachal_13_1999_sum['Area'],
+      df_arunachal_13_2000_sum['Area'],
+      df_arunachal_13_2001_sum['Area'], 
+      df_arunachal_13_2002_sum['Area'],
+      df_arunachal_13_2003_sum['Area'],
+      df_arunachal_13_2004_sum['Area'],
+      df_arunachal_13_2005_sum['Area'],
+      df_arunachal_13_2006_sum['Area'],
+      df_arunachal_13_2007_sum['Area'],
+      df_arunachal_13_2008_sum['Area'],
+      df_arunachal_13_2009_sum['Area'],
+      df_arunachal_13_2010_sum['Area'],
+      df_arunachal_13_2011_sum['Area'],
+      df_arunachal_13_2012_sum['Area'],
+      df_arunachal_13_2013_sum['Area'],
+      df_arunachal_13_2014_sum['Area'])
+
+y22 =(df_arunachal_13_1997_sum['Production'],
+      df_arunachal_13_1998_sum['Production'],
+      df_arunachal_13_1999_sum['Production'],
+      df_arunachal_13_2000_sum['Production'],
+      df_arunachal_13_2001_sum['Production'], 
+      df_arunachal_13_2002_sum['Production'],
+      df_arunachal_13_2003_sum['Production'],
+      df_arunachal_13_2004_sum['Production'],
+      df_arunachal_13_2005_sum['Production'],
+      df_arunachal_13_2006_sum['Production'],
+      df_arunachal_13_2007_sum['Production'],
+      df_arunachal_13_2008_sum['Production'],
+      df_arunachal_13_2009_sum['Production'],
+      df_arunachal_13_2010_sum['Production'],
+      df_arunachal_13_2011_sum['Production'],
+      df_arunachal_13_2012_sum['Production'],
+      df_arunachal_13_2013_sum['Production'],
+      df_arunachal_13_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [13] TAWANG (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [13] TAWANG (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [14] TIRAP
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_14_1997_sum['Area'],
+      df_arunachal_14_1998_sum['Area'],
+      df_arunachal_14_1999_sum['Area'],
+      df_arunachal_14_2000_sum['Area'],
+      df_arunachal_14_2001_sum['Area'], 
+      df_arunachal_14_2002_sum['Area'],
+      df_arunachal_14_2003_sum['Area'],
+      df_arunachal_14_2004_sum['Area'],
+      df_arunachal_14_2005_sum['Area'],
+      df_arunachal_14_2006_sum['Area'],
+      df_arunachal_14_2007_sum['Area'],
+      df_arunachal_14_2008_sum['Area'],
+      df_arunachal_14_2009_sum['Area'],
+      df_arunachal_14_2010_sum['Area'],
+      df_arunachal_14_2011_sum['Area'],
+      df_arunachal_14_2012_sum['Area'],
+      df_arunachal_14_2013_sum['Area'],
+      df_arunachal_14_2014_sum['Area'])
+
+y22 =(df_arunachal_14_1997_sum['Production'],
+      df_arunachal_14_1998_sum['Production'],
+      df_arunachal_14_1999_sum['Production'],
+      df_arunachal_14_2000_sum['Production'],
+      df_arunachal_14_2001_sum['Production'], 
+      df_arunachal_14_2002_sum['Production'],
+      df_arunachal_14_2003_sum['Production'],
+      df_arunachal_14_2004_sum['Production'],
+      df_arunachal_14_2005_sum['Production'],
+      df_arunachal_14_2006_sum['Production'],
+      df_arunachal_14_2007_sum['Production'],
+      df_arunachal_14_2008_sum['Production'],
+      df_arunachal_14_2009_sum['Production'],
+      df_arunachal_14_2010_sum['Production'],
+      df_arunachal_14_2011_sum['Production'],
+      df_arunachal_14_2012_sum['Production'],
+      df_arunachal_14_2013_sum['Production'],
+      df_arunachal_14_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [14] TIRAP (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [14] TIRAP (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [15] UPPER SIANG
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_15_1997_sum['Area'],
+      df_arunachal_15_1998_sum['Area'],
+      df_arunachal_15_1999_sum['Area'],
+      df_arunachal_15_2000_sum['Area'],
+      df_arunachal_15_2001_sum['Area'], 
+      df_arunachal_15_2002_sum['Area'],
+      df_arunachal_15_2003_sum['Area'],
+      df_arunachal_15_2004_sum['Area'],
+      df_arunachal_15_2005_sum['Area'],
+      df_arunachal_15_2006_sum['Area'],
+      df_arunachal_15_2007_sum['Area'],
+      df_arunachal_15_2008_sum['Area'],
+      df_arunachal_15_2009_sum['Area'],
+      df_arunachal_15_2010_sum['Area'],
+      df_arunachal_15_2011_sum['Area'],
+      df_arunachal_15_2012_sum['Area'],
+      df_arunachal_15_2013_sum['Area'],
+      df_arunachal_15_2014_sum['Area'])
+
+y22 =(df_arunachal_15_1997_sum['Production'],
+      df_arunachal_15_1998_sum['Production'],
+      df_arunachal_15_1999_sum['Production'],
+      df_arunachal_15_2000_sum['Production'],
+      df_arunachal_15_2001_sum['Production'], 
+      df_arunachal_15_2002_sum['Production'],
+      df_arunachal_15_2003_sum['Production'],
+      df_arunachal_15_2004_sum['Production'],
+      df_arunachal_15_2005_sum['Production'],
+      df_arunachal_15_2006_sum['Production'],
+      df_arunachal_15_2007_sum['Production'],
+      df_arunachal_15_2008_sum['Production'],
+      df_arunachal_15_2009_sum['Production'],
+      df_arunachal_15_2010_sum['Production'],
+      df_arunachal_15_2011_sum['Production'],
+      df_arunachal_15_2012_sum['Production'],
+      df_arunachal_15_2013_sum['Production'],
+      df_arunachal_15_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [15] UPPER SIANG (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [15] UPPER SIANG (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
+
+# plotting  A.P : [16] UPPER SUBANSIRI
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_16_1997_sum['Area'],
+      df_arunachal_16_1998_sum['Area'],
+      df_arunachal_16_1999_sum['Area'],
+      df_arunachal_16_2000_sum['Area'],
+      df_arunachal_16_2001_sum['Area'], 
+      df_arunachal_16_2002_sum['Area'],
+      df_arunachal_16_2003_sum['Area'],
+      df_arunachal_16_2004_sum['Area'],
+      df_arunachal_16_2005_sum['Area'],
+      df_arunachal_16_2006_sum['Area'],
+      df_arunachal_16_2007_sum['Area'],
+      df_arunachal_16_2008_sum['Area'],
+      df_arunachal_16_2009_sum['Area'],
+      df_arunachal_16_2010_sum['Area'],
+      df_arunachal_16_2011_sum['Area'],
+      df_arunachal_16_2012_sum['Area'],
+      df_arunachal_16_2013_sum['Area'],
+      df_arunachal_16_2014_sum['Area'])
+
+y22 =(df_arunachal_16_1997_sum['Production'],
+      df_arunachal_16_1998_sum['Production'],
+      df_arunachal_16_1999_sum['Production'],
+      df_arunachal_16_2000_sum['Production'],
+      df_arunachal_16_2001_sum['Production'], 
+      df_arunachal_16_2002_sum['Production'],
+      df_arunachal_16_2003_sum['Production'],
+      df_arunachal_16_2004_sum['Production'],
+      df_arunachal_16_2005_sum['Production'],
+      df_arunachal_16_2006_sum['Production'],
+      df_arunachal_16_2007_sum['Production'],
+      df_arunachal_16_2008_sum['Production'],
+      df_arunachal_16_2009_sum['Production'],
+      df_arunachal_16_2010_sum['Production'],
+      df_arunachal_16_2011_sum['Production'],
+      df_arunachal_16_2012_sum['Production'],
+      df_arunachal_16_2013_sum['Production'],
+      df_arunachal_16_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [16] UPPER SUBANSIRI (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [16] UPPER SUBANSIRI (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show() 
+   
+# plotting  A.P : [17] WEST KAMENG
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_17_1997_sum['Area'],
+      df_arunachal_17_1998_sum['Area'],
+      df_arunachal_17_1999_sum['Area'],
+      df_arunachal_17_2000_sum['Area'],
+      df_arunachal_17_2001_sum['Area'], 
+      df_arunachal_17_2002_sum['Area'],
+      df_arunachal_17_2003_sum['Area'],
+      df_arunachal_17_2004_sum['Area'],
+      df_arunachal_17_2005_sum['Area'],
+      df_arunachal_17_2006_sum['Area'],
+      df_arunachal_17_2007_sum['Area'],
+      df_arunachal_17_2008_sum['Area'],
+      df_arunachal_17_2009_sum['Area'],
+      df_arunachal_17_2010_sum['Area'],
+      df_arunachal_17_2011_sum['Area'],
+      df_arunachal_17_2012_sum['Area'],
+      df_arunachal_17_2013_sum['Area'],
+      df_arunachal_17_2014_sum['Area'])
+
+y22 =(df_arunachal_17_1997_sum['Production'],
+      df_arunachal_17_1998_sum['Production'],
+      df_arunachal_17_1999_sum['Production'],
+      df_arunachal_17_2000_sum['Production'],
+      df_arunachal_17_2001_sum['Production'], 
+      df_arunachal_17_2002_sum['Production'],
+      df_arunachal_17_2003_sum['Production'],
+      df_arunachal_17_2004_sum['Production'],
+      df_arunachal_17_2005_sum['Production'],
+      df_arunachal_17_2006_sum['Production'],
+      df_arunachal_17_2007_sum['Production'],
+      df_arunachal_17_2008_sum['Production'],
+      df_arunachal_17_2009_sum['Production'],
+      df_arunachal_17_2010_sum['Production'],
+      df_arunachal_17_2011_sum['Production'],
+      df_arunachal_17_2012_sum['Production'],
+      df_arunachal_17_2013_sum['Production'],
+      df_arunachal_17_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [17] WEST KAMENG (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [17] WEST KAMENG (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show() 
+   
+# plotting  A.P : [18] WEST SIANG 
+
+x1 = ('1997','1998','1999','2000','2001','2002','2003','2004','2005',
+     '2006','2007','2008','2009','2010','2011','2012','2013','2014')
+
+y11 =(df_arunachal_18_1997_sum['Area'],
+      df_arunachal_18_1998_sum['Area'],
+      df_arunachal_18_1999_sum['Area'],
+      df_arunachal_18_2000_sum['Area'],
+      df_arunachal_18_2001_sum['Area'], 
+      df_arunachal_18_2002_sum['Area'],
+      df_arunachal_18_2003_sum['Area'],
+      df_arunachal_18_2004_sum['Area'],
+      df_arunachal_18_2005_sum['Area'],
+      df_arunachal_18_2006_sum['Area'],
+      df_arunachal_18_2007_sum['Area'],
+      df_arunachal_18_2008_sum['Area'],
+      df_arunachal_18_2009_sum['Area'],
+      df_arunachal_18_2010_sum['Area'],
+      df_arunachal_18_2011_sum['Area'],
+      df_arunachal_18_2012_sum['Area'],
+      df_arunachal_18_2013_sum['Area'],
+      df_arunachal_18_2014_sum['Area'])
+
+y22 =(df_arunachal_18_1997_sum['Production'],
+      df_arunachal_18_1998_sum['Production'],
+      df_arunachal_18_1999_sum['Production'],
+      df_arunachal_18_2000_sum['Production'],
+      df_arunachal_18_2001_sum['Production'], 
+      df_arunachal_18_2002_sum['Production'],
+      df_arunachal_18_2003_sum['Production'],
+      df_arunachal_18_2004_sum['Production'],
+      df_arunachal_18_2005_sum['Production'],
+      df_arunachal_18_2006_sum['Production'],
+      df_arunachal_18_2007_sum['Production'],
+      df_arunachal_18_2008_sum['Production'],
+      df_arunachal_18_2009_sum['Production'],
+      df_arunachal_18_2010_sum['Production'],
+      df_arunachal_18_2011_sum['Production'],
+      df_arunachal_18_2012_sum['Production'],
+      df_arunachal_18_2013_sum['Production'],
+      df_arunachal_18_2014_sum['Production'])                                      
+
+plt.subplot(121)
+plt.title('State-3 : A.P : [18] WEST SIANG (Area) :')
+plt.xlabel('year -->')
+plt.ylabel('area -->')                                                                      
+plt.plot(x1,y11)
+plt.show
+
+plt.subplot(122)
+plt.title('State-3 : A.P : [18] WEST SIANG (Production) :')
+plt.xlabel('year -->')
+plt.ylabel('production -->')
+plt.plot(x1,y22)
+plt.show()
